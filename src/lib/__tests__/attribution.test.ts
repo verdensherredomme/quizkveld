@@ -32,7 +32,7 @@ describe("dataCredits", () => {
     const credits = dataCredits([venue({ ...oslo, geoSource: "osm" })]);
     expect(credits.map((c) => c.id)).toContain("osm");
     expect(credits.find((c) => c.id === "osm")?.label).toBe("© OpenStreetMap-bidragsytere");
-    expect(credits.find((c) => c.id === "osm")?.licence).toBe("ODbL");
+    expect(credits.find((c) => c.id === "osm")?.licence).toBe("ODbL 1.0");
   });
 
   it("credits Kartverket for an OSM coordinate too, because the query was bounded by it", () => {
@@ -48,7 +48,7 @@ describe("dataCredits", () => {
       const credits = dataCredits([venue({ ...oslo, geoSource })]);
       expect(credits).toHaveLength(1);
       expect(credits[0]?.id).toBe("kartverket");
-      expect(credits[0]?.licence).toBe("NLOD");
+      expect(credits[0]?.licence).toBe("NLOD 2.0");
     }
   });
 

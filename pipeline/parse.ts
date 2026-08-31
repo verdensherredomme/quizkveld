@@ -4,7 +4,29 @@ import type { AnyNode, Element } from "domhandler";import { PATHS } from "./path
 import type { ParseResult, RawRow } from "./schema.js";
 
 const TABLE_SELECTOR = "#pubquiz-table";
-const LAST_UPDATED_RE = /Sist\s+oppdatert:?\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/i;
+
+/**
+ * Hosts where the source's link checker cannot see, so its verdict means nothing.
+ *
+ * Facebook blocks automated checkers, so every single one of the 103 Facebook links on the
+ * page is marked dead - a 100 % rate that is obviously the checker failing rather than 103
+ * dead pages. Passing that on would strike through exactly the links most likely to be
+ * current, since a pub's Facebook page is usually its most actively maintained channel.
+ *
+ * Instagram links on the same page are *not* flagged, which is what tells us this is
+ * Facebook-specific rather than a blanket failure on social media.
+ */
+const CHECKER_BLIND_HOSTS = [/(^|\.)facebook\.com$/, /(^|\.)fb\.com$/, /(^|\.)fb\.me$/];
+
+function isCheckerBlind(url: string): boolean {
+  let host: string;
+  try {
+    host = new URL(url).hostname.toLowerCase();
+  } catch {
+    return false;
+  }
+  return CHECKER_BLIND_HOSTS.some((re) => re.test(host));
+}const LAST_UPDATED_RE = /Sist\s+oppdatert:?\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/i;
 
 /** Number of cells in a data row: spacer | city | venue | weekday | time | category. */
 const DATA_ROW_CELLS = 6;
@@ -171,7 +193,13 @@ export function parseHtml(html: string): ParseResult {
 
     // Only the venue cell's own link is meaningful; weekday and category cells sometimes
     // link to a Facebook event, which is decoration we deliberately discard.
-    const href = $(venueCell).find("a[href]").first().attr("href")?.trim();
+    const anchor = $(venueCell).find("a[href]").first();
+    const href = anchor.attr("href")?.trim();
+    // The source runs a link checker and marks dead links with this class, striking them
+    // through visually. That is a judgement they have already made, so we carry it - but
+    // only where the checker can actually see, see CHECKER_BLIND_HOSTS.
+    const markedBroken = (anchor.attr("class") ?? "").split(/\s+/).includes("broken_link");
+    const urlBroken = markedBroken && href !== undefined && !isCheckerBlind(href);
 
     for (const variant of splitRowVariants(timeRaw, categoryRaw)) {
       const row: RawRow = {
@@ -183,6 +211,7 @@ export function parseHtml(html: string): ParseResult {
         categoryRaw: variant.categoryRaw,
       };
       if (href) row.venueUrl = href;
+      if (href && urlBroken) row.venueUrlBroken = true;
       rows.push(row);
     }
   });

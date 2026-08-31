@@ -58,7 +58,12 @@ export function normalizeRows(
     const existing = venues.get(vId);
     if (existing) {
       // Later rows may carry a url or an address hint the first one lacked.
-      if (!existing.url && row.venueUrl) existing.url = row.venueUrl;
+      if (!existing.url && row.venueUrl) {
+        existing.url = row.venueUrl;
+        // The flag describes this url, so it has to travel with it rather than be set
+        // independently - otherwise a later good link inherits an earlier dead one's mark.
+        if (row.venueUrlBroken) existing.urlBroken = true;
+      }
       if (!existing.addressHint && cleaned.addressHint) {
         existing.addressHint = cleaned.addressHint;
       }
@@ -71,7 +76,10 @@ export function normalizeRows(
         fylke,
       };
       if (cleaned.addressHint) venue.addressHint = cleaned.addressHint;
-      if (row.venueUrl) venue.url = row.venueUrl;
+      if (row.venueUrl) {
+        venue.url = row.venueUrl;
+        if (row.venueUrlBroken) venue.urlBroken = true;
+      }
       venues.set(vId, venue);
     }
 

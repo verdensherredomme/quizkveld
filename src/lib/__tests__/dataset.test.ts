@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import { QuizDataSchema } from "../../../pipeline/schema.js";
 import { addDays, weekWindow } from "../date.js";
 import { caveatOf, hasCategoryCaveat, hasCaveat, isUndated, occurrenceOn, occursOn, splitByDates } from "../occurrence.js";
-import { buildPlaceSlugs } from "../place.js";
+import { buildPlaceSlugs, formerFylker, fylkeOf } from "../place.js";
 import { countByCategory, joinQuizzes, partitionByFreshness, sortQuizzes } from "../model.js";
 
 /**
@@ -218,18 +218,6 @@ describe("weekly rows that claim certainty on nothing but a weekday", () => {
   const REVIEWED: Record<string, string> = {
     // The quiz runs weekly and the start date is long past. Nothing to hedge.
     "Mandag (start 29.7)": "startdato passert, ukentlig er riktig",
-
-    // These two are biweekly quizzes that phase 1's recurrence parser did not recognise:
-    // it looks for `oddetallsuker` and the source wrote `Oddetalsuker` with one l, and it
-    // looks for `annenhver` and the source wrote `annen hver` with a space. Both are stored
-    // as FREQ=WEEKLY, so we show them every week when they run every other week.
-    //
-    // Deliberately not patched here. Adding them to `CAVEAT` would be a detour around a
-    // parser bug, and would leave the wrong data in place while looking fixed. They are
-    // owned upstream; once the parser recognises them they become `biweekly` and pick up
-    // the "annenhver uke - sjekk selv" path that already exists.
-    "Tirsdag (Oddetalsuker)": "parserfeil i pipelinen, eies oppstrøms",
-    "Fredag (annen hver)": "parserfeil i pipelinen, eies oppstrøms",
   };
 
   const weekly = data.quizzes.filter(
@@ -265,6 +253,108 @@ describe("weekly rows that claim certainty on nothing but a weekday", () => {
     const present = new Set(weekly.map((quiz) => quiz.recurrence.raw));
     const stale = Object.keys(REVIEWED).filter((raw) => !present.has(raw));
     expect(stale, "Fjern disse fra REVIEWED - radene finnes ikke lenger").toEqual([]);
+  });
+});
+
+describe("county navigation follows today's map", () => {
+  /**
+   * The source's `fylke` is pre-2020. Navigating on it stranded 78 venues behind counties
+   * that had not existed for six years, while Vestland, Trøndelag, Innlandet and Agder had
+   * no page at all - so someone looking for a quiz in Bergen had to guess "Hordaland".
+   *
+   * These assert the property, not today's numbers: whatever the source publishes next
+   * week, the navigation must offer counties that exist and must not lose a venue.
+   */
+  const DISSOLVED_2020 = [
+    "Hordaland",
+    "Sogn og Fjordane",
+    "Sør-Trøndelag",
+    "Nord-Trøndelag",
+    "Hedmark",
+    "Oppland",
+    "Aust-Agder",
+    "Vest-Agder",
+  ];
+
+  it("offers no county that was dissolved in 2020", () => {
+    const navigable = new Set(data.venues.map((venue) => fylkeOf(venue)));
+    expect([...navigable].filter((name) => DISSOLVED_2020.includes(name))).toEqual([]);
+  });
+
+  it("still files the venues those counties held", () => {
+    // The point of the change is that nothing moves out of reach, only under a new heading.
+    const affected = data.venues.filter((venue) => DISSOLVED_2020.includes(venue.fylke));
+    expect(affected.length).toBeGreaterThan(0);
+    const { byFylke } = buildPlaceSlugs(data.venues);
+    for (const venue of affected) {
+      expect(byFylke.get(fylkeOf(venue)), `${venue.name} (${venue.fylke})`).toBeTruthy();
+    }
+  });
+
+  it("gives every venue a county page, including those Kartverket does not know", () => {
+    const { byFylke } = buildPlaceSlugs(data.venues);
+    const stranded = data.venues.filter((venue) => !byFylke.get(fylkeOf(venue)));
+    expect(stranded.map((venue) => venue.name)).toEqual([]);
+  });
+
+  it("navigates to every venue, so none can drop out quietly", () => {
+    // The counting version of the test above. Silent loss has been the hardest failure to
+    // spot in this project, and it would look like nothing at all: Kartverket stops
+    // recognising a place, `fylkeNow` goes missing, and one venue is simply not on any page.
+    // A count that must add up catches that without anyone reading rows.
+    const { byFylke } = buildPlaceSlugs(data.venues);
+    const reachable = data.venues.filter((venue) => byFylke.has(fylkeOf(venue)));
+    expect(reachable.length).toBe(data.venues.length);
+  });
+
+  it("never claims a county was renamed when the source still uses its own name", () => {
+    // The falsehood this catches: Akershus received Jevnaker when Oppland was dissolved, but
+    // it was never called Oppland - 26 of its 28 venues are filed under Akershus by the
+    // source. "Tidligere Oppland" on that page would be a confident lie about our own
+    // derivation. A county that truly was renamed never appears under its own name.
+    const former = formerFylker(data.venues);
+    const own = new Set(data.venues.filter((v) => v.fylke === fylkeOf(v)).map((v) => fylkeOf(v)));
+    for (const [now, entries] of former) {
+      for (const entry of entries) {
+        expect(
+          entry.kommuner.length > 0,
+          `${now} claims "tidligere ${entry.fylke}" while the source also writes ${now}`,
+        ).toBe(own.has(now));
+      }
+    }
+  });
+
+  it("mentions every source county somewhere it actually has venues", () => {
+    // The reader this protects is the one who knows the old name. Reporting an old county
+    // only under its majority successor would leave Jevnaker unreachable from "Oppland",
+    // since Oppland's other six venues are in Innlandet - the same silent wrong answer that
+    // ruled out redirecting a split county to one destination.
+    const former = formerFylker(data.venues);
+    const missing = data.venues
+      .filter((venue) => venue.fylke !== fylkeOf(venue))
+      .filter(
+        (venue) => !former.get(fylkeOf(venue))?.some((entry) => entry.fylke === venue.fylke),
+      );
+    expect(missing.map((v) => `${v.name} (${v.fylke} -> ${fylkeOf(v)})`)).toEqual([]);
+  });
+
+  it("keeps a venue Kartverket does not know under the source's county", () => {
+    // Grendehuset (Sandnesseter) has no `fylkeNow`. The fallback is what stops it vanishing.
+    const withoutLookup = data.venues.filter((venue) => !venue.fylkeNow);
+    for (const venue of withoutLookup) {
+      expect(fylkeOf(venue), venue.name).toBe(venue.fylke);
+    }
+  });
+
+  it("tells each county which of the source's counties it covers", () => {
+    // The navigation is our derivation, so the page has to say so rather than silently
+    // replacing the source's word.
+    const former = formerFylker(data.venues);
+    expect(former.get("Vestland")?.map((entry) => entry.fylke)).toContain("Hordaland");
+    const { byFylke } = buildPlaceSlugs(data.venues);
+    for (const name of former.keys()) {
+      expect(byFylke.has(name), name).toBe(true);
+    }
   });
 });
 

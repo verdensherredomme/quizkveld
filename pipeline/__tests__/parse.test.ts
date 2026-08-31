@@ -10,8 +10,8 @@ describe("parseHtml", () => {
 
   it("parses every data row without warnings", async () => {
     const result = parseHtml(await loadFixture());
-    // 15 table rows, one of which (Skatten) splits into two quizzes.
-    expect(result.rows).toHaveLength(16);
+    // 16 table rows, one of which (Skatten) splits into two quizzes.
+    expect(result.rows).toHaveLength(17);
     expect(result.warnings).toEqual([]);
   });
 
@@ -22,7 +22,7 @@ describe("parseHtml", () => {
       byFylke.set(row.fylke, (byFylke.get(row.fylke) ?? 0) + 1);
     }
     expect(Object.fromEntries(byFylke)).toEqual({
-      Østfold: 3,
+      Østfold: 4,
       Oslo: 8,
       Akershus: 3,
       Troms: 2,
@@ -126,5 +126,57 @@ describe("splitRowVariants", () => {
     expect(splitRowVariants("19:00", "Allmenn")).toEqual([
       { timeRaw: "19:00", categoryRaw: "Allmenn" },
     ]);
+  });
+});
+
+/**
+ * The source runs a link checker and strikes dead links through with class="broken_link".
+ * That is a judgement they have already made and published; dropping it would leave every
+ * link looking equally trustworthy when we know better.
+ */
+describe("dead links flagged by the source", () => {
+  it("marks the venue link the source struck through", async () => {
+    const result = parseHtml(await loadFixture());
+    const samfundet = result.rows.find((r) => r.venueRaw.includes("Samfundet"));
+    expect(samfundet?.venueUrl).toBe("http://ukaihalden.no/hss/");
+    expect(samfundet?.venueUrlBroken).toBe(true);
+  });
+
+  it("leaves live links unflagged rather than setting false", async () => {
+    const result = parseHtml(await loadFixture());
+    const heim = result.rows.find((r) => r.venueRaw.includes("Heim Fredrikstad"));
+    expect(heim?.venueUrl).toBeTruthy();
+    expect(heim?.venueUrlBroken).toBeUndefined();
+  });
+
+  // The weekday cell sometimes carries its own link. Only the venue cell's link is the
+  // venue's, so a broken marker elsewhere in the row must not leak onto it.
+  it("ignores links outside the venue cell", async () => {
+    const result = parseHtml(await loadFixture());
+    const hells = result.rows.find((r) => r.venueRaw.includes("Hells Kitchen"));
+    expect(hells?.venueUrl).toBe("https://www.hellskitchenoslo.no/");
+  });
+});
+
+/**
+ * Every one of the 103 Facebook links on the live page carries class="broken_link" - a
+ * 100 % failure rate that is the checker being blocked, not 103 dead pages. Instagram
+ * links on the same page are not flagged, which is what pins it to Facebook specifically.
+ *
+ * Passing the verdict through would strike out the links most likely to be current, since
+ * a pub's Facebook page is usually its most actively maintained channel.
+ */
+describe("link checker blind spots", () => {
+  it("does not trust the dead-link mark on Facebook", async () => {
+    const result = parseHtml(await loadFixture());
+    const gulating = result.rows.find((r) => r.venueRaw.includes("Gulating"));
+    expect(gulating?.venueUrl).toContain("facebook.com");
+    expect(gulating?.venueUrlBroken).toBeUndefined();
+  });
+
+  it("still trusts it on hosts the checker can reach", async () => {
+    const result = parseHtml(await loadFixture());
+    const samfundet = result.rows.find((r) => r.venueRaw.includes("Samfundet"));
+    expect(samfundet?.venueUrlBroken).toBe(true);
   });
 });

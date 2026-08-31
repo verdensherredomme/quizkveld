@@ -23,20 +23,30 @@ export interface DataCredit {
   url: string;
   /** Which licence obliges the credit, shown after the link. */
   licence: string;
+  /**
+   * The licence text itself. Both ODbL and NLOD ask us to link to the licence, not only
+   * to name it, whenever that is practical - and on a web page it always is.
+   */
+  licenceUrl: string;
 }
 
 const OPENSTREETMAP: DataCredit = {
   id: "osm",
   label: "© OpenStreetMap-bidragsytere",
   url: "https://www.openstreetmap.org/copyright",
-  licence: "ODbL",
+  licence: "ODbL 1.0",
+  licenceUrl: "https://opendatacommons.org/licenses/odbl/1-0/",
 };
 
 const KARTVERKET: DataCredit = {
   id: "kartverket",
-  label: "Kartverket / Geonorge",
+  // NLOD 2.0 §5 asks for "Inneholder data under Norsk lisens for offentlige data (NLOD)
+  // tilgjengeliggjort av [lisensgiver]". The footer renders that sentence around the
+  // link, so the label only carries the licensor's name. See DATA.md.
+  label: "Kartverket",
   url: "https://www.geonorge.no/",
-  licence: "NLOD",
+  licence: "NLOD 2.0",
+  licenceUrl: "https://data.norge.no/nlod/no/2.0",
 };
 
 /**
@@ -73,8 +83,9 @@ const ORDER = [OPENSTREETMAP.id, KARTVERKET.id];
 /**
  * The credits the current data set actually obliges.
  *
- * Returns an empty list while no venue has coordinates, which is the state today: all 322
- * venues have `lat`/`lon` unset, so the footer shows nothing about maps or geocoding.
+ * Returns an empty list while no venue has coordinates - which is no longer the state:
+ * after the phase 2 geocoding run 321 of 322 venues carry a coordinate, so the footer
+ * credits both OpenStreetMap and Kartverket.
  */
 export function dataCredits(venues: Venue[]): DataCredit[] {
   const found = new Map<string, DataCredit>();

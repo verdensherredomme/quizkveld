@@ -5,7 +5,8 @@ import { REPO_URL, SOURCE_EMAIL, SOURCE_NAME, SOURCE_URL, reportUrl } from "../l
 import { longDate, quizCount, timestampLabel, venueCount } from "../lib/format.js";
 import { hasCaveat, isUndated } from "../lib/occurrence.js";
 import { placeSummary } from "../lib/model.js";
-import { href, asset } from "../lib/url.js";
+import { fylkeOf } from "../lib/place.js";
+import { href } from "../lib/url.js";
 
 const { items, venues, meta } = await loadSiteData();
 
@@ -13,7 +14,7 @@ const { items, venues, meta } = await loadSiteData();
 // should only describe what is actually current.
 const activeVenues = venues.filter((venue) => !venue.stale);
 const places = placeSummary(items);
-const fylker = new Set(activeVenues.map((venue) => venue.fylke)).size;
+const fylker = new Set(activeVenues.map((venue) => fylkeOf(venue))).size;
 const irregular = items.filter((item) => isUndated(item.quiz)).length;
 const withoutTime = items.filter((item) => item.quiz.time === null).length;
 const multiGenre = items.filter((item) => item.quiz.categoryNorm.length > 1).length;
@@ -160,22 +161,6 @@ const caveated = items.filter(
       kjører i nettleseren på HTML som allerede er lastet, så siden fungerer også uten
       JavaScript – da må du bare bla selv. Kildekoden ligger
       <a href={REPO_URL} rel="noopener external">på GitHub</a>.
-    </p>
-
-    <h2>Skrift og utseende</h2>
-    <p>
-      Overskrifter, klokkeslett og sitater er satt i
-      <a href="https://github.com/productiontype/Newsreader" rel="noopener external">
-        Newsreader
-      </a>, tegnet av Production Type og utgitt under
-      <a href={asset("fonts/OFL.txt")} rel="license">SIL Open Font License 1.1</a>. Fila er
-      selvhostet her – ingen forespørsler går til en fonttjeneste – og beskåret til de
-      tegnene norsk trenger. Resten av teksten bruker skriften enheten din allerede har, som
-      koster null å laste ned.
-    </p>
-    <p>
-      Lisensen krever ikke at vi sier dette, men vi krediterer allerede ODbL og NLOD for
-      kartdata, og en fontlisens er samme slags forpliktelse.
     </p>
 
     <p><a href={href()}>Tilbake til forsiden</a></p>

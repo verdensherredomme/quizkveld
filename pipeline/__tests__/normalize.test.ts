@@ -235,9 +235,9 @@ describe("normalizeRows over the fixture", () => {
 
   it("produces one venue per distinct place and one quiz per row", async () => {
     const result = await normalizeFixture();
-    expect(result.quizzes).toHaveLength(16);
-    // 16 rows, but Skatten appears twice, so 15 distinct venues.
-    expect(result.venues).toHaveLength(15);
+    expect(result.quizzes).toHaveLength(17);
+    // 17 rows, but Skatten appears twice, so 16 distinct venues.
+    expect(result.venues).toHaveLength(16);
     expect(result.warnings).toEqual([]);
   });
 

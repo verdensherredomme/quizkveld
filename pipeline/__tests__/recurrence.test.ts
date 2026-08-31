@@ -190,8 +190,10 @@ describe("parseRecurrence", () => {
  * still needs an anchor date to count from, which the source never provides. So there is
  * no correct RRULE to emit here, only a plausible-looking wrong one.
  *
- * If you want to resolve these, add them to data/overrides.json with a real schedule
- * confirmed from the venue. Do not teach the parser to guess.
+ * The fix is to report them to the source (admin@norgesquizforbund.no) so the correction
+ * arrives in the next scrape. Do not teach the parser to guess, and do not park a
+ * hand-checked schedule in data/overrides.json - see _note there for why we hold no
+ * facts of our own about quiz schedules.
  */
 describe("ambiguous interval phrasings stay irregular on purpose", () => {
   const AMBIGUOUS = [
@@ -230,5 +232,105 @@ describe("parseWeekday", () => {
     expect(parseWeekday("Torsdag (eller fredag)")).toBeNull();
     expect(parseWeekday("En gang i måneden")).toBeNull();
     expect(parseWeekday("")).toBeNull();
+  });
+});
+
+/**
+ * Week parity is what makes a biweekly quiz answerable.
+ *
+ * "INTERVAL=2" says every other week but not which one, so without parity the site can
+ * only say "maybe tonight". Parity is preferred over a DTSTART anchor because it is a
+ * property of the calendar rather than of one season, so it never expires.
+ */
+describe("week parity on biweekly", () => {
+  const ODD = [
+    "Torsdag (oddetallsuker)",
+    "Torsdag (annenhver - oddetallsuker)",
+    "Tirsdag (annenhver, oddetallsuker)",
+    "Torsdag (annenhver, ulik uke)",
+  ];
+  const EVEN = ["Torsdag (partallsuker)", "Mandag (annenhver - partallsuker)"];
+  const NONE = ["Torsdag (annenhver)", "Annenhver mandag"];
+
+  for (const raw of ODD) {
+    it(`reads ${JSON.stringify(raw)} as odd weeks`, () => {
+      const parsed = parseRecurrence(raw);
+      expect(parsed.kind).toBe("biweekly");
+      expect(parsed.weekParity).toBe("odd");
+    });
+  }
+
+  for (const raw of EVEN) {
+    it(`reads ${JSON.stringify(raw)} as even weeks`, () => {
+      const parsed = parseRecurrence(raw);
+      expect(parsed.kind).toBe("biweekly");
+      expect(parsed.weekParity).toBe("even");
+    });
+  }
+
+  for (const raw of NONE) {
+    it(`leaves parity unset for ${JSON.stringify(raw)}`, () => {
+      const parsed = parseRecurrence(raw);
+      expect(parsed.kind).toBe("biweekly");
+      expect(parsed.weekParity).toBeUndefined();
+    });
+  }
+
+  // "ulike uker" (odd) and "like uker" (even) differ by one leading letter and mean the
+  // opposite thing. Getting this backwards puts every affected quiz on the wrong week.
+  it("does not read 'ulike uker' as even", () => {
+    expect(parseRecurrence("Torsdag (annenhver, ulike uker)").weekParity).toBe("odd");
+    expect(parseRecurrence("Torsdag (annenhver, like uker)").weekParity).toBe("even");
+  });
+});
+
+/**
+ * Spelling variants of words we already know.
+ *
+ * Both of these shipped to production classified as `weekly`, meaning the site told people
+ * there was a quiz on a night there was not. That is the one error this parser exists to
+ * prevent, so the fix normalizes before matching rather than adding one alternative per
+ * misspelling - the same class had already appeared several times.
+ */
+describe("spelling variants of biweekly", () => {
+  const VARIANTS = [
+    // Live rows that were wrong: Radisson RED (Okern) and Pillarguri Cafe.
+    "Tirsdag (Oddetalsuker)",
+    "Fredag (annen hver)",
+    // Same class, not currently in the data, but free to cover once compaction is in.
+    "Fredag (annen-hver)",
+    "Tirsdag (partalsuker)",
+    "Mandag (Annenhver)",
+  ];
+
+  for (const raw of VARIANTS) {
+    it(`reads ${JSON.stringify(raw)} as biweekly`, () => {
+      expect(parseRecurrence(raw).kind).toBe("biweekly");
+    });
+  }
+
+  it("keeps the parity that the misspelled row states", () => {
+    expect(parseRecurrence("Tirsdag (Oddetalsuker)").weekParity).toBe("odd");
+    expect(parseRecurrence("Tirsdag (partalsuker)").weekParity).toBe("even");
+  });
+
+  /**
+   * The dangerous near-miss. Compaction removes spaces, so "hver andre" and a monthly
+   * "den andre i hver maaned" both collapse towards the same letters. "Mandag (den andre i
+   * hver maaned)" is the second Monday *of the month*, not every other Monday - reading it
+   * as biweekly would put it on the wrong night roughly half the time.
+   *
+   * What separates them is the ordinal-plus-month guard, not the keyword list.
+   */
+  it("does not turn an ordinal monthly row into biweekly", () => {
+    expect(parseRecurrence("Mandag (den andre i hver måned)").kind).toBe("monthly-nth");
+    expect(parseRecurrence("Tirsdag (2. tirsdag hver måned)").kind).toBe("monthly-nth");
+    expect(parseRecurrence("Mandag (den første i hver måned)").kind).toBe("monthly-nth");
+  });
+
+  // Compaction must not reach past the keyword tests into weekday detection.
+  it("still finds the weekday in a compacted row", () => {
+    expect(parseRecurrence("Tirsdag (Oddetalsuker)").rrule).toContain("TU");
+    expect(parseRecurrence("Fredag (annen hver)").rrule).toContain("FR");
   });
 });

@@ -7,6 +7,7 @@ import { loadSiteData } from "../lib/data.js";
 import { osloDate, weekWindow } from "../lib/date.js";
 import { splitByDates } from "../lib/occurrence.js";
 import { quizCount } from "../lib/format.js";
+import { DEFAULT_PLACE } from "../lib/site.js";
 
 const { items, slugs, meta } = await loadSiteData();
 
@@ -17,24 +18,29 @@ const dates = weekWindow(today);
 
 const { dated, undated } = splitByDates(items, dates);
 const total = [...dated.values()].reduce((sum, list) => sum + list.length, 0);
+const totalInDefaultPlace = [...dated.values()].reduce(
+  (sum, list) => sum + list.filter((item) => item.venue.kommune === DEFAULT_PLACE).length,
+  0,
+);
 ---
 
 <Base
-  title="Pubquizer i Norge denne uka – quizkveld"
-  description="Alle pubquizer de neste sju dagene, dag for dag, sortert på sted og sjanger."
+  title="Pubquizer i Oslo denne uka – quizkveld"
+  description="Finn pubquizer i Oslo de neste sju dagene, eller velg Hele landet for å se resten av Norge."
   generatedAt={meta.generatedAt}
   sourceUpdatedAt={meta.sourceUpdatedAt}
   current="denne-uka"
 >
   <div class="intro">
-    <h1>Denne uka</h1>
+    <h1>Denne uka i Oslo</h1>
     <p>
-      De neste sju dagene, dag for dag. {quizCount(total)} står oppført til sammen – en quiz
-      som går hver uke teller én gang per dag den går.
+      De neste sju dagene, dag for dag. {quizCount(totalInDefaultPlace)} står oppført i Oslo.
+      Velg «Hele landet» for alle {quizCount(total)} i Norge. En quiz som går hver uke
+      teller én gang per dag den går.
     </p>
   </div>
 
-  <Filters items={items} />
+  <Filters items={items} defaultPlace={DEFAULT_PLACE} />
 
   {
     dates.map((date) => (

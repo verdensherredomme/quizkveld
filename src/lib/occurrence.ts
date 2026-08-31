@@ -2,7 +2,7 @@
 // so we take the default export and destructure it ourselves - same as pipeline/recurrence.ts.
 import rrulePkg from "rrule";
 import type { Quiz } from "../../pipeline/schema.js";
-import { partsOf, weekdayOf, type CivilDate } from "./date.js";
+import { isoWeekOf, partsOf, weekdayOf, type CivilDate } from "./date.js";
 
 const { RRule } = rrulePkg;
 
@@ -12,12 +12,14 @@ const { RRule } = rrulePkg;
  * The honest answer is not always yes or no. The dataset contains three genuinely
  * different situations, and collapsing them would send people to a pub on the wrong night:
  *
- * - `certain`  - the rule pins the quiz to this date (weekly, and the monthly rules).
- * - `likely`   - the weekday is right but the week is not knowable. Every `biweekly` rule
- *                is like this: the RRULE has no DTSTART, so we know it runs every other
- *                Tuesday but not *which* Tuesday. 48 quizzes are in this bucket, so
- *                dropping them would gut the site, and promoting them to `certain` would
- *                be a lie. They are shown with a "sjekk selv" badge.
+ * - `certain`  - the rule pins the quiz to this date (weekly, the monthly rules, and the
+ *                `biweekly` rows whose source names the week parity).
+ * - `likely`   - the weekday is right but the week is not knowable. Most `biweekly` rules
+ *                are like this: the RRULE has no DTSTART, so we know it runs every other
+ *                Tuesday but not *which* Tuesday. Dropping them would gut the site, and
+ *                promoting them to `certain` would be a lie. They get a "sjekk selv" badge.
+ *                The exception is the 16 rows where the source says `oddetallsuker` or
+ *                `partallsuker`; those we can place exactly, and do.
  *                Quizzes whose source text carries a caveat the RRULE cannot express land
  *                here too - see `hasCaveat`.
  * - `undated`  - no date can be derived at all. The 20 `irregular` quizzes, whose raw text
@@ -155,8 +157,15 @@ function occurrenceFromRule(quiz: Quiz, date: CivilDate): Occurrence {
     case "weekly":
       return weekdayOf(date) === quiz.weekday ? "certain" : "no";
 
-    case "biweekly":
-      return weekdayOf(date) === quiz.weekday ? "likely" : "no";
+    case "biweekly": {
+      if (weekdayOf(date) !== quiz.weekday) return "no";
+      // The source sometimes says *which* of the two weeks: `oddetallsuker`, `partallsuker`.
+      // Where it does, we know the answer exactly and should say so - both ways. Withholding
+      // that is not caution, it is listing a pub on a night the data says it is not running.
+      const { weekParity } = quiz.recurrence;
+      if (!weekParity) return "likely";
+      return isoWeekOf(date) % 2 === (weekParity === "odd" ? 1 : 0) ? "certain" : "no";
+    }
 
     case "monthly-nth":
     case "last-of-month": {

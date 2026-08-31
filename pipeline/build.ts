@@ -1,11 +1,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { GeoCache } from "./geocode.js";
+import { loadAliases } from "./kommuneregister.js";
 import { byId, normalizeRows, type NormalizeResult } from "./normalize.js";
 import { PATHS } from "./paths.js";
 import {
   OverridesSchema,
   QuizDataSchema,
+  type KommuneAliases,
   type Overrides,
   type ParseResult,
   type Quiz,
@@ -43,6 +45,8 @@ export interface BuildOptions {
   previous?: QuizData | null;
   overrides?: Overrides;
   geocache?: GeoCache | null;
+  /** Source place name -> official kommune. Null skips kommune resolution entirely. */
+  aliases?: KommuneAliases | null;
 }
 
 export interface BuildReport {
@@ -108,6 +112,7 @@ export function mergeData(
   const previous = options.previous ?? null;
   const overrides = options.overrides ?? { venues: {}, quizzes: {} };
   const geocache = options.geocache ?? null;
+  const aliases = options.aliases ?? null;
   const today = isoDate(now);
   const warnings = [...normalized.warnings];
 
@@ -117,6 +122,16 @@ export function mergeData(
   const venues = new Map<string, Venue>();
   for (const venue of normalized.venues) {
     let next: Venue = { ...venue };
+
+    // Official kommune, when the alias table knows this place name. The source's own
+    // spelling is deliberately left in `kommune`: people search for "Greaaker", not
+    // "Sarpsborg".
+    const alias = aliases?.aliases[venue.kommune];
+    if (alias) {
+      if (alias.kommuneNr) next.kommuneNr = alias.kommuneNr;
+      if (alias.kommuneName) next.kommuneName = alias.kommuneName;
+      if (alias.fylkeNow) next.fylkeNow = alias.fylkeNow;
+    }
 
     // Geocache first, then manual overrides, so a hand-placed pin always wins.
     const geo = geocache?.get(venue.id);
@@ -248,8 +263,16 @@ export async function build(
   const overrides = options.overrides ?? (await loadOverrides());
   const geocache =
     options.geocache !== undefined ? options.geocache : await GeoCache.load();
+  const aliases = options.aliases !== undefined ? options.aliases : await loadAliases();
 
-  const outcome = mergeData(normalized, { ...options, now, previous, overrides, geocache });
+  const outcome = mergeData(normalized, {
+    ...options,
+    now,
+    previous,
+    overrides,
+    geocache,
+    aliases,
+  });
 
   // Schema validation runs before the rails and is never bypassable by --force:
   // writing structurally invalid data would break the site outright.

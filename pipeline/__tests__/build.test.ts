@@ -318,9 +318,9 @@ describe("serialize", () => {
 describe("data/overrides.json som ligger i repoet", () => {
   const file = fileURLToPath(new URL("../../data/overrides.json", import.meta.url));
 
-  // The shipped file carries a _note block documenting which irregular quizzes are
-  // worth hand-curating first. Zod strips unknown keys, so this parses today - the test
-  // exists so that adding .strict() later fails here instead of in production.
+  // The shipped file carries a _note block documenting the upstream outbox. Zod strips
+  // unknown keys, so this parses today - the test exists so that adding .strict() later
+  // fails here instead of in production.
   it("parses even though it carries a _note block", async () => {
     const raw = JSON.parse(await readFile(file, "utf8")) as Record<string, unknown>;
     expect(raw["_note"]).toBeDefined();
@@ -328,5 +328,20 @@ describe("data/overrides.json som ligger i repoet", () => {
     expect(parsed.venues).toEqual({});
     expect(parsed.quizzes).toEqual({});
     expect("_note" in parsed).toBe(false);
+  });
+
+  // Maintenance policy: we hold no facts of our own about when a quiz runs. A schedule we
+  // confirmed once rots silently when the venue changes it and nobody tells us. Wrong
+  // schedules are reported upstream instead. This is easy to erode one well-meaning entry
+  // at a time, so it is asserted rather than merely documented.
+  it("holds no claims about quiz schedules", async () => {
+    const raw = JSON.parse(await readFile(file, "utf8")) as Record<string, unknown>;
+    const parsed = OverridesSchema.parse(raw);
+    for (const [id, override] of Object.entries(parsed.quizzes)) {
+      expect(
+        override.recurrence,
+        `${id} overstyrer recurrence - rapporter det til kilden i stedet, se _note.utboks`,
+      ).toBeUndefined();
+    }
   });
 });

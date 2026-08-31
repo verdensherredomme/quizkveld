@@ -68,6 +68,56 @@ describe("biweekly quizzes", () => {
   });
 });
 
+describe("biweekly quizzes whose source names the week", () => {
+  // 2026-07-28 is a Tuesday in ISO week 31 (odd); 2026-08-04 is a Tuesday in week 32 (even).
+  const ODD_TUESDAY = "2026-07-28";
+  const EVEN_TUESDAY = "2026-08-04";
+
+  function everyOtherTuesday(weekParity?: "odd" | "even", raw = "Tirsdag (oddetallsuker)") {
+    return quiz({
+      weekday: "tirsdag",
+      recurrence: { kind: "biweekly", rrule: "FREQ=WEEKLY;BYDAY=TU;INTERVAL=2", weekParity, raw },
+    });
+  }
+
+  it("says yes on the right week and no on the wrong one", () => {
+    // The parity is the whole point: without it we would list this pub on 4 August, a night
+    // the source itself says it is not running. Hedging is only honest when we do not know.
+    const odd = everyOtherTuesday("odd");
+    expect(occurrenceOn(odd, ODD_TUESDAY)).toBe("certain");
+    expect(occurrenceOn(odd, EVEN_TUESDAY)).toBe("no");
+    expect(occursOn(odd, EVEN_TUESDAY)).toBe(false);
+  });
+
+  it("reads even weeks as the opposite of odd ones", () => {
+    // `ulike uker` and `like uker` differ by one letter and mean opposite things, so the
+    // two parities are tested against the same dates rather than trusting symmetry.
+    const even = everyOtherTuesday("even");
+    expect(occurrenceOn(even, EVEN_TUESDAY)).toBe("certain");
+    expect(occurrenceOn(even, ODD_TUESDAY)).toBe("no");
+  });
+
+  it("falls back to likely when the source does not say which week", () => {
+    // 32 of the 48 every-other-week rows say nothing about parity. They must keep the
+    // "sjekk selv" badge rather than inherit a guess from the rows that do.
+    const unknown = everyOtherTuesday(undefined, "Annenhver tirsdag");
+    expect(occurrenceOn(unknown, ODD_TUESDAY)).toBe("likely");
+    expect(occurrenceOn(unknown, EVEN_TUESDAY)).toBe("likely");
+  });
+
+  it("lets a caveat soften a parity match back to likely", () => {
+    // Parity tells us which week, not whether the season is over. A caveat can only ever
+    // soften the answer, so the two rules have to compose in that direction.
+    const seasonal = everyOtherTuesday("odd", "Tirsdag (oddetallsuker, ikke sommer)");
+    expect(occurrenceOn(seasonal, ODD_TUESDAY)).toBe("likely");
+    expect(occurrenceOn(seasonal, EVEN_TUESDAY)).toBe("no");
+  });
+
+  it("still respects the weekday", () => {
+    expect(occurrenceOn(everyOtherTuesday("odd"), THURSDAY)).toBe("no");
+  });
+});
+
 describe("monthly quizzes", () => {
   const secondFriday = quiz({
     weekday: "fredag",

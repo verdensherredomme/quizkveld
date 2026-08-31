@@ -47,6 +47,15 @@ export const RecurrenceSchema = z.object({
   rrule: z.string().optional(),
   /** The original Norwegian text from the source, always preserved verbatim. */
   raw: z.string(),
+  /**
+   * Which ISO week a `biweekly` quiz falls in, when the source says so ("oddetallsuker",
+   * "partallsuker", "ulik uke"). An RRULE with INTERVAL=2 and no DTSTART only says "every
+   * other week" without saying which one, so this is what makes half of them exact.
+   *
+   * Week parity is deliberately preferred over a DTSTART anchor: it is absolute and never
+   * expires, whereas an anchor date is a fact about one season that silently rots.
+   */
+  weekParity: z.enum(["odd", "even"]).optional(),
 });
 export type Recurrence = z.infer<typeof RecurrenceSchema>;
 
@@ -65,11 +74,26 @@ export const VenueSchema = z.object({
    */
   kommune: z.string().min(1),
   fylke: z.string().min(1),
+  /**
+   * Official kommune number (4 digits) the place resolves to, when we could resolve it.
+   * `kommune` above is kept verbatim because people search for "Greaaker", not
+   * "Sarpsborg" - this field is what geocoding and navigation should key on.
+   */
+  kommuneNr: z.string().regex(/^\d{4}$/).optional(),
+  /** Official kommune name matching `kommuneNr`. */
+  kommuneName: z.string().min(1).optional(),
+  /** Current (post-2024) fylke name. The scraped `fylke` uses pre-2020 names. */
+  fylkeNow: z.string().min(1).optional(),
   lat: z.number().min(-90).max(90).optional(),
   lon: z.number().min(-180).max(180).optional(),
   geoSource: GeoSourceSchema.optional(),
   geoConfidence: GeoConfidenceSchema.optional(),
   url: z.string().optional(),
+  /**
+   * True when the source itself marks the link as dead (it runs a link checker and strikes
+   * those through). Derived from the source on every scrape, so it heals when they fix it.
+   */
+  urlBroken: z.boolean().optional(),
   /** True when the venue was absent from the most recent scrape (soft delete). */
   stale: z.boolean().optional(),
 });
@@ -136,12 +160,68 @@ export const OverridesSchema = z.object({
 });
 export type Overrides = z.infer<typeof OverridesSchema>;
 
+/**
+ * Official kommune register, fetched once from Kartverket and committed. We do not look
+ * this up at runtime: it changes a few times a decade, and a build should not depend on
+ * a third-party API being up.
+ */
+export const KommuneSchema = z.object({
+  nr: z.string().regex(/^\d{4}$/),
+  navn: z.string().min(1),
+  fylkesnr: z.string().regex(/^\d{2}$/),
+  fylke: z.string().min(1),
+  /** Point guaranteed to be inside the kommune. Doubles as the last-resort geocode. */
+  point: z.object({ lat: z.number(), lon: z.number() }),
+  /** [minLon, minLat, maxLon, maxLat], EPSG:4258. Bounds Overpass queries. */
+  bbox: z.tuple([z.number(), z.number(), z.number(), z.number()]),
+});
+export type Kommune = z.infer<typeof KommuneSchema>;
+
+export const KommuneRegisterSchema = z.object({
+  fetchedAt: z.string().datetime(),
+  source: z.string(),
+  kommuner: z.array(KommuneSchema),
+});
+export type KommuneRegister = z.infer<typeof KommuneRegisterSchema>;
+
+export const ALIAS_METHODS = ["exact", "normalized", "stedsnavn", "manual"] as const;
+export const AliasMethodSchema = z.enum(ALIAS_METHODS);
+export type AliasMethod = z.infer<typeof AliasMethodSchema>;
+
+/**
+ * One source place name resolved to an official kommune.
+ *
+ * `kommuneNr` is nullable on purpose: Longyearbyen is on Svalbard, which is not a
+ * kommune and has no kommunenummer. Forcing it into the register would be a lie, so
+ * such entries carry their own `point` instead.
+ */
+export const KommuneAliasEntrySchema = z.object({
+  kommuneNr: z
+    .string()
+    .regex(/^\d{4}$/)
+    .nullable(),
+  kommuneName: z.string().nullable(),
+  fylkeNow: z.string().nullable(),
+  method: AliasMethodSchema,
+  /** Fallback point for entries with no kommuneNr. */
+  point: z.object({ lat: z.number(), lon: z.number() }).optional(),
+  /** Evidence for the decision, so a human reviewing the table can check it. */
+  note: z.string().optional(),
+});
+export type KommuneAliasEntry = z.infer<typeof KommuneAliasEntrySchema>;
+
+export const KommuneAliasSchema = z.object({
+  aliases: z.record(z.string(), KommuneAliasEntrySchema).default({}),
+});
+export type KommuneAliases = z.infer<typeof KommuneAliasSchema>;
+
 /** A single scraped table row, before any normalization. */
-export const RawRowSchema = z.object({
-  fylke: z.string(),
+export const RawRowSchema = z.object({  fylke: z.string(),
   city: z.string(),
   venueRaw: z.string(),
   venueUrl: z.string().optional(),
+  /** The source marked this link as dead via its link checker. */
+  venueUrlBroken: z.boolean().optional(),
   weekdayRaw: z.string(),
   timeRaw: z.string(),
   categoryRaw: z.string(),

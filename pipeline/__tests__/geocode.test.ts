@@ -2,9 +2,17 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { GeoCache, defaultProviders, runGeocode } from "../geocode.js";
-import type { GeoProvider, GeoResult } from "../geocode.js";
-import type { Venue } from "../schema.js";
+import {
+  GeoCache,
+  MAX_VENUES_FOR_CENTROID,
+  centroidProvider,
+  countVenuesPerKommune,
+  defaultProviders,
+  runGeocode,
+} from "../geocode.js";
+import type { GeoContext, GeoProvider, GeoResult } from "../geocode.js";
+import { indexRegister } from "../kommune.js";
+import type { Kommune, Venue } from "../schema.js";
 
 const tempFiles: string[] = [];
 
@@ -94,6 +102,9 @@ describe("GeoCache", () => {
 });
 
 describe("runGeocode", () => {
+  const EMPTY_REGISTER = { fetchedAt: new Date().toISOString(), source: "test", kommuner: [] };
+  const EMPTY_ALIASES = { aliases: {} };
+
   it("walks the ladder and stops at the first provider that resolves", async () => {
     const cache = await GeoCache.load(await tempCacheFile("{}"));
     const hit: GeoResult = {
@@ -103,14 +114,16 @@ describe("runGeocode", () => {
       geoConfidence: "medium",
     };
 
-    const stats = await runGeocode(
-      VENUES,
-      [provider("address", null), provider("osm", hit), provider("kartverket", null)],
+    const stats = await runGeocode(VENUES, {
       cache,
-    );
+      register: EMPTY_REGISTER,
+      aliases: EMPTY_ALIASES,
+      providers: [provider("address", null), provider("osm", hit), provider("kartverket", null)],
+    });
 
     expect(stats).toMatchObject({ total: 2, cached: 0, resolved: 2, unresolved: 0 });
     expect(stats.bySource).toEqual({ osm: 2 });
+    expect(stats.byConfidence).toEqual({ medium: 2 });
     expect(cache.get("bergen-kvarteret")?.geoSource).toBe("osm");
   });
 
@@ -132,17 +145,117 @@ describe("runGeocode", () => {
       },
     };
 
-    const stats = await runGeocode(VENUES, [counting], cache);
+    const stats = await runGeocode(VENUES, {
+      cache,
+      register: EMPTY_REGISTER,
+      aliases: EMPTY_ALIASES,
+      providers: [counting],
+    });
     expect(calls).toBe(1);
     expect(stats).toMatchObject({ cached: 1, unresolved: 1 });
     // The cached entry is untouched.
     expect(cache.get("oslo-skatten")?.geoSource).toBe("manual");
   });
 
-  it("reports everything as unresolved while the phase-1 providers are stubbed", async () => {
+  it("keeps going when a provider throws, so one outage cannot lose the whole run", async () => {
     const cache = await GeoCache.load(await tempCacheFile("{}"));
-    const stats = await runGeocode(VENUES, defaultProviders(), cache);
-    expect(stats).toMatchObject({ total: 2, resolved: 0, unresolved: 2 });
-    expect(cache.size).toBe(0);
+    const exploding: GeoProvider = {
+      name: "osm",
+      lookup: async () => {
+        throw new Error("Overpass er nede");
+      },
+    };
+    const fallback = provider("centroid", {
+      lat: 60.39,
+      lon: 5.32,
+      geoSource: "centroid",
+      geoConfidence: "low",
+    });
+
+    const stats = await runGeocode(VENUES, {
+      cache,
+      register: EMPTY_REGISTER,
+      aliases: EMPTY_ALIASES,
+      providers: [exploding, fallback],
+    });
+
+    expect(stats.resolved).toBe(2);
+    expect(stats.bySource).toEqual({ centroid: 2 });
+    expect(stats.lowConfidence).toHaveLength(2);
+  });
+
+  it("stops after the requested number of new lookups", async () => {
+    const cache = await GeoCache.load(await tempCacheFile("{}"));
+    const stats = await runGeocode(VENUES, {
+      cache,
+      register: EMPTY_REGISTER,
+      aliases: EMPTY_ALIASES,
+      limit: 1,
+      providers: [
+        provider("osm", { lat: 59.91, lon: 10.74, geoSource: "osm", geoConfidence: "high" }),
+      ],
+    });
+    expect(stats.resolved).toBe(1);
+  });
+
+  it("exposes the ladder in the documented order", () => {
+    expect(defaultProviders().map((p) => p.name)).toEqual([
+      "address",
+      "osm",
+      "kartverket",
+      "centroid",
+    ]);
+  });
+});
+
+describe("sentroidegrensen", () => {
+  const OSLO: Kommune = {
+    nr: "0301",
+    navn: "Oslo",
+    fylkesnr: "03",
+    fylke: "Oslo",
+    point: { lat: 59.9724, lon: 10.7757 },
+    bbox: [10.49, 59.81, 10.95, 60.14],
+  };
+
+  function ctxWith(count: number): GeoContext {
+    return {
+      index: indexRegister([OSLO]),
+      aliases: { generatedAt: "", aliases: {} } as never,
+      osmByKommune: new Map(),
+      venuesPerKommune: new Map([["0301", count]]),
+      log: () => {},
+      reject: () => {},
+    };
+  }
+
+  const venue: Venue = {
+    id: "oslo-vippa",
+    name: "Vippa",
+    rawName: "Vippa",
+    kommune: "Oslo",
+    fylke: "Oslo",
+    kommuneNr: "0301",
+  };
+
+  it("gives a coarse answer where a coarse answer is still honest", async () => {
+    const hit = await centroidProvider.lookup(venue, ctxWith(MAX_VENUES_FOR_CENTROID));
+    expect(hit).toMatchObject({ geoSource: "centroid", geoConfidence: "low" });
+  });
+
+  it("refuses to stack a whole city on one pin", async () => {
+    expect(await centroidProvider.lookup(venue, ctxWith(31))).toBeNull();
+  });
+
+  it("counts every venue in the kommune, not just the uncached ones", () => {
+    const counts = countVenuesPerKommune([
+      venue,
+      { ...venue, id: "oslo-salt", name: "SALT" },
+      { ...venue, id: "bergen-kvarteret", kommune: "Bergen", kommuneNr: "4601" },
+      { ...venue, id: "ukjent", kommuneNr: undefined },
+    ]);
+    expect(counts.get("0301")).toBe(2);
+    expect(counts.get("4601")).toBe(1);
+    expect(counts.size).toBe(2);
   });
 });

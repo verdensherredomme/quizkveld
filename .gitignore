@@ -6,3 +6,6 @@ dist/
 coverage/
 *.tsbuildinfo
 
+
+# Local Overpass response cache; data/geocache.json is the committed result.
+raw/osm/

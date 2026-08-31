@@ -1,34 +1,128 @@
 {
   "_note": {
     "bruk": "Handkorrigeringer. Nokkel er quiz-id eller sted-id fra data/quizzes.json. Alt som star her vinner over det som er skrapet. _note ignoreres av skjemaet.",
-    "start-her": "Den mest lonnsomme gruppa a handkuratere forst er quizer som har ukedag, men ikke sier hvilken uke i maneden. De er den storste enkeltgruppa blant de 20 irregulaere: 12 quizer fordelt pa 10 distinkte strenger, og 10 av dem har allerede ukedag. Mangler bare uke-nummeret, sa ett oppslag mot arrangorens Facebook-side per sted gir en komplett recurrence.",
-    "gruppe-mangler-ukenummer": [
-      "Fredag (månedlig)",
-      "Fredag (én gang per måned)",
-      "Lørdag (månedlig)",
-      "Lørdag (én gang i måneden)",
-      "Mandag (én gang i måneden)",
-      "Mandag (én gang per måned)",
-      "Tirsdag (én gang per måned)",
-      "En torsdag i måneden (varierer)",
-      "En gang i måneden",
-      "Omtrent én gang per måned (sjekk facebookgruppa «Spillquiz i Tromsø»)"
-    ],
-    "resten-av-de-irregulaere": {
-      "flere-ukedager": ["Mandag (og fredag)", "Torsdag (eller fredag)", "Mandag (Søndag)"],
-      "uten-fast-plan": ["Tirsdag (utvalgte)", "Torsdag (utvalgte)"],
-      "tvetydig-intervall": ["Hver fjerde søndag", "Torsdag (hver tredje)", "Torsdag (hver fjerde)"]
+
+    "vedlikeholdsprofil": {
+      "kort": "Vi eier ingen fakta om quizer. Denne fila skal sta tom for pastander om quizplaner.",
+      "avledet-data-er-gratis": "Koordinater, slugger, kategorier, RRULE-er. Regnet ut fra kilden, kan regenereres, selvhelbredende - retter du funksjonen, retter alle rader seg.",
+      "pastatt-data-er-for-alltid": "«Denne quizen er egentlig forste mandag i maneden, jeg sjekket» er et faktum bare vi har. Det ratner stille nar puben endrer plan, og ingen forteller oss det. Vi holder ikke slike.",
+      "referansedata-er-greit": "Kommune-aliastabellen i data/kommune-alias.json er stabil geografi, ikke ferskvare. Den endrer seg omtrent en gang per tiar.",
+      "hva-mekanismen-fortsatt-er-til-for": "Trykkavlastningsventil. Bruk den til avledet data vi vet er feil - typisk en koordinat som havnet pa feil bygg - ikke til a pasta noe om nar en quiz gar."
     },
-    "advarsel": "Ikke gjett. Sett bare inn en recurrence her nar planen er bekreftet hos arrangoren - en feil RRULE sender folk pa pub feil kveld.",
-    "eksempel": {
-      "quizzes": {
-        "oslo-eksempelpuben-mandag-19-00": {
-          "recurrence": {
-            "kind": "monthly-nth",
-            "rrule": "FREQ=MONTHLY;BYDAY=MO;BYSETPOS=1",
-            "raw": "Mandag (én gang per måned)"
-          },
-          "note": "Første mandag i måneden, bekreftet hos arrangøren 2026-07-28."
+
+    "utboks": {
+      "hva": "Listene under er IKKE en huskeliste for handkurering. De skal rapporteres til kilden, som eksplisitt ber om det: «Vet du om en quiz som ikke star i oversikten? Eller vet du at en av quizene nedenfor er nedlagt, eller at infoen er feil? Send e-post til admin@norgesquizforbund.no».",
+      "hvorfor": "Retter de det, fanger neste skrap det opp og vi eier ingenting. Vi far riktige data, de far en bedre liste, og vedlikeholdet blir liggende der autoriteten allerede er.",
+      "status": "Ikke sendt. Utkastet ligger under e-postutkast - det kan sendes som det er.",
+      "tallene": "20 av 352 quizer er 'irregular', fordelt pa 18 distinkte tekster. 12 av dem (10 tekster) mangler bare hvilken uke i maneden.",
+
+      "mangler-ukenummer": [
+        "«Fredag (månedlig)» - Bassgarasjen, Hønefoss, kl. 19:30",
+        "«Fredag (én gang per måned)» - Håndverkeren, Kristiansand (to identiske rader, se dublett under)",
+        "«Lørdag (månedlig)» - Humbar, Hønefoss, kl. 18:00",
+        "«Lørdag (én gang i måneden)» - Glassheim Rockeklubb, Jevnaker, kl. 20:00",
+        "«Mandag (én gang i måneden)» - Sørenga Sjømat, Oslo, kl. 19:00",
+        "«Mandag (én gang per måned)» - The Tasting Room, Bergen, kl. 19:00",
+        "«Mandag (én gang per måned)» - Hvaskjer, Torshov, Oslo, kl. 19:00",
+        "«Tirsdag (én gang per måned)» - CornerQuiz, Bergen, klokkeslett mangler",
+        "«En torsdag i måneden (varierer)» - Kulturhuset, Oslo, kl. 19:00",
+        "«En gang i måneden» - Kafé Kurt, Molde, klokkeslett mangler",
+        "«Omtrent én gang per måned (sjekk facebookgruppa «Spillquiz i Tromsø»)» - Ikke fast sted, Tromsø"
+      ],
+
+      "flere-ukedager-uklart-hvilken": [
+        "«Mandag (og fredag)» - Cafe Opera, Bergen - gar den begge dager, eller vekselvis?",
+        "«Torsdag (eller fredag)» - Slemmestad MEK, Slemmestad - samme sporsmal",
+        "«Mandag (Søndag)» - Proud Mary, Oslo - uklart hva parentesen betyr"
+      ],
+
+      "uten-fast-plan": [
+        "«Tirsdag (utvalgte)» - SALT, Oslo",
+        "«Torsdag (utvalgte)» - Vippa, Oslo"
+      ],
+
+      "tvetydig-intervall": {
+        "kommentar": "Disse er tvetydige mellom ukesintervall og n-te-i-maneden, og mangler ankerdato. De kan ikke avledes uansett hvor god parseren blir - de trenger et svar fra arrangoren.",
+        "rader": [
+          "«Hver fjerde søndag» - Grendehuset, Sandnesseter, kl. 13:00",
+          "«Torsdag (hver tredje)» - Ludo Bar & Scene, Harstad, kl. 21:00",
+          "«Torsdag (hver fjerde)» - Sanden Hotell, Hokksund, kl. 20:00"
+        ]
+      },
+
+      "dublett": "Håndverkeren i Kristiansand star med to identiske fredagsrader: samme sted, samme ukedag, samme «én gang per måned», begge uten klokkeslett. Enten er det en dobbeltforing, eller sa er det to ulike quizer som ikke lar seg skille fra hverandre.",
+
+      "ukjent-stedsnavn": "«Sandnesseter» (Grendehuset, oppgitt som Akershus) finnes ikke i Kartverkets stedsnavnregister under noen stavemate vi har provd - Sandnessetra, Sandnessetre, Sandnessæter, Sandnessætra. De variantene som gir treff ligger i Molde, Gildeskal, Tingvoll, Snasa og Vanylven, altsa feil kant av landet. Det er det eneste stedet av 322 vi ikke far plassert i det hele tatt, og trolig en skrivefeil eller et svært lokalt navn.",
+
+      "manglende-klokkeslett": "16 av 352 rader har «?» i tidskolonna i stedet for et klokkeslett.",
+
+      "e-postutkast": {
+        "til": "admin@norgesquizforbund.no",
+        "emne": "Noen uklarheter i pubquiz-oversikten",
+        "brodtekst": [
+          "Hei!",
+          "",
+          "Jeg har laget en liten nettside som gjør oversikten deres over pubquizer søkbar per sted og ukedag. All data kommer fra dere, og siden lenker tilbake til oversikten.",
+          "",
+          "Da jeg gikk gjennom lista fant jeg noen oppføringer der jeg ikke klarer å lese ut når quizen faktisk går. Jeg vil helst ikke gjette, for da risikerer jeg å sende folk på pub feil kveld. Derfor sender jeg dem heller til dere.",
+          "",
+          "1) Månedlige quizer der det ikke står hvilken uke",
+          "Disse sier hvilken ukedag, men ikke om det er første, andre, siste osv. i måneden:",
+          "",
+          "- Bassgarasjen, Hønefoss - «Fredag (månedlig)», kl. 19:30",
+          "- Humbar, Hønefoss - «Lørdag (månedlig)», kl. 18:00",
+          "- Glassheim Rockeklubb, Jevnaker - «Lørdag (én gang i måneden)», kl. 20:00",
+          "- Sørenga Sjømat, Oslo - «Mandag (én gang i måneden)», kl. 19:00",
+          "- Hvaskjer, Torshov, Oslo - «Mandag (én gang per måned)», kl. 19:00",
+          "- The Tasting Room, Bergen - «Mandag (én gang per måned)», kl. 19:00",
+          "- CornerQuiz, Bergen - «Tirsdag (én gang per måned)», klokkeslett mangler",
+          "- Kulturhuset, Oslo - «En torsdag i måneden (varierer)», kl. 19:00",
+          "- Kafé Kurt, Molde - «En gang i måneden», klokkeslett mangler",
+          "- Håndverkeren, Kristiansand - «Fredag (én gang per måned)», klokkeslett mangler",
+          "",
+          "2) Uklart hvilken ukedag",
+          "- Cafe Opera, Bergen - «Mandag (og fredag)». Går den begge dager, eller vekselvis?",
+          "- Slemmestad MEK, Slemmestad - «Torsdag (eller fredag)». Samme spørsmål.",
+          "- Proud Mary, Oslo - «Mandag (Søndag)». Jeg klarer ikke tolke parentesen.",
+          "",
+          "3) Intervaller uten startdato",
+          "Disse kan bety både «hver tredje/fjerde uke» og «den tredje/fjerde i måneden», og uten en dato å regne fra går det ikke an å avgjøre:",
+          "",
+          "- Grendehuset, Sandnesseter - «Hver fjerde søndag», kl. 13:00",
+          "- Ludo Bar & Scene, Harstad - «Torsdag (hver tredje)», kl. 21:00",
+          "- Sanden Hotell, Hokksund - «Torsdag (hver fjerde)», kl. 20:00",
+          "",
+          "4) Mulig dobbeltføring",
+          "Håndverkeren i Kristiansand står med to helt like fredagsrader - samme ukedag, samme «én gang per måned», begge uten klokkeslett. Er det én quiz som er ført opp to ganger, eller to forskjellige?",
+          "",
+          "5) Et stedsnavn jeg ikke finner igjen",
+          "Grendehuset står oppført på stedet «Sandnesseter» i Akershus. Jeg finner ikke det navnet i Kartverkets stedsnavnregister, heller ikke som Sandnessetra, Sandnessetre, Sandnessæter eller Sandnessætra - de variantene som gir treff ligger i Molde, Gildeskål og Snåsa, altså feil kant av landet.",
+          "Det er det eneste av 322 steder jeg ikke klarer å plassere på kartet. Er navnet stavet slik det skal, og hvilken kommune ligger det i?",
+          "",
+          "6) Til slutt",
+          "16 rader har «?» i tidskolonna. Ikke noe stort problem, men om dere har klokkeslettene liggende er de fine å få med.",
+          "",
+          "Ingen hast med noe av dette - jeg viser oppføringene som «uregelmessig, sjekk med stedet» inntil videre. Si gjerne fra hvis det er lettere for dere å få det på en annen form.",
+          "",
+          "Takk for at dere holder oversikten i gang.",
+          "",
+          "Mvh",
+          "Jonas"
+        ]
+      }
+    },
+
+    "advarsel": "Ikke legg inn recurrence her. Se vedlikeholdsprofil - vi holder ikke pastander om quizplaner. Er en plan feil hos kilden, rapporter den oppstroms i stedet.",
+
+    "eksempel-lovlig-bruk": {
+      "kommentar": "Overstyring av avledet data. Her er en koordinat som geokodingen la pa feil bygg. geocache.json skal kunne slettes og bygges opp igjen fra bunn, sa handsatte koordinater horer hjemme her, ikke i cachen.",
+      "venues": {
+        "oslo-eksempelpuben": {
+          "lat": 59.9139,
+          "lon": 10.7522,
+          "geoSource": "manual",
+          "geoConfidence": "high",
+          "note": "OSM hadde nabobygget. Koordinat lest av kartet 2026-07-28."
         }
       }
     }

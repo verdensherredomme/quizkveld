@@ -79,8 +79,31 @@ jobs:
         if: steps.build.outcome == 'failure'
         run: pnpm pipeline build --force
 
-      - name: Kjør geokoding
-        run: pnpm pipeline geocode
+      # Geocoding is deliberately fenced off from the rest of the job.
+      #
+      # It talks to Overpass, which is donated infrastructure and goes down or throttles
+      # without warning. An outage there must never fail the daily data update or block a
+      # deploy - yesterday's coordinates are still perfectly good. `--only-new` means the
+      # normal day does nothing at all, because every venue is already in the cache; it
+      # only wakes up when the source adds a venue we have never seen.
+      - name: Geokod nye steder
+        id: geocode
+        continue-on-error: true
+        timeout-minutes: 20
+        if: steps.scrape.outputs.upstream_changed == 'true'
+        run: pnpm pipeline geocode --only-new
+
+      - name: Meld fra om at geokodingen feilet
+        if: steps.geocode.outcome == 'failure'
+        run: |
+          echo "::warning::Geokodingen feilet (Overpass er trolig nede). \
+          Kjøringen fortsetter med koordinatene som allerede ligger i cachen."
+
+      # Fold any freshly resolved coordinates into data/quizzes.json. Purely local, no
+      # network, so it cannot fail for the same reasons the step above can.
+      - name: Bygg data på nytt med nye koordinater
+        if: steps.geocode.outcome == 'success' && steps.scrape.outputs.upstream_changed == 'true'
+        run: pnpm pipeline build ${{ steps.build.outcome == 'failure' && '--force' || '' }}
 
       - name: Se etter endringer
         id: diff

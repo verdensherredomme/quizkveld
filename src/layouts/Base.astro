@@ -88,11 +88,14 @@ const nav = [
             <p class="site-footer__credits">
               {/* Kept on one line: a newline inside JSX becomes a space, which would put
                   a gap in front of every comma and the final full stop. */}
-              {"Stedsdata: "}
+              {"Inneholder data under åpne lisenser fra "}
               {credits.map((credit, index) => (
                 // prettier-ignore
-                <Fragment>{index > 0 ? ", " : ""}<a href={credit.url} rel="noopener external">{credit.label}</a>{` (${credit.licence})`}{index === credits.length - 1 ? "." : ""}</Fragment>
+                <Fragment>{index > 0 ? ", " : ""}<a href={credit.url} rel="noopener external">{credit.label}</a>{" ("}<a href={credit.licenceUrl} rel="noopener external license">{credit.licence}</a>{")"}{index === credits.length - 1 ? "." : ""}</Fragment>
               ))}
+              {/* Both ODbL and NLOD require saying that the data has been changed. We
+                  pick one OSM object per venue and keep only its name and coordinate. */}
+              {" Koordinatene er bearbeidet av oss."}
             </p>
           )
         }

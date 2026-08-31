@@ -1,0 +1,670 @@
+{
+  "_note": [
+    "Kildens stedsnavn -> offisiell kommune. Generert av `pnpm pipeline kommuner`.",
+    "method: exact = navnet er en kommune. normalized = kommune etter a ha fjernet",
+    "en presisering. stedsnavn = slatt opp i Kartverkets stedsnavnregister.",
+    "manual = handkuratert; disse overskrives aldri av den automatiske kjoringen.",
+    "Stedsnavn som ikke lar seg avklare far bevisst ingen rad her, slik at de blir",
+    "forsokt pa nytt ved neste kjoring hvis Kartverket far dem inn."
+  ],
+  "aliases": {
+    "Alta": {
+      "kommuneNr": "5601",
+      "kommuneName": "Alta",
+      "fylkeNow": "Finnmark",
+      "method": "exact"
+    },
+    "Arendal": {
+      "kommuneNr": "4203",
+      "kommuneName": "Arendal",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Asker": {
+      "kommuneNr": "3203",
+      "kommuneName": "Asker",
+      "fylkeNow": "Akershus",
+      "method": "exact"
+    },
+    "Bergen": {
+      "kommuneNr": "4601",
+      "kommuneName": "Bergen",
+      "fylkeNow": "Vestland",
+      "method": "exact"
+    },
+    "Bjørkelangen": {
+      "kommuneNr": "3226",
+      "kommuneName": "Aurskog-Høland",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Bjørkelangen\" er tettsted i Aurskog-Høland."
+    },
+    "Bodø": {
+      "kommuneNr": "1804",
+      "kommuneName": "Bodø",
+      "fylkeNow": "Nordland",
+      "method": "exact"
+    },
+    "Bryne": {
+      "kommuneNr": "1121",
+      "kommuneName": "Time",
+      "fylkeNow": "Rogaland",
+      "method": "stedsnavn",
+      "note": "\"Bryne\" er by i Time."
+    },
+    "Bærum": {
+      "kommuneNr": "3201",
+      "kommuneName": "Bærum",
+      "fylkeNow": "Akershus",
+      "method": "exact"
+    },
+    "Bø i Telemark": {
+      "kommuneNr": "4020",
+      "kommuneName": "Midt-Telemark",
+      "fylkeNow": "Telemark",
+      "method": "stedsnavn",
+      "note": "\"Bø i Telemark\" er tettsted i Midt-Telemark."
+    },
+    "Drammen": {
+      "kommuneNr": "3301",
+      "kommuneName": "Drammen",
+      "fylkeNow": "Buskerud",
+      "method": "exact"
+    },
+    "Drøbak": {
+      "kommuneNr": "3214",
+      "kommuneName": "Frogn",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Drøbak\" er by i Frogn."
+    },
+    "Egersund": {
+      "kommuneNr": "1101",
+      "kommuneName": "Eigersund",
+      "fylkeNow": "Rogaland",
+      "method": "stedsnavn",
+      "note": "\"Egersund\" er by i Eigersund."
+    },
+    "Elverum": {
+      "kommuneNr": "3420",
+      "kommuneName": "Elverum",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Fagerstrand": {
+      "kommuneNr": "3212",
+      "kommuneName": "Nesodden",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Fagerstrand\" er tettsted i Nesodden."
+    },
+    "Farsund": {
+      "kommuneNr": "4206",
+      "kommuneName": "Farsund",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Fredrikstad": {
+      "kommuneNr": "3107",
+      "kommuneName": "Fredrikstad",
+      "fylkeNow": "Østfold",
+      "method": "exact"
+    },
+    "Førde": {
+      "kommuneNr": "4647",
+      "kommuneName": "Sunnfjord",
+      "fylkeNow": "Vestland",
+      "method": "stedsnavn",
+      "note": "\"Førde\" er by i Sunnfjord."
+    },
+    "Gjerdrum": {
+      "kommuneNr": "3230",
+      "kommuneName": "Gjerdrum",
+      "fylkeNow": "Akershus",
+      "method": "exact"
+    },
+    "Gjøvik": {
+      "kommuneNr": "3407",
+      "kommuneName": "Gjøvik",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Gran": {
+      "kommuneNr": "3446",
+      "kommuneName": "Gran",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Greåker": {
+      "kommuneNr": "3105",
+      "kommuneName": "Sarpsborg",
+      "fylkeNow": "Østfold",
+      "method": "stedsnavn",
+      "note": "\"Greåker\" er tettsted i Sarpsborg."
+    },
+    "Grimstad": {
+      "kommuneNr": "4202",
+      "kommuneName": "Grimstad",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Hafrsfjord": {
+      "kommuneNr": "1103",
+      "kommuneName": "Stavanger",
+      "fylkeNow": "Rogaland",
+      "method": "stedsnavn",
+      "note": "\"Hafrsfjord\" er fjord i Stavanger."
+    },
+    "Halden": {
+      "kommuneNr": "3101",
+      "kommuneName": "Halden",
+      "fylkeNow": "Østfold",
+      "method": "exact"
+    },
+    "Hamar": {
+      "kommuneNr": "3403",
+      "kommuneName": "Hamar",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Hamarøy": {
+      "kommuneNr": "1875",
+      "kommuneName": "Hamarøy",
+      "fylkeNow": "Nordland",
+      "method": "exact"
+    },
+    "Hammerfest": {
+      "kommuneNr": "5603",
+      "kommuneName": "Hammerfest",
+      "fylkeNow": "Finnmark",
+      "method": "exact"
+    },
+    "Harstad": {
+      "kommuneNr": "5503",
+      "kommuneName": "Harstad",
+      "fylkeNow": "Troms",
+      "method": "exact"
+    },
+    "Haugesund": {
+      "kommuneNr": "1106",
+      "kommuneName": "Haugesund",
+      "fylkeNow": "Rogaland",
+      "method": "exact"
+    },
+    "Hokksund": {
+      "kommuneNr": "3314",
+      "kommuneName": "Øvre Eiker",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Hokksund\" er by i Øvre Eiker."
+    },
+    "Holmestrand": {
+      "kommuneNr": "3903",
+      "kommuneName": "Holmestrand",
+      "fylkeNow": "Vestfold",
+      "method": "exact"
+    },
+    "Honningsvåg": {
+      "kommuneNr": "5620",
+      "kommuneName": "Nordkapp",
+      "fylkeNow": "Finnmark",
+      "method": "stedsnavn",
+      "note": "\"Honningsvåg\" er by i Nordkapp."
+    },
+    "Horten": {
+      "kommuneNr": "3901",
+      "kommuneName": "Horten",
+      "fylkeNow": "Vestfold",
+      "method": "exact"
+    },
+    "Hvittingfoss": {
+      "kommuneNr": "3303",
+      "kommuneName": "Kongsberg",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Hvittingfoss\" er tettsted i Kongsberg."
+    },
+    "Hønefoss": {
+      "kommuneNr": "3305",
+      "kommuneName": "Ringerike",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Hønefoss\" er by i Ringerike."
+    },
+    "Jessheim": {
+      "kommuneNr": "3209",
+      "kommuneName": "Ullensaker",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Jessheim\" er by i Ullensaker."
+    },
+    "Jevnaker": {
+      "kommuneNr": "3236",
+      "kommuneName": "Jevnaker",
+      "fylkeNow": "Akershus",
+      "method": "exact",
+      "note": "Kilden sier Oppland; kommunen ligger i Akershus etter fylkesendringene."
+    },
+    "Kirkenes": {
+      "kommuneNr": "5605",
+      "kommuneName": "Sør-Varanger",
+      "fylkeNow": "Finnmark",
+      "method": "stedsnavn",
+      "note": "\"Kirkenes\" er by i Sør-Varanger."
+    },
+    "Kolbotn": {
+      "kommuneNr": "3207",
+      "kommuneName": "Nordre Follo",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Kolbotn\" er tettsted i Nordre Follo."
+    },
+    "Kongsberg": {
+      "kommuneNr": "3303",
+      "kommuneName": "Kongsberg",
+      "fylkeNow": "Buskerud",
+      "method": "exact"
+    },
+    "Kongsvinger": {
+      "kommuneNr": "3401",
+      "kommuneName": "Kongsvinger",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Kopervik": {
+      "kommuneNr": "1149",
+      "kommuneName": "Karmøy",
+      "fylkeNow": "Rogaland",
+      "method": "stedsnavn",
+      "note": "\"Kopervik\" er by i Karmøy."
+    },
+    "Kristiansand": {
+      "kommuneNr": "4204",
+      "kommuneName": "Kristiansand",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Langesund": {
+      "kommuneNr": "4012",
+      "kommuneName": "Bamble",
+      "fylkeNow": "Telemark",
+      "method": "stedsnavn",
+      "note": "\"Langesund\" er by i Bamble."
+    },
+    "Levanger": {
+      "kommuneNr": "5037",
+      "kommuneName": "Levanger",
+      "fylkeNow": "Trøndelag",
+      "method": "exact"
+    },
+    "Lierbyen": {
+      "kommuneNr": "3312",
+      "kommuneName": "Lier",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Lierbyen\" er tettsted i Lier."
+    },
+    "Lillehammer": {
+      "kommuneNr": "3405",
+      "kommuneName": "Lillehammer",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Lillesand": {
+      "kommuneNr": "4215",
+      "kommuneName": "Lillesand",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Lillestrøm": {
+      "kommuneNr": "3205",
+      "kommuneName": "Lillestrøm",
+      "fylkeNow": "Akershus",
+      "method": "exact"
+    },
+    "Longyearbyen": {
+      "kommuneNr": null,
+      "kommuneName": null,
+      "fylkeNow": "Svalbard",
+      "method": "manual",
+      "point": {
+        "lat": 78.2232,
+        "lon": 15.6267
+      },
+      "note": "Svalbard er ikke en kommune og har ikke kommunenummer, sa kommuneNr er bevisst null. Punktet er Longyearbyen sentrum og brukes som siste utvei i geokodingen."
+    },
+    "Lyngdal": {
+      "kommuneNr": "4225",
+      "kommuneName": "Lyngdal",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Mandal": {
+      "kommuneNr": "4205",
+      "kommuneName": "Lindesnes",
+      "fylkeNow": "Agder",
+      "method": "stedsnavn",
+      "note": "\"Mandal\" er by i Lindesnes."
+    },
+    "Minnesund": {
+      "kommuneNr": "3240",
+      "kommuneName": "Eidsvoll",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Minnesund\" er tettsted i Eidsvoll."
+    },
+    "Mjøndalen": {
+      "kommuneNr": "3301",
+      "kommuneName": "Drammen",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Mjøndalen\" er tettsted i Drammen."
+    },
+    "Mo i Rana": {
+      "kommuneNr": "1833",
+      "kommuneName": "Rana",
+      "fylkeNow": "Nordland",
+      "method": "stedsnavn",
+      "note": "\"Mo i Rana\" er by i Rana."
+    },
+    "Molde": {
+      "kommuneNr": "1506",
+      "kommuneName": "Molde",
+      "fylkeNow": "Møre og Romsdal",
+      "method": "exact"
+    },
+    "Mosjøen": {
+      "kommuneNr": "1824",
+      "kommuneName": "Vefsn",
+      "fylkeNow": "Nordland",
+      "method": "stedsnavn",
+      "note": "\"Mosjøen\" er by i Vefsn."
+    },
+    "Moss": {
+      "kommuneNr": "3103",
+      "kommuneName": "Moss",
+      "fylkeNow": "Østfold",
+      "method": "exact"
+    },
+    "Namsos": {
+      "kommuneNr": "5007",
+      "kommuneName": "Namsos",
+      "fylkeNow": "Trøndelag",
+      "method": "exact"
+    },
+    "Narvik": {
+      "kommuneNr": "1806",
+      "kommuneName": "Narvik",
+      "fylkeNow": "Nordland",
+      "method": "exact"
+    },
+    "Nesodden": {
+      "kommuneNr": "3212",
+      "kommuneName": "Nesodden",
+      "fylkeNow": "Akershus",
+      "method": "exact"
+    },
+    "Nord-Odal": {
+      "kommuneNr": "3414",
+      "kommuneName": "Nord-Odal",
+      "fylkeNow": "Innlandet",
+      "method": "exact"
+    },
+    "Notodden": {
+      "kommuneNr": "4005",
+      "kommuneName": "Notodden",
+      "fylkeNow": "Telemark",
+      "method": "exact"
+    },
+    "Nærbø": {
+      "kommuneNr": "1119",
+      "kommuneName": "Hå",
+      "fylkeNow": "Rogaland",
+      "method": "stedsnavn",
+      "note": "\"Nærbø\" er tettsted i Hå."
+    },
+    "Oslo": {
+      "kommuneNr": "0301",
+      "kommuneName": "Oslo",
+      "fylkeNow": "Oslo",
+      "method": "exact"
+    },
+    "Otta": {
+      "kommuneNr": "3437",
+      "kommuneName": "Sel",
+      "fylkeNow": "Innlandet",
+      "method": "stedsnavn",
+      "note": "\"Otta\" er by i Sel."
+    },
+    "Porsgrunn": {
+      "kommuneNr": "4001",
+      "kommuneName": "Porsgrunn",
+      "fylkeNow": "Telemark",
+      "method": "exact"
+    },
+    "Randaberg": {
+      "kommuneNr": "1127",
+      "kommuneName": "Randaberg",
+      "fylkeNow": "Rogaland",
+      "method": "exact"
+    },
+    "Risør": {
+      "kommuneNr": "4201",
+      "kommuneName": "Risør",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Rygge": {
+      "kommuneNr": "3103",
+      "kommuneName": "Moss",
+      "fylkeNow": "Østfold",
+      "method": "stedsnavn",
+      "note": "\"Rygge\" er sokn i Moss."
+    },
+    "Rørvik": {
+      "kommuneNr": "5060",
+      "kommuneName": "Nærøysund",
+      "fylkeNow": "Trøndelag",
+      "method": "stedsnavn",
+      "note": "\"Rørvik\" er by i Nærøysund."
+    },
+    "Sandefjord": {
+      "kommuneNr": "3907",
+      "kommuneName": "Sandefjord",
+      "fylkeNow": "Vestfold",
+      "method": "exact"
+    },
+    "Sandnes": {
+      "kommuneNr": "1108",
+      "kommuneName": "Sandnes",
+      "fylkeNow": "Rogaland",
+      "method": "exact"
+    },
+    "Sarpsborg": {
+      "kommuneNr": "3105",
+      "kommuneName": "Sarpsborg",
+      "fylkeNow": "Østfold",
+      "method": "exact"
+    },
+    "Sigerfjord": {
+      "kommuneNr": "1870",
+      "kommuneName": "Sortland",
+      "fylkeNow": "Nordland",
+      "method": "stedsnavn",
+      "note": "\"Sigerfjord\" er tettsted i Sortland."
+    },
+    "Skien": {
+      "kommuneNr": "4003",
+      "kommuneName": "Skien",
+      "fylkeNow": "Telemark",
+      "method": "exact"
+    },
+    "Skjervøy": {
+      "kommuneNr": "5542",
+      "kommuneName": "Skjervøy",
+      "fylkeNow": "Troms",
+      "method": "exact"
+    },
+    "Skjetten": {
+      "kommuneNr": "3205",
+      "kommuneName": "Lillestrøm",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Skjetten\" er tettsted i Lillestrøm."
+    },
+    "Skjærhalden": {
+      "kommuneNr": "3110",
+      "kommuneName": "Hvaler",
+      "fylkeNow": "Østfold",
+      "method": "stedsnavn",
+      "note": "\"Skjærhalden\" er tettsted i Hvaler."
+    },
+    "Slemmestad": {
+      "kommuneNr": "3203",
+      "kommuneName": "Asker",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Slemmestad\" er tettsted i Asker."
+    },
+    "Sogndal": {
+      "kommuneNr": "4640",
+      "kommuneName": "Sogndal",
+      "fylkeNow": "Vestland",
+      "method": "exact"
+    },
+    "Sortland": {
+      "kommuneNr": "1870",
+      "kommuneName": "Sortland",
+      "fylkeNow": "Nordland",
+      "method": "exact"
+    },
+    "Spydeberg": {
+      "kommuneNr": "3118",
+      "kommuneName": "Indre Østfold",
+      "fylkeNow": "Østfold",
+      "method": "stedsnavn",
+      "note": "\"Spydeberg\" er tettsted i Indre Østfold."
+    },
+    "Stathelle": {
+      "kommuneNr": "4012",
+      "kommuneName": "Bamble",
+      "fylkeNow": "Telemark",
+      "method": "stedsnavn",
+      "note": "\"Stathelle\" er by i Bamble."
+    },
+    "Stavanger": {
+      "kommuneNr": "1103",
+      "kommuneName": "Stavanger",
+      "fylkeNow": "Rogaland",
+      "method": "exact"
+    },
+    "Stjørdal": {
+      "kommuneNr": "5035",
+      "kommuneName": "Stjørdal",
+      "fylkeNow": "Trøndelag",
+      "method": "exact"
+    },
+    "Stokke": {
+      "kommuneNr": "3907",
+      "kommuneName": "Sandefjord",
+      "fylkeNow": "Vestfold",
+      "method": "stedsnavn",
+      "note": "\"Stokke\" er tettsted i Sandefjord."
+    },
+    "Stord": {
+      "kommuneNr": "4614",
+      "kommuneName": "Stord",
+      "fylkeNow": "Vestland",
+      "method": "exact"
+    },
+    "Tromsø": {
+      "kommuneNr": "5501",
+      "kommuneName": "Tromsø",
+      "fylkeNow": "Troms",
+      "method": "exact"
+    },
+    "Trondheim": {
+      "kommuneNr": "5001",
+      "kommuneName": "Trondheim",
+      "fylkeNow": "Trøndelag",
+      "method": "exact"
+    },
+    "Tvedestrand": {
+      "kommuneNr": "4213",
+      "kommuneName": "Tvedestrand",
+      "fylkeNow": "Agder",
+      "method": "exact"
+    },
+    "Tønsberg": {
+      "kommuneNr": "3905",
+      "kommuneName": "Tønsberg",
+      "fylkeNow": "Vestfold",
+      "method": "exact"
+    },
+    "Vadsø": {
+      "kommuneNr": "5607",
+      "kommuneName": "Vadsø",
+      "fylkeNow": "Finnmark",
+      "method": "exact"
+    },
+    "Vardø": {
+      "kommuneNr": "5634",
+      "kommuneName": "Vardø",
+      "fylkeNow": "Finnmark",
+      "method": "exact"
+    },
+    "Verdal": {
+      "kommuneNr": "5038",
+      "kommuneName": "Verdal",
+      "fylkeNow": "Trøndelag",
+      "method": "exact"
+    },
+    "Vestfossen": {
+      "kommuneNr": "3314",
+      "kommuneName": "Øvre Eiker",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Vestfossen\" er tettsted i Øvre Eiker."
+    },
+    "Vikersund": {
+      "kommuneNr": "3316",
+      "kommuneName": "Modum",
+      "fylkeNow": "Buskerud",
+      "method": "stedsnavn",
+      "note": "\"Vikersund\" er tettsted i Modum."
+    },
+    "Volda": {
+      "kommuneNr": "1577",
+      "kommuneName": "Volda",
+      "fylkeNow": "Møre og Romsdal",
+      "method": "exact"
+    },
+    "Ålgård": {
+      "kommuneNr": "1122",
+      "kommuneName": "Gjesdal",
+      "fylkeNow": "Rogaland",
+      "method": "stedsnavn",
+      "note": "\"Ålgård\" er tettsted i Gjesdal."
+    },
+    "Årnes": {
+      "kommuneNr": "3228",
+      "kommuneName": "Nes",
+      "fylkeNow": "Akershus",
+      "method": "stedsnavn",
+      "note": "\"Årnes\" er tettsted i Nes."
+    },
+    "Ås": {
+      "kommuneNr": "3218",
+      "kommuneName": "Ås",
+      "fylkeNow": "Akershus",
+      "method": "exact"
+    },
+    "Åsgårdstrand": {
+      "kommuneNr": "3901",
+      "kommuneName": "Horten",
+      "fylkeNow": "Vestfold",
+      "method": "stedsnavn",
+      "note": "\"Åsgårdstrand\" er by i Horten."
+    }
+  }
+}
