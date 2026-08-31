@@ -8,20 +8,36 @@ import { loadSiteData } from "../../lib/data.js";
 import { osloDate } from "../../lib/date.js";
 import { isUndated, occursOn } from "../../lib/occurrence.js";
 import { placeSummary } from "../../lib/model.js";
+import { formerFylker, fylkeOf } from "../../lib/place.js";
 import { quizCount } from "../../lib/format.js";
 import { href } from "../../lib/url.js";
 
 export const getStaticPaths = (async () => {
-  const { items, slugs } = await loadSiteData();
+  const { items, slugs, venues } = await loadSiteData();
+  const former = formerFylker(venues);
 
   return [...slugs.byFylke].map(([fylke, slug]) => ({
     params: { fylke: slug },
-    props: { fylke, items: items.filter((item) => item.venue.fylke === fylke) },
+    props: {
+      fylke,
+      items: items.filter((item) => fylkeOf(item.venue) === fylke),
+      former: former.get(fylke) ?? [],
+    },
   }));
 }) satisfies GetStaticPaths;
 
-const { fylke, items } = Astro.props;
+const { fylke, items, former } = Astro.props;
 const { slugs, meta } = await loadSiteData();
+
+// Reads as "tidligere Hordaland og Sogn og Fjordane" - the navigation is our derivation, so
+// the page names the source's own counties rather than quietly replacing them.
+const joinNb = (names: string[]) =>
+  names.length > 1 ? `${names.slice(0, -1).join(", ")} og ${names.at(-1)}` : (names[0] ?? null);
+
+// A renamed county can say "tidligere X"; one that merely received a municipality cannot,
+// because it still exists under its own name. See formerFylker for why they must differ.
+const renamedLabel = joinNb(former.filter((f) => f.kommuner.length === 0).map((f) => f.fylke));
+const received = former.filter((f) => f.kommuner.length > 0);
 
 const today = osloDate();
 const tonight = items.filter((item) => occursOn(item.quiz, today));
@@ -43,9 +59,20 @@ const places = placeSummary(items);
 
   <div class="intro">
     <h1>Pubquiz i {fylke}</h1>
+    {renamedLabel && <p class="intro__former">Tidligere {renamedLabel}.</p>}
+    {
+      received.map((entry) => (
+        <p class="intro__former">
+          {joinNb(entry.kommuner)} lå tidligere i {entry.fylke}.
+        </p>
+      ))
+    }
     <p>
-      {quizCount(items.length)} på {places.length} steder. Fylkesnavnet er det kilden bruker,
-      altså slik det het før sammenslåingen i 2020.
+      {quizCount(items.length)} på {places.length} steder.
+      {
+        former.length > 0 &&
+          ` Kilden bruker fortsatt fylkesnavnene fra før sammenslåingen i 2020; inndelingen her er dagens.`
+      }
     </p>
     <ul class="place-grid">
       {
