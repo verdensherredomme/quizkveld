@@ -4,7 +4,7 @@ import Base from "../../layouts/Base.astro";
 import DaySection from "../../components/DaySection.astro";
 import Filters from "../../components/Filters.astro";
 import IrregularSection from "../../components/IrregularSection.astro";
-import { loadSiteData } from "../../lib/data.js";
+import { getSiteData } from "../../lib/data.js";
 import { osloDate } from "../../lib/date.js";
 import { isUndated, occursOn } from "../../lib/occurrence.js";
 import { placeSummary } from "../../lib/model.js";
@@ -12,8 +12,8 @@ import { formerFylker, fylkeOf } from "../../lib/place.js";
 import { quizCount } from "../../lib/format.js";
 import { href } from "../../lib/url.js";
 
-export const getStaticPaths = (async () => {
-  const { items, slugs, venues } = await loadSiteData();
+export const getStaticPaths = (() => {
+  const { items, slugs, venues } = getSiteData();
   const former = formerFylker(venues);
 
   return [...slugs.byFylke].map(([fylke, slug]) => ({
@@ -27,7 +27,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { fylke, items, former } = Astro.props;
-const { slugs, meta } = await loadSiteData();
+const { slugs, meta } = getSiteData();
 
 // Reads as "tidligere Hordaland og Sogn og Fjordane" - the navigation is our derivation, so
 // the page names the source's own counties rather than quietly replacing them.

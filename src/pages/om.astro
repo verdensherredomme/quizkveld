@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { loadSiteData } from "../lib/data.js";
+import { getSiteData } from "../lib/data.js";
 import { REPO_URL, SOURCE_EMAIL, SOURCE_NAME, SOURCE_URL, reportUrl } from "../lib/source.js";
 import { longDate, quizCount, timestampLabel, venueCount } from "../lib/format.js";
 import { hasCaveat, isUndated } from "../lib/occurrence.js";
@@ -8,7 +8,7 @@ import { placeSummary } from "../lib/model.js";
 import { fylkeOf } from "../lib/place.js";
 import { href } from "../lib/url.js";
 
-const { items, venues, meta } = await loadSiteData();
+const { items, venues, meta } = getSiteData();
 
 // `venues` includes soft-deleted rows so their pages keep resolving; the headline numbers
 // should only describe what is actually current.
