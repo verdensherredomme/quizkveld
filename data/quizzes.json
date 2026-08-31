@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-28T05:42:00.322Z",
-  "sourceUpdatedAt": "2026-07-27",
+  "generatedAt": "2026-08-31T13:55:04.277Z",
+  "sourceUpdatedAt": "2026-08-05",
   "venues": [
     {
       "id": "aalgaard-vaertshuset",
@@ -378,6 +378,7 @@
       "kommune": "Bergen",
       "fylke": "Hordaland",
       "url": "http://insiderock.no/",
+      "urlBroken": true,
       "kommuneNr": "4601",
       "kommuneName": "Bergen",
       "fylkeNow": "Vestland"
@@ -644,7 +645,11 @@
       "url": "http://www.henriks.no/hp.asp",
       "kommuneNr": "3301",
       "kommuneName": "Drammen",
-      "fylkeNow": "Buskerud"
+      "fylkeNow": "Buskerud",
+      "lat": 59.696493563961,
+      "lon": 10.175642472401,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "drammen-o-learys",
@@ -669,7 +674,11 @@
       "fylke": "Buskerud",
       "kommuneNr": "3301",
       "kommuneName": "Drammen",
-      "fylkeNow": "Buskerud"
+      "fylkeNow": "Buskerud",
+      "lat": 59.696493563961,
+      "lon": 10.175642472401,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "droebak-bytinget",
@@ -798,7 +807,11 @@
       "url": "https://www.heim.no/events/heim-quiz#fredrikstad",
       "kommuneNr": "3107",
       "kommuneName": "Fredrikstad",
-      "fylkeNow": "Østfold"
+      "fylkeNow": "Østfold",
+      "lat": 59.186201229507,
+      "lon": 10.868024082678,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "fredrikstad-majoren",
@@ -809,7 +822,11 @@
       "url": "https://nb-no.facebook.com/majorenquiz/",
       "kommuneNr": "3107",
       "kommuneName": "Fredrikstad",
-      "fylkeNow": "Østfold"
+      "fylkeNow": "Østfold",
+      "lat": 59.186201229507,
+      "lon": 10.868024082678,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "fredrikstad-taeps",
@@ -820,7 +837,11 @@
       "url": "https://www.facebook.com/taepsbar",
       "kommuneNr": "3107",
       "kommuneName": "Fredrikstad",
-      "fylkeNow": "Østfold"
+      "fylkeNow": "Østfold",
+      "lat": 59.186201229507,
+      "lon": 10.868024082678,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "gjerdrum-gamle-smia-sportspub",
@@ -935,7 +956,11 @@
       "fylke": "Rogaland",
       "kommuneNr": "1103",
       "kommuneName": "Stavanger",
-      "fylkeNow": "Rogaland"
+      "fylkeNow": "Rogaland",
+      "lat": 59.101759412296,
+      "lon": 5.712455827913,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "halden-samfundet",
@@ -1453,7 +1478,11 @@
       "urlBroken": true,
       "kommuneNr": "4204",
       "kommuneName": "Kristiansand",
-      "fylkeNow": "Agder"
+      "fylkeNow": "Agder",
+      "lat": 58.0856277109,
+      "lon": 7.931850209314,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "kristiansand-telford-s",
@@ -1463,7 +1492,11 @@
       "fylke": "Vest-Agder",
       "kommuneNr": "4204",
       "kommuneName": "Kristiansand",
-      "fylkeNow": "Agder"
+      "fylkeNow": "Agder",
+      "lat": 58.0856277109,
+      "lon": 7.931850209314,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "langesund-bobben",
@@ -1581,7 +1614,11 @@
       "urlBroken": true,
       "kommuneNr": "3205",
       "kommuneName": "Lillestrøm",
-      "fylkeNow": "Akershus"
+      "fylkeNow": "Akershus",
+      "lat": 59.915548964909,
+      "lon": 11.217032703735,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "lillestroem-martins-pub",
@@ -1607,7 +1644,11 @@
       "url": "https://www.facebook.com/profile.php?id=61577826417175",
       "kommuneNr": "3205",
       "kommuneName": "Lillestrøm",
-      "fylkeNow": "Akershus"
+      "fylkeNow": "Akershus",
+      "lat": 59.915548964909,
+      "lon": 11.217032703735,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "lillestroem-republic-lillestroem",
@@ -1737,7 +1778,11 @@
       "urlBroken": true,
       "kommuneNr": "1506",
       "kommuneName": "Molde",
-      "fylkeNow": "Møre og Romsdal"
+      "fylkeNow": "Møre og Romsdal",
+      "lat": 62.601625652166,
+      "lon": 8.13862045548,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "molde-kafe-kurt",
@@ -2669,6 +2714,21 @@
       "geoConfidence": "high"
     },
     {
+      "id": "oslo-kjoekken-og-bar",
+      "name": "Kjøkken og Bar",
+      "rawName": "Kjøkken og Bar",
+      "kommune": "Oslo",
+      "fylke": "Oslo",
+      "url": "https://www.facebook.com/Kjokkenogbar/?locale=nb_NO",
+      "kommuneNr": "0301",
+      "kommuneName": "Oslo",
+      "fylkeNow": "Oslo",
+      "lat": 59.914764,
+      "lon": 10.74771,
+      "geoSource": "osm",
+      "geoConfidence": "high"
+    },
+    {
       "id": "oslo-kjoekkenet-rockefeller",
       "name": "Kjøkkenet (Rockefeller)",
       "rawName": "Kjøkkenet (Rockefeller)",
@@ -3137,7 +3197,6 @@
       "kommune": "Oslo",
       "fylke": "Oslo",
       "url": "https://www.skattenoslo.no/",
-      "urlBroken": true,
       "kommuneNr": "0301",
       "kommuneName": "Oslo",
       "fylkeNow": "Oslo",
@@ -3547,7 +3606,11 @@
       "url": "http://www.jimmysrestaurant.no",
       "kommuneNr": "4001",
       "kommuneName": "Porsgrunn",
-      "fylkeNow": "Telemark"
+      "fylkeNow": "Telemark",
+      "lat": 59.103726177532,
+      "lon": 9.73635721154,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "porsgrunn-kafe-k",
@@ -3587,7 +3650,11 @@
       "fylke": "Telemark",
       "kommuneNr": "4001",
       "kommuneName": "Porsgrunn",
-      "fylkeNow": "Telemark"
+      "fylkeNow": "Telemark",
+      "lat": 59.103726177532,
+      "lon": 9.73635721154,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "randaberg-pubben",
@@ -3814,7 +3881,11 @@
       "url": "https://www.quizgutta.no/quiz-p%C3%A5-olavsgaard",
       "kommuneNr": "3205",
       "kommuneName": "Lillestrøm",
-      "fylkeNow": "Akershus"
+      "fylkeNow": "Akershus",
+      "lat": 59.915548964909,
+      "lon": 11.217032703735,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "slemmestad-slemmestad-mek",
@@ -3909,7 +3980,11 @@
       "fylke": "Rogaland",
       "kommuneNr": "1103",
       "kommuneName": "Stavanger",
-      "fylkeNow": "Rogaland"
+      "fylkeNow": "Rogaland",
+      "lat": 58.9711834,
+      "lon": 5.7345062,
+      "geoSource": "osm",
+      "geoConfidence": "high"
     },
     {
       "id": "stavanger-cardinal-pub",
@@ -3948,7 +4023,11 @@
       "url": "http://www.folken.no/",
       "kommuneNr": "1103",
       "kommuneName": "Stavanger",
-      "fylkeNow": "Rogaland"
+      "fylkeNow": "Rogaland",
+      "lat": 59.101759412296,
+      "lon": 5.712455827913,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "stavanger-fri-bar",
@@ -4002,7 +4081,11 @@
       "fylke": "Rogaland",
       "kommuneNr": "1103",
       "kommuneName": "Stavanger",
-      "fylkeNow": "Rogaland"
+      "fylkeNow": "Rogaland",
+      "lat": 59.101759412296,
+      "lon": 5.712455827913,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "stavanger-martinique",
@@ -4150,7 +4233,11 @@
       "fylke": "Troms",
       "kommuneNr": "5501",
       "kommuneName": "Tromsø",
-      "fylkeNow": "Troms"
+      "fylkeNow": "Troms",
+      "lat": 69.723857776399,
+      "lon": 18.687659210963,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "tromsoe-driv",
@@ -4189,7 +4276,11 @@
       "fylke": "Troms",
       "kommuneNr": "5501",
       "kommuneName": "Tromsø",
-      "fylkeNow": "Troms"
+      "fylkeNow": "Troms",
+      "lat": 69.723857776399,
+      "lon": 18.687659210963,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "tromsoe-maskineriet",
@@ -4200,7 +4291,11 @@
       "url": "https://nb-no.facebook.com/maskineri/",
       "kommuneNr": "5501",
       "kommuneName": "Tromsø",
-      "fylkeNow": "Troms"
+      "fylkeNow": "Troms",
+      "lat": 69.723857776399,
+      "lon": 18.687659210963,
+      "geoSource": "centroid",
+      "geoConfidence": "low"
     },
     {
       "id": "tromsoe-storgata-camping",
@@ -4494,7 +4589,7 @@
       "categoryNorm": [
         "sport"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "aalgaard-vaertshuset-fredag-20-00-last-of-month",
@@ -4510,7 +4605,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "aalgaard-vaertshuset-torsdag-20-00",
@@ -4526,7 +4621,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "aarnes-el-nero-fredag-22-00",
@@ -4542,7 +4637,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "aas-aas-stasjon-onsdag-19-00",
@@ -4558,7 +4653,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "aasgaardstrand-naustet-torsdag-20-00",
@@ -4574,7 +4669,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "alta-mikkeli-live-torsdag-20-30",
@@ -4590,7 +4685,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "alta-studenthuset-city-scene-onsdag-20-30",
@@ -4606,7 +4701,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "arendal-castelle-bar-og-restaurant-onsdag-20-00",
@@ -4622,7 +4717,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "arendal-moer-onsdag-20-30",
@@ -4638,7 +4733,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "arendal-symposium-sondag-20-00",
@@ -4654,7 +4749,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "asker-lancelot-mandag-18-30",
@@ -4670,7 +4765,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "asker-sjoeengen-kro-fredag-18-30",
@@ -4686,7 +4781,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "baerum-folkebadet-onsdag-19-00",
@@ -4702,7 +4797,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "baerum-onkel-blaa-tirsdag-19-00",
@@ -4718,7 +4813,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-amalies-hage-onsdag-20-00",
@@ -4735,7 +4830,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-apollon-platebar-mandag-19-00",
@@ -4751,7 +4846,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-bella-notte-torsdag-20-00",
@@ -4767,7 +4862,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-boerskjelleren-torsdag-20-00",
@@ -4783,7 +4878,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-brian-boru-fredag-19-00",
@@ -4799,7 +4894,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-cafe-opera-fredag-19-00",
@@ -4816,7 +4911,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-cafe-opera-ukjent-19-00",
@@ -4831,7 +4926,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-cornerquiz-tirsdag-natid",
@@ -4846,7 +4941,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-dark-stormy-torsdag-19-00",
@@ -4862,7 +4957,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-diskuterbar-onsdag-20-00",
@@ -4878,7 +4973,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-dr-wiesner-tirsdag-19-00",
@@ -4894,7 +4989,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-elefanten-onsdag-19-00",
@@ -4910,7 +5005,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-finnegan-s-torsdag-20-00",
@@ -4926,7 +5021,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-hectors-hybel-sondag-19-00",
@@ -4942,7 +5037,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-inside-bergen-rock-cafe-torsdag-20-00",
@@ -4958,7 +5053,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-inside-live-rock-cafe-onsdag-20-00",
@@ -4974,7 +5069,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-kraaken-bar-sondag-18-30",
@@ -4990,7 +5085,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-kvarteret-tirsdag-19-00",
@@ -5006,7 +5101,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-lille-torsdag-20-00",
@@ -5022,7 +5117,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-litteraturhuset-tirsdag-20-00",
@@ -5038,7 +5133,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-nobel-bopel-torsdag-19-30",
@@ -5054,7 +5149,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-rick-s-fredag-20-00",
@@ -5070,7 +5165,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-sjoesproeyt-maritim-quiz-paa-statsraaden-bar-tirsdag-19-00",
@@ -5086,7 +5181,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-the-tasting-room-mandag-19-00",
@@ -5101,7 +5196,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-verden-i-bergen-sondag-19-00",
@@ -5117,7 +5212,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-victoria-pub-onsdag-20-00",
@@ -5133,7 +5228,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-vinyl-onsdag-19-00",
@@ -5149,7 +5244,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bergen-wave-bar-mandag-20-00",
@@ -5165,7 +5260,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bjoerkelangen-basement-fredag-19-30",
@@ -5181,7 +5276,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bodoe-mon-ami-mandag-20-00",
@@ -5197,7 +5292,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bodoe-sku-bare-onsdag-18-00",
@@ -5213,7 +5308,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "boe-i-telemark-grillen-fredag-20-30",
@@ -5229,7 +5324,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "bryne-thime-station-torsdag-21-00",
@@ -5245,7 +5340,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "drammen-barkaden-bragernes-torsdag-19-00",
@@ -5262,7 +5357,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "drammen-henrik-s-torsdag-21-00",
@@ -5278,7 +5373,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "drammen-o-learys-torsdag-19-00",
@@ -5295,7 +5390,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "drammen-unique-onsdag-20-30",
@@ -5311,7 +5406,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "droebak-bytinget-torsdag-19-00",
@@ -5327,7 +5422,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "egersund-grand-hotel-fredag-20-00",
@@ -5343,7 +5438,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "elverum-central-scene-torsdag-20-00",
@@ -5359,7 +5454,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "elverum-sound-garden-pub-fredag-21-00",
@@ -5376,7 +5471,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "fagerstrand-absolutt-hyggelig-lordag-20-00",
@@ -5392,7 +5487,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "farsund-brygghuset-fredag-21-00",
@@ -5408,7 +5503,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "foerde-elvesus-lordag-20-00",
@@ -5424,7 +5519,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "foerde-elvesus-onsdag-20-00",
@@ -5440,7 +5535,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "fredrikstad-gulating-gamlebyen-tirsdag-19-00",
@@ -5456,7 +5551,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "fredrikstad-heim-fredrikstad-mandag-19-30",
@@ -5472,7 +5567,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "fredrikstad-majoren-tirsdag-19-00",
@@ -5488,7 +5583,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "fredrikstad-taeps-torsdag-19-00",
@@ -5504,7 +5599,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "gjerdrum-gamle-smia-sportspub-fredag-20-30",
@@ -5520,7 +5615,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "gjoevik-heim-gjoevik-mandag-19-30",
@@ -5536,7 +5631,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "gjoevik-studentenes-hus-fredag-21-00",
@@ -5552,7 +5647,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "gran-city-pub-torsdag-19-00",
@@ -5568,7 +5663,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "greaaker-olavs-pub-fredag-20-00",
@@ -5584,7 +5679,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "grimstad-bluebox-studenthuset-torsdag-19-30",
@@ -5600,7 +5695,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "grimstad-cafe-galleri-mandag-21-00",
@@ -5616,7 +5711,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "grimstad-cafe-galleri-torsdag-21-00",
@@ -5632,7 +5727,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hafrsfjord-vigaa-pub-torsdag-21-00",
@@ -5648,7 +5743,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "halden-samfundet-tirsdag-21-00",
@@ -5664,7 +5759,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hamar-dirty-nelly-tirsdag-natid",
@@ -5680,7 +5775,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hamar-heim-hamar-mandag-19-30",
@@ -5696,7 +5791,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hamar-o-learys-tirsdag-19-00",
@@ -5712,7 +5807,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hamaroey-ulvsvaag-gjestgiveri-fredag-20-00",
@@ -5728,7 +5823,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hammerfest-jernteppet-fredag-20-00",
@@ -5744,7 +5839,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "harstad-ludo-bar-scene-torsdag-21-00",
@@ -5759,7 +5854,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "harstad-vertshuset-nordlaendingen-torsdag-20-30",
@@ -5775,7 +5870,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "haugesund-cafe-mm-onsdag-20-30",
@@ -5791,7 +5886,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "haugesund-flytten-onsdag-20-30",
@@ -5807,7 +5902,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "haugesund-flytten-torsdag-20-30",
@@ -5824,7 +5919,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "haugesund-pitters-kafe-fredag-20-30",
@@ -5840,7 +5935,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "haugesund-soerensen-mandag-natid",
@@ -5857,7 +5952,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "haugesund-stoedden-torsdag-21-00",
@@ -5873,7 +5968,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hoenefoss-bassgarasjen-fredag-19-30",
@@ -5888,7 +5983,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hoenefoss-humbar-fredag-19-00",
@@ -5905,7 +6000,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hoenefoss-humbar-lordag-18-00",
@@ -5920,7 +6015,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hoenefoss-humbar-onsdag-19-00",
@@ -5936,7 +6031,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hokksund-sanden-hotell-torsdag-20-00",
@@ -5951,7 +6046,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hokksund-vest-for-elven-tirsdag-20-00",
@@ -5967,7 +6062,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "holmestrand-kontoret-tirsdag-20-00",
@@ -5983,7 +6078,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "honningsvaag-noeden-torsdag-21-30",
@@ -5999,7 +6094,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "horten-saxon-king-torsdag-20-00",
@@ -6015,7 +6110,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "hvittingfoss-landsbypuben-fredag-20-00",
@@ -6031,7 +6126,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jessheim-gulating-pub-jessheim-sundbytunet-onsdag-20-00",
@@ -6048,7 +6143,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jessheim-heim-jessheim-mandag-19-30",
@@ -6064,7 +6159,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jessheim-o-connors-jessheim-tirsdag-18-30",
@@ -6080,7 +6175,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jessheim-peppes-jessheim-tirsdag-19-00",
@@ -6096,7 +6191,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jessheim-torget-tirsdag-natid",
@@ -6112,7 +6207,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jevnaker-glassheim-rockeklubb-lordag-20-00",
@@ -6127,7 +6222,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "jevnaker-hadeland-glassverk-mester-pizzeria-onsdag-19-00",
@@ -6143,7 +6238,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kirkenes-ofelas-torsdag-natid",
@@ -6159,7 +6254,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kolbotn-vinoria-mandag-19-00",
@@ -6175,7 +6270,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kongsberg-christians-kjeller-mandag-19-30",
@@ -6191,7 +6286,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kongsberg-energimoella-fredag-20-00",
@@ -6207,7 +6302,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kongsvinger-kafe-bohem-torsdag-19-00",
@@ -6223,7 +6318,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kopervik-cafe-mm-torsdag-20-30",
@@ -6240,7 +6335,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kristiansand-haandverkeren-fredag-natid",
@@ -6255,7 +6350,7 @@
       "categoryNorm": [
         "film"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kristiansand-haandverkeren-fredag-natid-irregular",
@@ -6270,7 +6365,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kristiansand-haandverkeren-torsdag-19-30",
@@ -6286,7 +6381,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kristiansand-javel-onsdag-20-00",
@@ -6302,7 +6397,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kristiansand-oestsia-torsdag-21-00",
@@ -6318,7 +6413,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "kristiansand-telford-s-fredag-20-00",
@@ -6334,7 +6429,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "langesund-bobben-onsdag-20-00",
@@ -6350,7 +6445,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "langesund-wrightegaarden-mandag-20-00",
@@ -6367,7 +6462,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "levanger-dirty-nelly-torsdag-natid",
@@ -6383,7 +6478,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lierbyen-toget-pub-torsdag-19-00",
@@ -6399,7 +6494,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillehammer-heim-lillehammer-mandag-19-30",
@@ -6415,7 +6510,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillehammer-nikkers-sport-mandag-19-30",
@@ -6431,7 +6526,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillesand-kafe-strandhaven-fredag-20-00",
@@ -6447,7 +6542,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillestroem-barcode-lillestroem-tirsdag-20-00",
@@ -6463,7 +6558,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillestroem-martins-pub-torsdag-20-45",
@@ -6479,7 +6574,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillestroem-o-connors-lillestroem-mandag-18-00",
@@ -6495,7 +6590,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillestroem-republic-lillestroem-tirsdag-18-30",
@@ -6511,7 +6606,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lillestroem-republic-lillestroem-torsdag-20-00",
@@ -6527,7 +6622,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "longyearbyen-fruene-mandag-19-00",
@@ -6544,7 +6639,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "lyngdal-paulsens-hotell-fredag-19-00",
@@ -6560,7 +6655,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "mandal-sjoeboden-fredag-21-00",
@@ -6576,7 +6671,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "minnesund-velhuset-paa-minnesund-fredag-19-30",
@@ -6592,7 +6687,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "mjoendalen-olsen-paa-hjoernet-torsdag-20-00",
@@ -6608,7 +6703,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "mo-i-rana-onkel-oskar-mandag-20-00",
@@ -6624,7 +6719,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "molde-die-tankstelle-onsdag-natid",
@@ -6640,7 +6735,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "molde-fuzzy-platebar-torsdag-19-30",
@@ -6656,7 +6751,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "molde-kafe-kurt-ukjent-natid",
@@ -6671,7 +6766,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "molde-tapp-og-kork-tirsdag-19-30",
@@ -6687,7 +6782,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "mosjoeen-gilles-cafe-mandag-19-30",
@@ -6703,7 +6798,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "moss-evita-house-onsdag-19-00",
@@ -6719,7 +6814,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "moss-underverket-torsdag-19-00",
@@ -6735,7 +6830,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "naerboe-holdeplassen-onsdag-20-00",
@@ -6751,7 +6846,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "namsos-onkel-oskar-onsdag-natid",
@@ -6767,7 +6862,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "narvik-malmen-fredag-20-00",
@@ -6783,7 +6878,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "nesodden-flasken-torsdag-20-00",
@@ -6799,7 +6894,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "nesodden-granbar-onsdag-19-00",
@@ -6815,7 +6910,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "nord-odal-fina-n-pub-pizza-torsdag-19-30",
@@ -6831,7 +6926,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "notodden-bellman-pub-onsdag-20-30",
@@ -6847,7 +6942,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-200-tirsdag-19-00",
@@ -6863,7 +6958,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-agora-lilleborg-lordag-19-00",
@@ -6879,7 +6974,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-alexandria-sports-bar-music-tirsdag-18-00",
@@ -6895,7 +6990,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-arv-kaffe-og-retro-onsdag-19-00",
@@ -6911,7 +7006,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-aye-aye-club-tirsdag-19-00",
@@ -6927,7 +7022,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bagel-juice-vika-onsdag-19-30",
@@ -6943,7 +7038,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bakgaarden-onsdag-19-00",
@@ -6959,7 +7054,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bar-polar-mandag-19-00",
@@ -6975,7 +7070,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bd57-tirsdag-19-00",
@@ -6992,7 +7087,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bernie-s-fredag-18-30",
@@ -7008,7 +7103,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-boelgen-kro-mandag-18-30",
@@ -7024,7 +7119,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bohemen-fredag-18-00",
@@ -7040,7 +7135,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-bohemen-onsdag-18-30",
@@ -7056,7 +7151,7 @@
       "categoryNorm": [
         "sport"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-brewgata-mandag-20-00",
@@ -7072,7 +7167,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-brinner-torsdag-19-00",
@@ -7089,7 +7184,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-broed-og-sirkus-lordag-15-00",
@@ -7105,7 +7200,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-broed-og-sirkus-lordag-19-00",
@@ -7121,7 +7216,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-broed-og-sirkus-onsdag-19-00",
@@ -7137,7 +7232,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-broed-og-sirkus-tirsdag-19-00",
@@ -7153,7 +7248,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-broed-og-sirkus-torsdag-19-00",
@@ -7170,7 +7265,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-cafe-chandro-onsdag-19-00",
@@ -7186,7 +7281,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-cafe-marienlyst-mandag-18-30",
@@ -7202,7 +7297,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-cafe-soer-mandag-19-00",
@@ -7218,7 +7313,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-cafekontoret-tirsdag-19-00",
@@ -7234,7 +7329,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-carls-torsdag-19-00",
@@ -7250,7 +7345,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-colonel-mustard-tirsdag-19-00",
@@ -7266,7 +7361,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-cultivate-food-gruenerloekka-tirsdag-19-00",
@@ -7276,13 +7371,13 @@
       "recurrence": {
         "kind": "monthly-nth",
         "rrule": "FREQ=MONTHLY;BYDAY=TU;BYSETPOS=1",
-        "raw": "1. tirsdag hver måned (ikke januar 2025)"
+        "raw": "1. tirsdag hver måned"
       },
       "category": "Sjekk programmet",
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-dapper-onsdag-19-00",
@@ -7299,7 +7394,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-dattera-til-hagen-torsdag-19-00",
@@ -7315,7 +7410,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-den-andre-kvissen-vespa-humla-torsdag-19-00",
@@ -7331,7 +7426,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-den-gamle-major-tirsdag-19-00",
@@ -7347,7 +7442,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-doegnvill-tirsdag-21-00",
@@ -7364,7 +7459,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-dr-jekyll-sondag-20-00",
@@ -7380,7 +7475,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-eckers-ullevaal-torsdag-19-00",
@@ -7396,7 +7491,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-eilefs-landhandleri-onsdag-18-00",
@@ -7412,7 +7507,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-feber-onsdag-19-00",
@@ -7428,7 +7523,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-flyfisher-tirsdag-19-00",
@@ -7444,7 +7539,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-folk-i-storgata-onsdag-19-00",
@@ -7460,7 +7555,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-fru-burums-mandag-19-00",
@@ -7476,7 +7571,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-fryd-loeren-tirsdag-19-30",
@@ -7492,7 +7587,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-fryd-manglerud-mandag-19-30",
@@ -7508,7 +7603,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-glasset-tirsdag-19-00",
@@ -7525,7 +7620,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-gloed-onsdag-19-00",
@@ -7542,7 +7637,7 @@
         "musikk",
         "film"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-gondol-bar-og-restaurant-fredag-21-00",
@@ -7558,7 +7653,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-grefsenkollen-torsdag-19-00",
@@ -7574,7 +7669,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-groenland-boulebar-fredag-18-00",
@@ -7590,7 +7685,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-groenland-boulebar-onsdag-19-00",
@@ -7606,7 +7701,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-gruenerloekka-brygghus-mandag-19-00",
@@ -7622,7 +7717,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-haandtryk-onsdag-18-00",
@@ -7639,7 +7734,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-hasle-linie-gastropub-onsdag-19-00",
@@ -7655,7 +7750,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-heidi-s-bier-bar-torsdag-18-00",
@@ -7671,7 +7766,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-hells-kitchen-onsdag-19-00",
@@ -7688,7 +7783,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-highbury-torsdag-19-00",
@@ -7704,7 +7799,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-hvaskjer-torshov-mandag-19-00",
@@ -7720,7 +7815,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-il-teatro-bar-restaurant-onsdag-19-00",
@@ -7736,7 +7831,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-ingensteds-tirsdag-19-00",
@@ -7752,7 +7847,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-josefine-vertshus-torsdag-21-00",
@@ -7768,7 +7863,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-kafe-albin-tirsdag-18-00",
@@ -7784,7 +7879,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-kafe-arv-retro-fredag-19-00",
@@ -7802,7 +7897,22 @@
         "musikk",
         "film"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
+    },
+    {
+      "id": "oslo-kjoekken-og-bar-ukjent-18-00",
+      "venueId": "oslo-kjoekken-og-bar",
+      "weekday": null,
+      "time": "18:00",
+      "recurrence": {
+        "kind": "irregular",
+        "raw": "Oslo"
+      },
+      "category": "Allmenn",
+      "categoryNorm": [
+        "allmenn"
+      ],
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-kjoekkenet-rockefeller-onsdag-natid",
@@ -7818,7 +7928,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-klosterenga-cafe-og-bar-torsdag-19-00",
@@ -7834,7 +7944,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-kulturhuset-torsdag-19-00",
@@ -7849,7 +7959,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-last-train-tirsdag-19-00",
@@ -7865,7 +7975,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-lincoln-pub-torshov-mandag-18-00",
@@ -7881,7 +7991,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-litteraturhuset-tirsdag-19-30",
@@ -7897,7 +8007,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-loekka-bar-kjoekken-tirsdag-19-00",
@@ -7913,7 +8023,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-london-pub-onsdag-20-00",
@@ -7929,7 +8039,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-nydalen-bryggeri-og-spiseri-onsdag-19-00",
@@ -7946,7 +8056,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-o-connors-mandag-19-00",
@@ -7962,7 +8072,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-o-connors-tirsdag-18-00",
@@ -7979,7 +8089,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-o-reilly-s-fredag-18-00",
@@ -7995,7 +8105,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-o-reilly-s-fredag-21-00",
@@ -8011,7 +8121,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-oche-torrgata-onsdag-18-00",
@@ -8027,7 +8137,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-olsen-paa-bryn-torsdag-19-00",
@@ -8043,7 +8153,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-ophelia-onsdag-19-00",
@@ -8059,7 +8169,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-opland-burger-steak-onsdag-18-00",
@@ -8075,7 +8185,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-oslo-mikrobryggeri-mandag-19-00",
@@ -8091,7 +8201,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-oslo-mikrobryggeri-onsdag-19-00",
@@ -8107,7 +8217,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-pane-vino-onsdag-19-30",
@@ -8123,7 +8233,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-petrus-bar-og-restaurant-torsdag-20-00",
@@ -8139,7 +8249,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-pokalen-parkveien-torsdag-18-00",
@@ -8155,7 +8265,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-pokalen-torsdag-18-30",
@@ -8172,7 +8282,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-pollett-bislett-torsdag-19-00",
@@ -8189,7 +8299,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-postkontoret-paa-toeyen-mandag-19-00",
@@ -8205,7 +8315,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-preik-fredag-21-00",
@@ -8221,7 +8331,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-preik-onsdag-18-00",
@@ -8237,7 +8347,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-proud-mary-ukjent-19-00",
@@ -8252,7 +8362,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-quizmurerlosjen-torsdag-19-00",
@@ -8268,7 +8378,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-rabalder-bar-loekka-tirsdag-18-00",
@@ -8284,7 +8394,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-radisson-red-oekern-tirsdag-19-00",
@@ -8301,7 +8411,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-ringnes-brygghus-onsdag-19-00",
@@ -8317,7 +8427,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-roeverstaden-mandag-19-00",
@@ -8333,7 +8443,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-roeverstaden-tirsdag-19-00",
@@ -8349,7 +8459,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-royal-gastropub-mandag-18-00",
@@ -8365,7 +8475,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-salt-fredag-19-00",
@@ -8381,7 +8491,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-salt-tirsdag-19-00",
@@ -8396,7 +8506,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-samfunnet-bislet-onsdag-19-00",
@@ -8412,7 +8522,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-saskia-tirsdag-19-00",
@@ -8429,7 +8539,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-shamrock-torsdag-19-00",
@@ -8445,7 +8555,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-skatten-torsdag-18-00",
@@ -8461,7 +8571,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-skatten-torsdag-20-30",
@@ -8477,7 +8587,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-skullerud-park-torsdag-18-00",
@@ -8493,7 +8603,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-smeltehagen-tirsdag-19-00",
@@ -8509,7 +8619,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-smelteverket-onsdag-18-00",
@@ -8525,7 +8635,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-smelteverket-onsdag-20-30",
@@ -8541,7 +8651,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-soerenga-sjoemat-mandag-19-00",
@@ -8556,7 +8666,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-stasjonen-tordenskiolds-gate-torsdag-19-00",
@@ -8572,7 +8682,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-street-flavours-oekern-portal-onsdag-18-00",
@@ -8588,7 +8698,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-svovelstikka-onsdag-18-00",
@@ -8604,7 +8714,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-syng-gruenerloekka-torsdag-19-00",
@@ -8621,7 +8731,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-broker-mandag-19-00",
@@ -8637,7 +8747,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-good-knight-blaamandagquiz-mandag-18-30",
@@ -8653,7 +8763,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-good-knight-torsdag-19-00",
@@ -8670,7 +8780,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-lannisters-tirsdag-19-00",
@@ -8686,7 +8796,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-scotsman-fredag-18-00",
@@ -8703,7 +8813,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-scotsman-torsdag-18-00",
@@ -8719,7 +8829,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-the-toucan-tirsdag-18-00",
@@ -8735,7 +8845,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-trappa-fredag-17-00",
@@ -8751,7 +8861,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-uhoert-onsdag-18-00",
@@ -8767,7 +8877,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-vaalerenga-vertshus-onsdag-18-00",
@@ -8783,7 +8893,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-valentino-pizzeria-og-gastropub-torsdag-19-00",
@@ -8800,7 +8910,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-vaterland-bar-scene-onsdag-18-00",
@@ -8817,7 +8927,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-verkstedet-torsdag-19-30",
@@ -8833,7 +8943,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-vesper-bar-onsdag-17-05",
@@ -8849,7 +8959,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-via-village-tirsdag-19-00",
@@ -8865,7 +8975,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-victor-s-lounge-tirsdag-19-00",
@@ -8881,7 +8991,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-vika-kino-tirsdag-19-00",
@@ -8897,7 +9007,7 @@
       "categoryNorm": [
         "film"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-vippa-torsdag-19-00",
@@ -8912,7 +9022,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-welhavens-skjenkestue-tirsdag-19-00",
@@ -8928,7 +9038,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-wembley-pub-onsdag-18-00",
@@ -8944,7 +9054,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "oslo-wunderburger-tirsdag-19-00",
@@ -8960,7 +9070,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "otta-pillarguri-cafe-fredag-20-00",
@@ -8976,7 +9086,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "porsgrunn-jimmy-s-torsdag-20-00",
@@ -8992,7 +9102,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "porsgrunn-kafe-k-torsdag-20-00",
@@ -9008,7 +9118,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "porsgrunn-karjolen-mandag-19-00",
@@ -9024,7 +9134,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "porsgrunn-park-bistro-torsdag-20-00",
@@ -9040,7 +9150,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "randaberg-pubben-torsdag-19-30",
@@ -9057,7 +9167,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "risoer-peterhead-torsdag-20-00",
@@ -9073,7 +9183,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "roervik-henrys-bar-onsdag-20-00",
@@ -9089,7 +9199,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "rygge-lageret-pub-torsdag-19-30",
@@ -9105,7 +9215,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandefjord-haukeroed-puben-fredag-20-00",
@@ -9121,7 +9231,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandefjord-haukeroed-puben-torsdag-20-00",
@@ -9137,7 +9247,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandefjord-james-clark-pub-restaurant-fredag-20-30",
@@ -9154,7 +9264,7 @@
         "musikk",
         "film"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandefjord-james-clark-pub-restaurant-torsdag-20-30",
@@ -9170,7 +9280,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandnes-bakgaarden-torsdag-21-15",
@@ -9186,7 +9296,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandnes-plagiat-bar-onsdag-19-30",
@@ -9202,7 +9312,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sandnesseter-grendehuset-sondag-13-00",
@@ -9217,7 +9327,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sarpsborg-dickens-fredag-20-00",
@@ -9233,7 +9343,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sarpsborg-glenghuset-sondag-18-00",
@@ -9249,7 +9359,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sarpsborg-glenghuset-tirsdag-19-00",
@@ -9265,7 +9375,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sigerfjord-naustet-fredag-20-00",
@@ -9281,7 +9391,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "skien-bar-skien-torsdag-20-00",
@@ -9297,7 +9407,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "skjaerhalden-vertshuset-skjaerhalden-fredag-20-00",
@@ -9313,7 +9423,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "skjervoey-sydvesten-hotel-maritim-torsdag-natid",
@@ -9329,7 +9439,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "skjetten-olavsgaard-hotel-torsdag-17-00",
@@ -9345,7 +9455,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "slemmestad-slemmestad-mek-ukjent-18-00",
@@ -9360,7 +9470,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sogndal-meieriet-torsdag-20-00",
@@ -9376,7 +9486,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "sortland-loftet-scene-onsdag-natid",
@@ -9392,7 +9502,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "spydeberg-fredriks-pizza-onsdag-19-00",
@@ -9408,7 +9518,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stathelle-johnsegaarden-onsdag-20-30",
@@ -9424,7 +9534,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-arkivet-torsdag-22-00",
@@ -9440,7 +9550,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-blaaveis-onsdag-19-00",
@@ -9456,7 +9566,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-cardinal-pub-tirsdag-19-00",
@@ -9472,7 +9582,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-checkpoint-charlie-mandag-20-30",
@@ -9488,7 +9598,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-folken-tirsdag-19-00",
@@ -9504,7 +9614,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-fri-bar-mandag-20-00",
@@ -9520,7 +9630,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-gnu-bar-torsdag-20-00",
@@ -9536,7 +9646,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-hanekam-onsdag-19-00",
@@ -9552,7 +9662,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-hinna-bistro-torsdag-20-00",
@@ -9569,7 +9679,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-martinique-mandag-20-00",
@@ -9585,7 +9695,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-martinique-tirsdag-20-00",
@@ -9601,7 +9711,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-paa-kornet-craft-beer-pub-onsdag-18-30",
@@ -9619,7 +9729,7 @@
         "allmenn",
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stavanger-the-irishman-tirsdag-20-00",
@@ -9635,7 +9745,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stjoerdal-banken-bar-mandag-natid",
@@ -9651,7 +9761,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stjoerdal-bs-pub-kultur-tirsdag-20-00",
@@ -9667,7 +9777,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stokke-ysterietv-torsdag-20-00",
@@ -9684,7 +9794,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "stord-bakeriet-frugaard-torsdag-20-00",
@@ -9700,7 +9810,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "toensberg-bryggeriet-pub-fredag-21-00",
@@ -9716,7 +9826,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "toensberg-himmel-hav-torsdag-20-00",
@@ -9732,7 +9842,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tromsoe-barstad-torsdag-20-00",
@@ -9748,7 +9858,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tromsoe-driv-tirsdag-20-00",
@@ -9764,7 +9874,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tromsoe-haalogaland-teater-mandag-20-00",
@@ -9780,7 +9890,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tromsoe-ikke-fast-sted-ukjent-natid",
@@ -9795,7 +9905,7 @@
       "categoryNorm": [
         "annet"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tromsoe-maskineriet-sondag-19-30",
@@ -9811,7 +9921,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tromsoe-storgata-camping-torsdag-20-00",
@@ -9827,7 +9937,7 @@
       "categoryNorm": [
         "film"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-antikvariatet-mandag-19-00",
@@ -9843,7 +9953,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-boxer-tirsdag-19-30",
@@ -9859,7 +9969,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-bror-bar-piasquiz-onsdag-19-30",
@@ -9875,7 +9985,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-fru-lundgreen-mandag-20-30",
@@ -9891,7 +10001,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-good-omens-tirsdag-19-30",
@@ -9907,7 +10017,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-habitat-mandag-19-00",
@@ -9923,7 +10033,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-ladejarlen-fredag-19-00",
@@ -9939,7 +10049,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-lille-london-torsdag-20-00",
@@ -9955,7 +10065,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-quizkverna-torsdag-20-00",
@@ -9971,7 +10081,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-samfundet-fredag-19-00",
@@ -9987,7 +10097,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-superhero-pizza-torsdag-20-00",
@@ -10003,7 +10113,7 @@
       "categoryNorm": [
         "musikk"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "trondheim-three-lions-fredag-18-30",
@@ -10019,7 +10129,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "tvedestrand-dags-pub-fredag-19-00",
@@ -10035,7 +10145,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "vadsoe-bajasso-se-ogsaa-fredag-20-00",
@@ -10051,7 +10161,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "vardoe-nordpol-kro-torsdag-22-00",
@@ -10067,7 +10177,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "verdal-aboteket-torsdag-20-00",
@@ -10083,7 +10193,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "vestfossen-sans-og-samling-onsdag-20-30",
@@ -10099,7 +10209,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "vikersund-kafe-1-etg-fredag-19-00",
@@ -10115,7 +10225,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     },
     {
       "id": "volda-studenthuset-rokken-onsdag-20-00",
@@ -10131,7 +10241,7 @@
       "categoryNorm": [
         "allmenn"
       ],
-      "lastSeen": "2026-07-28"
+      "lastSeen": "2026-08-31"
     }
   ]
 }

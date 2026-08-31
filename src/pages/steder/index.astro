@@ -23,7 +23,8 @@ const venueTotal = new Set(items.map((item) => item.venue.id)).size;
     <h1>Alle steder</h1>
     <p>
       {places.length} steder, {venueCount(venueTotal)} og {quizCount(items.length)} til sammen.
-      Fylkene er de kilden bruker, altså navnene fra før sammenslåingen i 2020.
+      Kilden bruker fylkesnavnene fra før sammenslåingen i 2020; her er de slått sammen til
+      dagens inndeling.
     </p>
   </div>
 

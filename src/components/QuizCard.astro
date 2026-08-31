@@ -4,6 +4,7 @@ import type { Occurrence } from "../lib/occurrence.js";
 import { caveatOf } from "../lib/occurrence.js";
 import { categoryLabel, recurrenceLabel, timeLabel } from "../lib/format.js";
 import { href } from "../lib/url.js";
+import { fylkeOf } from "../lib/place.js";
 
 interface Props {
   item: QuizAtVenue;
@@ -43,7 +44,7 @@ const badgeTitle = biweekly
   data-quiz
   data-quiz-id={quiz.id}
   data-sted={venue.kommune}
-  data-fylke={venue.fylke}
+  data-fylke={fylkeOf(venue)}
   data-weekday={quiz.weekday ?? ""}
   data-categories={quiz.categoryNorm.join(" ")}
 >

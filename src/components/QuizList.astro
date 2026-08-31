@@ -1,6 +1,7 @@
 ---
 import type { QuizAtVenue } from "../lib/model.js";
 import type { PlaceSlugs } from "../lib/place.js";
+import { fylkeOf } from "../lib/place.js";
 import type { CivilDate } from "../lib/date.js";
 import { groupBy } from "../lib/model.js";
 import { isUndated, occurrenceOn, type Occurrence } from "../lib/occurrence.js";
@@ -50,7 +51,7 @@ function occurrenceFor(item: QuizAtVenue): Occurrence {
   return date ? occurrenceOn(item.quiz, date) : "certain";
 }
 
-const byFylke = grouping === "fylke" ? groupBy(items, (i) => i.venue.fylke) : null;
+const byFylke = grouping === "fylke" ? groupBy(items, (i) => fylkeOf(i.venue)) : null;
 const bySted = grouping === "sted" ? groupBy(items, (i) => i.venue.kommune) : null;
 ---
 

@@ -124,6 +124,28 @@ export function weekWindow(from: CivilDate, days = 7): CivilDate[] {
   return Array.from({ length: days }, (_, offset) => addDays(from, offset));
 }
 
+/**
+ * The ISO-8601 week number a civil date falls in.
+ *
+ * The source describes half of its every-other-week quizzes as running in `oddetallsuker`
+ * or `partallsuker`, and ISO week numbers are what those words mean. Weeks run Monday to
+ * Sunday and week 1 is the one containing the first Thursday, which is why this shifts to
+ * the Thursday of the date's own week before counting.
+ *
+ * Deliberately not a "weeks since some start date" count: that would need an anchor, and an
+ * anchor that goes stale points at the wrong week with full confidence. A week number is a
+ * property of the calendar, so it cannot rot.
+ */
+export function isoWeekOf(date: CivilDate): number {
+  const thursday = toUtcMidnight(date);
+  // getUTCDay() is Sunday-first; `|| 7` makes Sunday the 7th day so the shift lands inside
+  // the same ISO week rather than the previous one.
+  thursday.setUTCDate(thursday.getUTCDate() + 4 - (thursday.getUTCDay() || 7));
+  const yearStart = Date.UTC(thursday.getUTCFullYear(), 0, 1);
+  const days = (thursday.getTime() - yearStart) / 86_400_000;
+  return Math.floor(days / 7) + 1;
+}
+
 /** Parts of a civil date, for building month-scoped recurrence rules. */
 export function partsOf(date: CivilDate): { year: number; month: number; day: number } {
   assertCivilDate(date);

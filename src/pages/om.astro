@@ -5,6 +5,7 @@ import { REPO_URL, SOURCE_EMAIL, SOURCE_NAME, SOURCE_URL, reportUrl } from "../l
 import { longDate, quizCount, timestampLabel, venueCount } from "../lib/format.js";
 import { hasCaveat, isUndated } from "../lib/occurrence.js";
 import { placeSummary } from "../lib/model.js";
+import { fylkeOf } from "../lib/place.js";
 import { href } from "../lib/url.js";
 
 const { items, venues, meta } = await loadSiteData();
@@ -13,7 +14,7 @@ const { items, venues, meta } = await loadSiteData();
 // should only describe what is actually current.
 const activeVenues = venues.filter((venue) => !venue.stale);
 const places = placeSummary(items);
-const fylker = new Set(activeVenues.map((venue) => venue.fylke)).size;
+const fylker = new Set(activeVenues.map((venue) => fylkeOf(venue))).size;
 const irregular = items.filter((item) => isUndated(item.quiz)).length;
 const withoutTime = items.filter((item) => item.quiz.time === null).length;
 const multiGenre = items.filter((item) => item.quiz.categoryNorm.length > 1).length;

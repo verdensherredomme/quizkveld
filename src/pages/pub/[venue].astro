@@ -8,6 +8,7 @@ import { osloDate, weekWindow } from "../../lib/date.js";
 import { occursOn } from "../../lib/occurrence.js";
 import { dayHeading, quizCount } from "../../lib/format.js";
 import { href } from "../../lib/url.js";
+import { fylkeOf } from "../../lib/place.js";
 import { SOURCE_NAME, reportUrl } from "../../lib/source.js";
 
 export const getStaticPaths = (async () => {
@@ -27,6 +28,9 @@ const { venue, items, staleItems } = Astro.props;
 const { slugs, meta } = await loadSiteData();
 
 const stedSlug = slugs.bySted.get(venue.kommune) ?? "";
+const fylke = fylkeOf(venue);
+// The correction email quotes the source's own county spelling, not ours: it has to help a
+// volunteer find the row in their table, and their table still says Hordaland.
 const reportHref = reportUrl(
   `Retting: ${venue.name}, ${venue.kommune}`,
   `Gjelder ${venue.name} i ${venue.kommune} (${venue.fylke}), som står oppført i pubquiz-oversikten deres.\n\nHva som er feil:\n`,
@@ -45,7 +49,7 @@ const upcoming = weekWindow(today)
 >
   <p class="breadcrumbs">
     <a href={href()}>Forsiden</a> ›
-    <a href={href("fylke", slugs.byFylke.get(venue.fylke) ?? "")}>{venue.fylke}</a> ›
+    <a href={href("fylke", slugs.byFylke.get(fylke) ?? "")}>{fylke}</a> ›
     <a href={href("sted", stedSlug)}>{venue.kommune}</a> ›
     <span>{venue.name}</span>
   </p>
@@ -53,8 +57,12 @@ const upcoming = weekWindow(today)
   <div class="intro">
     <h1>{venue.name}</h1>
     <p>
-      {venue.kommune}, {venue.fylke}. {quizCount(items.length)} oppført.
+      {venue.kommune}, {fylke}. {quizCount(items.length)} oppført.
       {venue.addressHint && ` Adresse oppgitt av kilden: ${venue.addressHint}.`}
+      {
+        venue.fylke !== fylke &&
+          ` Kilden fører stedet under ${venue.fylke}, som var fylket før sammenslåingen i 2020.`
+      }
     </p>
     {
       venue.url && (

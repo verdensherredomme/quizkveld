@@ -244,12 +244,26 @@
     "geoConfidence": "medium",
     "resolvedAt": "2026-07-28T04:33:43.069Z"
   },
+  "drammen-henrik-s": {
+    "lat": 59.696493563961,
+    "lon": 10.175642472401,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:33:30.656Z"
+  },
   "drammen-o-learys": {
     "lat": 59.7442244,
     "lon": 10.2033519,
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:33:43.580Z"
+  },
+  "drammen-unique": {
+    "lat": 59.696493563961,
+    "lon": 10.175642472401,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:33:30.978Z"
   },
   "droebak-bytinget": {
     "lat": 59.6633581,
@@ -307,6 +321,27 @@
     "geoConfidence": "medium",
     "resolvedAt": "2026-07-28T04:33:27.455Z"
   },
+  "fredrikstad-heim-fredrikstad": {
+    "lat": 59.186201229507,
+    "lon": 10.868024082678,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:24.054Z"
+  },
+  "fredrikstad-majoren": {
+    "lat": 59.186201229507,
+    "lon": 10.868024082678,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:24.376Z"
+  },
+  "fredrikstad-taeps": {
+    "lat": 59.186201229507,
+    "lon": 10.868024082678,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:24.719Z"
+  },
   "gjerdrum-gamle-smia-sportspub": {
     "lat": 60.078776654431,
     "lon": 11.020612297111,
@@ -355,6 +390,13 @@
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:38:14.674Z"
+  },
+  "hafrsfjord-vigaa-pub": {
+    "lat": 59.101759412296,
+    "lon": 5.712455827913,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-08-08T04:59:41.786Z"
   },
   "halden-samfundet": {
     "lat": 59.068055511312,
@@ -545,6 +587,20 @@
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:38:15.907Z"
   },
+  "kristiansand-oestsia": {
+    "lat": 58.0856277109,
+    "lon": 7.931850209314,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:33:53.743Z"
+  },
+  "kristiansand-telford-s": {
+    "lat": 58.0856277109,
+    "lon": 7.931850209314,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:33:54.076Z"
+  },
   "langesund-bobben": {
     "lat": 59.01809151938,
     "lon": 9.544323608348,
@@ -594,12 +650,26 @@
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:38:17.476Z"
   },
+  "lillestroem-barcode-lillestroem": {
+    "lat": 59.915548964909,
+    "lon": 11.217032703735,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:47.728Z"
+  },
   "lillestroem-martins-pub": {
     "lat": 59.9556628,
     "lon": 11.0478959,
     "geoSource": "osm",
     "geoConfidence": "medium",
     "resolvedAt": "2026-07-28T04:33:30.537Z"
+  },
+  "lillestroem-o-connors-lillestroem": {
+    "lat": 59.915548964909,
+    "lon": 11.217032703735,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:48.052Z"
   },
   "lillestroem-republic-lillestroem": {
     "lat": 59.9554909,
@@ -656,6 +726,13 @@
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:33:22.371Z"
+  },
+  "molde-fuzzy-platebar": {
+    "lat": 62.601625652166,
+    "lon": 8.13862045548,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:10.798Z"
   },
   "molde-kafe-kurt": {
     "lat": 62.7363349,
@@ -1049,6 +1126,13 @@
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:32:58.688Z"
   },
+  "oslo-kjoekken-og-bar": {
+    "lat": 59.914764,
+    "lon": 10.74771,
+    "geoSource": "osm",
+    "geoConfidence": "high",
+    "resolvedAt": "2026-08-06T06:33:47.647Z"
+  },
   "oslo-klosterenga-cafe-og-bar": {
     "lat": 59.907892,
     "lon": 10.771562,
@@ -1350,6 +1434,13 @@
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:34:56.402Z"
   },
+  "porsgrunn-jimmy-s": {
+    "lat": 59.103726177532,
+    "lon": 9.73635721154,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:33:37.255Z"
+  },
   "porsgrunn-kafe-k": {
     "lat": 59.1437826,
     "lon": 9.6560358,
@@ -1363,6 +1454,13 @@
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:38:12.061Z"
+  },
+  "porsgrunn-park-bistro": {
+    "lat": 59.103726177532,
+    "lon": 9.73635721154,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:33:37.574Z"
   },
   "randaberg-pubben": {
     "lat": 59.018361749162,
@@ -1462,6 +1560,13 @@
     "geoConfidence": "low",
     "resolvedAt": "2026-07-28T04:38:32.337Z"
   },
+  "skjetten-olavsgaard-hotel": {
+    "lat": 59.915548964909,
+    "lon": 11.217032703735,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:32:48.374Z"
+  },
   "slemmestad-slemmestad-mek": {
     "lat": 59.68163555365,
     "lon": 10.47406489371,
@@ -1504,6 +1609,13 @@
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:33:15.858Z"
   },
+  "stavanger-blaaveis": {
+    "lat": 58.9711834,
+    "lon": 5.7345062,
+    "geoSource": "osm",
+    "geoConfidence": "high",
+    "resolvedAt": "2026-08-07T05:42:48.493Z"
+  },
   "stavanger-cardinal-pub": {
     "lat": 58.971298,
     "lon": 5.731303,
@@ -1517,6 +1629,13 @@
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:33:16.646Z"
+  },
+  "stavanger-folken": {
+    "lat": 59.101759412296,
+    "lon": 5.712455827913,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-08-08T04:59:42.161Z"
   },
   "stavanger-fri-bar": {
     "lat": 58.9726497,
@@ -1538,6 +1657,13 @@
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:33:17.690Z"
+  },
+  "stavanger-hinna-bistro": {
+    "lat": 59.101759412296,
+    "lon": 5.712455827913,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-08-08T04:59:42.544Z"
   },
   "stavanger-martinique": {
     "lat": 58.9703289,
@@ -1602,6 +1728,13 @@
     "geoConfidence": "low",
     "resolvedAt": "2026-07-28T04:38:10.534Z"
   },
+  "tromsoe-barstad": {
+    "lat": 69.723857776399,
+    "lon": 18.687659210963,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:35:40.732Z"
+  },
   "tromsoe-driv": {
     "lat": 69.6460797,
     "lon": 18.9509877,
@@ -1615,6 +1748,20 @@
     "geoSource": "osm",
     "geoConfidence": "high",
     "resolvedAt": "2026-07-28T04:38:30.775Z"
+  },
+  "tromsoe-ikke-fast-sted": {
+    "lat": 69.723857776399,
+    "lon": 18.687659210963,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:35:41.062Z"
+  },
+  "tromsoe-maskineriet": {
+    "lat": 69.723857776399,
+    "lon": 18.687659210963,
+    "geoSource": "centroid",
+    "geoConfidence": "low",
+    "resolvedAt": "2026-07-30T06:35:41.387Z"
   },
   "tromsoe-storgata-camping": {
     "lat": 69.6456436,

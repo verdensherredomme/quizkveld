@@ -52,6 +52,8 @@
 
       "dublett": "Håndverkeren i Kristiansand star med to identiske fredagsrader: samme sted, samme ukedag, samme «én gang per måned», begge uten klokkeslett. Enten er det en dobbeltforing, eller sa er det to ulike quizer som ikke lar seg skille fra hverandre.",
 
+      "ukjent-stedsnavn": "«Sandnesseter» (Grendehuset, oppgitt som Akershus) finnes ikke i Kartverkets stedsnavnregister under noen stavemate vi har provd - Sandnessetra, Sandnessetre, Sandnessæter, Sandnessætra. De variantene som gir treff ligger i Molde, Gildeskal, Tingvoll, Snasa og Vanylven, altsa feil kant av landet. Det er det eneste stedet av 322 vi ikke far plassert i det hele tatt, og trolig en skrivefeil eller et svært lokalt navn.",
+
       "manglende-klokkeslett": "16 av 352 rader har «?» i tidskolonna i stedet for et klokkeslett.",
 
       "e-postutkast": {
@@ -93,7 +95,11 @@
           "4) Mulig dobbeltføring",
           "Håndverkeren i Kristiansand står med to helt like fredagsrader - samme ukedag, samme «én gang per måned», begge uten klokkeslett. Er det én quiz som er ført opp to ganger, eller to forskjellige?",
           "",
-          "5) Til slutt",
+          "5) Et stedsnavn jeg ikke finner igjen",
+          "Grendehuset står oppført på stedet «Sandnesseter» i Akershus. Jeg finner ikke det navnet i Kartverkets stedsnavnregister, heller ikke som Sandnessetra, Sandnessetre, Sandnessæter eller Sandnessætra - de variantene som gir treff ligger i Molde, Gildeskål og Snåsa, altså feil kant av landet.",
+          "Det er det eneste av 322 steder jeg ikke klarer å plassere på kartet. Er navnet stavet slik det skal, og hvilken kommune ligger det i?",
+          "",
+          "6) Til slutt",
           "16 rader har «?» i tidskolonna. Ikke noe stort problem, men om dere har klokkeslettene liggende er de fine å få med.",
           "",
           "Ingen hast med noe av dette - jeg viser oppføringene som «uregelmessig, sjekk med stedet» inntil videre. Si gjerne fra hvis det er lettere for dere å få det på en annen form.",

@@ -1,4 +1,5 @@
 import type { CategoryNorm, Quiz, Venue, Weekday } from "../../pipeline/schema.js";
+import { fylkeOf } from "./place.js";
 
 /** A quiz together with the venue it happens at. The unit everything on the site renders. */
 export interface QuizAtVenue {
@@ -136,7 +137,7 @@ export function groupBy<T>(items: T[], key: (item: T) => string): Map<string, T[
 }
 
 export function groupByFylke(items: QuizAtVenue[]): Map<string, QuizAtVenue[]> {
-  return groupBy(items, (item) => item.venue.fylke);
+  return groupBy(items, (item) => fylkeOf(item.venue));
 }
 
 export function groupBySted(items: QuizAtVenue[]): Map<string, QuizAtVenue[]> {
@@ -153,7 +154,7 @@ export function placeSummary(
     if (existing) {
       existing.count += 1;
     } else {
-      summary.set(venue.kommune, { sted: venue.kommune, fylke: venue.fylke, count: 1 });
+      summary.set(venue.kommune, { sted: venue.kommune, fylke: fylkeOf(venue), count: 1 });
     }
   }
   return [...summary.values()].sort((a, b) => a.sted.localeCompare(b.sted, "nb"));

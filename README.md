@@ -40,7 +40,50 @@ går én vei: `src/` importerer `pipeline/schema.ts`, `pipeline/slug.ts` og
 | `src/scripts/filters.ts` | Klientfilter som skjuler kort som allerede er sendt ut |
 
 Sider: `/` (i kveld), `/i-morgen/`, `/denne-uka/`, `/steder/`, `/sted/<sted>/`,
-`/fylke/<fylke>/`, `/pub/<sted-id>/`, `/om/`. ~450 statiske sider totalt.
+`/fylke/<fylke>/`, `/pub/<sted-id>/`, `/om/`. ~447 statiske sider totalt.
+
+### Fylkene er dagens, ikke kildens
+
+Kildens `fylke` er fra før 2020 og sier fortsatt Hordaland, Sør-Trøndelag, Hedmark,
+Vest-Agder, Aust-Agder, Oppland, Nord-Trøndelag og Sogn og Fjordane. Alle åtte ble lagt ned
+i 2020, og de dekker **78 av 322 steder**. Navigerer man på dem, må den som leter etter quiz
+i Bergen vite at hun skal trykke «Hordaland» — og «Vestland» finnes ikke i det hele tatt.
+
+`fylkeOf()` i `place.ts` bruker `fylkeNow`, som pipelinen slår opp mot Kartverket **per
+sted**. At det ikke er en navnetabell er hele grunnen til at det er trygt: Jevnaker gikk
+Oppland → Viken → Akershus, og enhver håndskrevet aliastabell ville sendt den til Innlandet
+sammen med resten av Oppland.
+
+Ett sted (Sandnesseter) mangler `fylkeNow` fordi Kartverket ikke kjenner stedet, og faller
+tilbake på kildens fylke framfor å forsvinne ut av navigasjonen. En test teller at antall
+steder i navigasjonen er like høyt som antall steder totalt, slik at et stille bortfall
+fanges av seg selv neste gang Kartverket ikke kjenner et sted. Svalbard trenger ingen
+spesialhåndtering — det beholdt navnet sitt, så gammelt og nytt er samme streng.
+
+**Vi overskriver ikke kildens ord.** Fylkessida sier hvilke av kildens fylker den dekker
+(«Tidligere Hordaland og Sogn og Fjordane»), og pubsida sier det for stedet den gjelder. Det
+hjelper den som kjenner det gamle navnet, og det er ærlig om at inndelingen er vår avledning
+og ikke noe kilden har sagt. `formerFylker()` utleder linja fra dataene, så den forsvinner av
+seg selv den dagen kilden skriver moderne navn.
+
+**Men to ulike ting ser like ut her, og må ikke formuleres likt.** Vestland *var* Hordaland
+og Sogn og Fjordane: kilden skriver aldri «Vestland», så alle stedene der bærer et gammelt
+navn. Akershus ble derimot aldri omdøpt — det finnes fortsatt under sitt eget navn, og 26 av
+28 steder er ført under Akershus hos kilden. Det som skjedde er at én kommune, Jevnaker,
+flyttet inn da Oppland ble delt. «Tidligere Oppland» på den sida ville vært en påstand som
+er usann om nesten hele fylket. Sida skriver «Jevnaker lå tidligere i Oppland» i stedet.
+
+De to skilles på om kilden bruker fylkets eget navn i det hele tatt. Å droppe linja fra
+Akershus ville strandet nettopp den leseren som kjenner det gamle navnet: Opplands seks
+andre steder ligger i Innlandet, så ingen side ville nevnt Jevnaker.
+
+Det er bevisst ingen omdirigeringssider fra de gamle URL-ene. Avgjørende var Oppland, det
+eneste fylket som ble delt: en omdirigering må velge én destinasjon og blir dermed stille gal
+for de andre, mens en setning kan si sant om en splitt. Oppland står navngitt på både
+Innlandet og Akershus.
+
+Kildens egen skrivemåte står også i rettings-e-posten: den skal hjelpe en frivillig å finne
+raden i *deres* tabell, og deres tabell sier Hordaland.
 
 ### Vi er et speil, aldri en kilde
 
