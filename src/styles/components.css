@@ -246,7 +246,8 @@ h2 + .day {
 }
 
 .quiz-card--likely .quiz-card__source,
-.quiz-card--undated .quiz-card__source {
+.quiz-card--undated .quiz-card__source,
+.quiz-card--caveated .quiz-card__source {
   border-left: 3px solid var(--uncertain);
   padding: var(--space-2) 0 var(--space-2) var(--space-3);
   background: var(--uncertain-soft);

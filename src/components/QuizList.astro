@@ -46,9 +46,9 @@ function stedSlug(sted: string): string {
  * irregular section - a venue page listing "Hver fjerde søndag" as if it were a normal
  * schedule would be worse than useless.
  */
-function occurrenceFor(item: QuizAtVenue): Occurrence {
+function occurrenceFor(item: QuizAtVenue): Occurrence | undefined {
   if (isUndated(item.quiz)) return "undated";
-  return date ? occurrenceOn(item.quiz, date) : "certain";
+  return date ? occurrenceOn(item.quiz, date) : undefined;
 }
 
 const byFylke = grouping === "fylke" ? groupBy(items, (i) => fylkeOf(i.venue)) : null;

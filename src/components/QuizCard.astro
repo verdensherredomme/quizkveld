@@ -10,7 +10,8 @@ interface Props {
   item: QuizAtVenue;
   /**
    * How firmly the quiz is tied to the date it is listed under. `likely` means the weekday
-   * is right but the week is not knowable - see src/lib/occurrence.ts.
+   * is right but the week is not knowable. Omit outside a concrete date context rather
+   * than implying that a recurring schedule is datofestet - see src/lib/occurrence.ts.
    */
   occurrence?: Occurrence;
   stedSlug: string;
@@ -20,7 +21,7 @@ interface Props {
   showPlace?: boolean;
 }
 
-const { item, occurrence = "certain", stedSlug, showVenue = true, showPlace = true } = Astro.props;
+const { item, occurrence, stedSlug, showVenue = true, showPlace = true } = Astro.props;
 const { quiz, venue } = item;
 
 const uncertain = occurrence === "likely";
@@ -36,7 +37,9 @@ const certaintyLabel =
     ? "Datofestet"
     : occurrence === "likely"
       ? "Sjekk selv"
-      : "Uten sikker dato";
+      : occurrence === "undated"
+        ? "Uten sikker dato"
+        : null;
 const sourceText = undated ? quiz.recurrence.raw : (caveat?.text ?? (uncertain ? quiz.recurrence.raw : null));
 const sourceIntro =
   caveat?.field === "category"
@@ -46,10 +49,15 @@ const sourceIntro =
       : biweekly
         ? "Kildens plan"
         : "Kilden skriver";
+const sourceClass = occurrence
+  ? ` quiz-card--${occurrence}`
+  : caveat
+    ? " quiz-card--caveated"
+    : "";
 ---
 
 <li
-  class={`quiz-card quiz-card--${occurrence}`}
+  class={`quiz-card${sourceClass}`}
   data-quiz
   data-quiz-id={quiz.id}
   data-sted={venue.kommune}
@@ -95,15 +103,17 @@ const sourceIntro =
     {quiz.note && <p class="quiz-card__meta">{quiz.note}</p>}
   </div>
 
-  <div class="quiz-card__source">
-    <p class="quiz-card__certainty">{certaintyLabel}</p>
-    {
-      sourceText && (
-        <blockquote class="quiz-card__raw">
-          <p>{sourceText}</p>
-          <cite>{sourceIntro}</cite>
-        </blockquote>
-      )
-    }
-  </div>
+  {
+    (certaintyLabel || sourceText) && (
+      <div class="quiz-card__source">
+        {certaintyLabel && <p class="quiz-card__certainty">{certaintyLabel}</p>}
+        {sourceText && (
+          <blockquote class="quiz-card__raw">
+            <p>{sourceText}</p>
+            <cite>{sourceIntro}</cite>
+          </blockquote>
+        )}
+      </div>
+    )
+  }
 </li>
