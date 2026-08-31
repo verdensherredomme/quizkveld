@@ -31,21 +31,25 @@ const undated = occurrence === "undated";
 // words say it better than any label we could write.
 const biweekly = quiz.recurrence.kind === "biweekly";
 const caveat = undated ? null : caveatOf(quiz);
-// A caveat found in the genre field looks like a genre unless we say where it came from.
-const caveatIntro = caveat?.field === "category" ? "Kilden skriver i sjangerfeltet" : "Kilden skriver";
-const badgeLabel = biweekly ? "Annenhver uke – sjekk selv" : "Sjekk selv";
-const badgeTitle = biweekly
-  ? "Kilden sier annenhver uke, men ikke hvilken. Sjekk med stedet før du drar."
-  : `Kilden tar forbehold: «${caveat?.text ?? quiz.recurrence.raw}». Sjekk med stedet før du drar.`;
-
-// The modifier is what turns the spine solid, dashed or absent. Purely visual: every state
-// it marks is also stated in words inside the entry.
-const occurrenceClass =
-  occurrence === "certain" ? "" : ` quiz-card--${occurrence === "likely" ? "likely" : "undated"}`;
+const certaintyLabel =
+  occurrence === "certain"
+    ? "Datofestet"
+    : occurrence === "likely"
+      ? "Sjekk selv"
+      : "Uten sikker dato";
+const sourceText = undated ? quiz.recurrence.raw : (caveat?.text ?? (uncertain ? quiz.recurrence.raw : null));
+const sourceIntro =
+  caveat?.field === "category"
+    ? "Kilden skriver i sjangerfeltet"
+    : undated
+      ? "Ordrett fra kilden"
+      : biweekly
+        ? "Kildens plan"
+        : "Kilden skriver";
 ---
 
 <li
-  class={`quiz-card${occurrenceClass}`}
+  class={`quiz-card quiz-card--${occurrence}`}
   data-quiz
   data-quiz-id={quiz.id}
   data-sted={venue.kommune}
@@ -57,11 +61,7 @@ const occurrenceClass =
     quiz.time ? (
       <p class="quiz-card__time">{quiz.time}</p>
     ) : (
-      /* Keeps the time column's rhythm when there is no time. The wording that carries the
-         information sits in the body below, as real text. */
-      <p class="quiz-card__time quiz-card__time--unknown" aria-hidden="true">
-        –
-      </p>
+      <p class="quiz-card__time quiz-card__time--unknown">{timeLabel(quiz.time)}</p>
     )
   }
 
@@ -82,20 +82,7 @@ const occurrenceClass =
       )
     }
 
-    {!quiz.time && <p class="quiz-card__meta">{timeLabel(quiz.time)}</p>}
-
-    {
-      undated ? (
-        <blockquote class="quiz-card__raw">
-          <p>{quiz.recurrence.raw}</p>
-          <cite>slik kilden beskriver det</cite>
-        </blockquote>
-      ) : (
-        <p class="quiz-card__meta">{recurrenceLabel(quiz.recurrence, quiz.weekday)}</p>
-      )
-    }
-
-    {caveat && <p class="quiz-card__caveat">{caveatIntro}: «{caveat.text}»</p>}
+    {!undated && <p class="quiz-card__meta">{recurrenceLabel(quiz.recurrence, quiz.weekday)}</p>}
 
     <ul class="badges">
       {
@@ -103,15 +90,20 @@ const occurrenceClass =
           <li class="badge badge--category">{categoryLabel(category)}</li>
         ))
       }
-      {
-        uncertain && (
-          <li class="badge badge--uncertain" title={badgeTitle}>
-            {badgeLabel}
-          </li>
-        )
-      }
     </ul>
 
     {quiz.note && <p class="quiz-card__meta">{quiz.note}</p>}
+  </div>
+
+  <div class="quiz-card__source">
+    <p class="quiz-card__certainty">{certaintyLabel}</p>
+    {
+      sourceText && (
+        <blockquote class="quiz-card__raw">
+          <p>{sourceText}</p>
+          <cite>{sourceIntro}</cite>
+        </blockquote>
+      )
+    }
   </div>
 </li>

@@ -1,24 +1,9 @@
-/*
- * Design tokens.
- *
- * The palette is warm paper, not neutral grey, because the content is a listings page -
- * closer to an almanac than to a dashboard. Dark mode is the same paper seen at night
- * rather than an inverted greyscale.
- *
- * Every text/surface pair below is measured, not estimated. See DESIGN.md for the numbers.
- */
-
 :root {
   color-scheme: light dark;
 
-  /*
-   * Newsreader for headings, times and quotations; the system sans stays the workhorse for
-   * data. One self-hosted face, one weight - see src/fonts/README.md.
-   */
-  --font-display:
+  --font-source:
     "Newsreader", "Newsreader Fallback", Georgia, "Times New Roman", Times, serif;
-
-  --font-sans:
+  --font-interface:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     sans-serif;
 
@@ -30,55 +15,60 @@
   --space-6: 2rem;
   --space-7: 3rem;
 
-  /* Kept small. Nothing here is a floating card any more, so nothing needs a big radius. */
-  --radius: 4px;
-  --radius-sm: 3px;
+  --radius: 6px;
+  --radius-sm: 4px;
 
-  --measure: 64rem;
-  --measure-prose: 38rem;
+  --measure: 72rem;
+  --measure-list: 58rem;
+  --measure-prose: 42rem;
 
-  /* Type scale. The time is deliberately the largest thing inside an entry. */
-  --step-label: 0.78rem;
+  --step-label: 0.8rem;
   --step-small: 0.875rem;
   --step-body: 1rem;
-  --step-lead: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
-  --step-h3: clamp(1.1rem, 1.02rem + 0.4vw, 1.3rem);
-  --step-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2rem);
-  --step-h2-sub: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
-  --step-h1: clamp(2rem, 1.5rem + 2.6vw, 3.4rem);
-  --step-time: clamp(1.6rem, 1.35rem + 1.1vw, 2.15rem);
-  --step-quote: clamp(1.2rem, 1.08rem + 0.6vw, 1.5rem);
+  --step-lead: clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
+  --step-h3: clamp(1.1rem, 1.03rem + 0.3vw, 1.28rem);
+  --step-h2: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem);
+  --step-h2-sub: clamp(1.2rem, 1.08rem + 0.5vw, 1.48rem);
+  --step-h1: clamp(2.1rem, 1.45rem + 2.8vw, 3.75rem);
+  --step-time: clamp(1.1rem, 1rem + 0.35vw, 1.3rem);
+  --step-quote: 1rem;
 
-  --bg: #faf7f0;
-  --bg-raised: #fffdf8;
-  --bg-sunken: #f0ece1;
-  --border: #d8d1bf;
-  --border-strong: #948b76;
-  --text: #191712;
-  --text-muted: #55503f;
-  --accent: #7a2e2e;
-  --accent-text: #ffffff;
-  --accent-soft: #f4e6e2;
-  --focus: #1d4ed8;
+  --snow: #f3f6f8;
+  --paper: #ffffff;
+  --ink: #15212b;
+  --oslo-blue: #1769a0;
+  --pencil: #a93627;
+  --grid: #b8c6cf;
 
-  /* The one motif: a hairline rule. Its style is what tells certainty apart. */
-  --rule: var(--border);
-  --rule-strong: var(--border-strong);
-  --rule-style: solid;
+  --bg: var(--snow);
+  --surface: var(--paper);
+  --surface-muted: color-mix(in srgb, var(--snow) 72%, var(--paper));
+  --text: var(--ink);
+  --text-muted: color-mix(in srgb, var(--ink) 72%, var(--snow));
+  --border: var(--grid);
+  --border-strong: color-mix(in srgb, var(--ink) 60%, var(--grid));
+  --link: var(--oslo-blue);
+  --link-soft: color-mix(in srgb, var(--oslo-blue) 10%, var(--paper));
+  --uncertain: var(--pencil);
+  --uncertain-soft: color-mix(in srgb, var(--pencil) 9%, var(--paper));
+  --focus: var(--oslo-blue);
+  --on-strong: var(--paper);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #13110d;
-    --bg-raised: #1b1813;
-    --bg-sunken: #0d0b08;
-    --border: #38332a;
-    --border-strong: #6f6754;
-    --text: #f4f0e4;
-    --text-muted: #b3ab97;
-    --accent: #eda893;
-    --accent-text: #2a1210;
-    --accent-soft: #35201b;
-    --focus: #9ec1ff;
+    --bg: var(--ink);
+    --surface: color-mix(in srgb, var(--ink) 91%, var(--snow));
+    --surface-muted: color-mix(in srgb, var(--ink) 95%, var(--snow));
+    --text: var(--snow);
+    --text-muted: color-mix(in srgb, var(--snow) 72%, var(--ink));
+    --border: color-mix(in srgb, var(--grid) 48%, var(--ink));
+    --border-strong: color-mix(in srgb, var(--grid) 78%, var(--ink));
+    --link: color-mix(in srgb, var(--oslo-blue) 48%, var(--snow));
+    --link-soft: color-mix(in srgb, var(--oslo-blue) 20%, var(--ink));
+    --uncertain: color-mix(in srgb, var(--pencil) 54%, var(--snow));
+    --uncertain-soft: color-mix(in srgb, var(--pencil) 18%, var(--ink));
+    --focus: var(--snow);
+    --on-strong: var(--paper);
   }
 }

@@ -1,22 +1,17 @@
 /*
- * The one self-hosted face.
+ * The one self-hosted face is reserved for text quoted from the source.
  *
  * Newsreader (Production Type), SIL Open Font License 1.1. The licence text ships with the
- * site at /fonts/OFL.txt and the credit lives on the om-page: this project already credits
- * ODbL and NLOD for map data, and a font licence is the same class of obligation.
+ * site at /fonts/OFL.txt.
  *
- * One static instance - optical size 30, weight 500 - subset to Latin-1 plus the
- * punctuation Norwegian typesetting needs. Roughly 20 kB. See src/fonts/README.md for the
- * exact command; there is no build step, the file is committed.
- *
- * `font-weight: 400 700` on a static face tells the browser to use this file across that
- * range instead of synthesising a bold. Hierarchy here comes from size, not from weight.
+ * One static instance - optical size 30, weight 500 - subset to Latin-1 plus Norwegian
+ * punctuation. See src/fonts/README.md for the exact command.
  */
 
 @font-face {
   font-family: "Newsreader";
   src: url("../fonts/newsreader-500-latin.woff2") format("woff2");
-  font-weight: 400 700;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
   unicode-range:
@@ -25,9 +20,7 @@
 }
 
 /*
- * Metric-matched fallback, so a heading does not jump when the real face arrives.
- * Georgia is 8.8% larger on the x-height than Newsreader; the overrides below are computed
- * from both fonts' actual metrics, not eyeballed.
+ * Metric-matched fallback keeps source excerpts stable while the face loads.
  */
 @font-face {
   font-family: "Newsreader Fallback";

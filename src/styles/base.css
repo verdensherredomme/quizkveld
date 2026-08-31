@@ -14,7 +14,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-interface);
   font-size: var(--step-body);
   line-height: 1.55;
   background: var(--bg);
@@ -28,10 +28,10 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.005em;
+  font-family: var(--font-interface);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   margin: 0 0 var(--space-3);
   text-wrap: balance;
 }
@@ -55,7 +55,7 @@ p {
 }
 
 a {
-  color: inherit;
+  color: var(--link);
   text-underline-offset: 0.16em;
   text-decoration-thickness: from-font;
 }
@@ -99,11 +99,9 @@ blockquote {
 /* ---------- Small caps labels, used for anything that is a label and not content ---------- */
 
 .label {
-  font-family: var(--font-sans);
+  font-family: var(--font-interface);
   font-size: var(--step-label);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--text-muted);
 }
 
@@ -117,7 +115,7 @@ blockquote {
   display: inline-block;
   margin: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  background: var(--accent);
-  color: var(--accent-text);
+  background: var(--oslo-blue);
+  color: var(--on-strong);
   border-radius: var(--radius-sm);
 }

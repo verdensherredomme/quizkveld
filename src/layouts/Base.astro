@@ -4,7 +4,6 @@ import { dataCredits } from "../lib/attribution.js";
 import { loadSiteData } from "../lib/data.js";
 import { longDate, timestampLabel } from "../lib/format.js";
 import { href } from "../lib/url.js";
-import fontUrl from "../fonts/newsreader-500-latin.woff2?url";
 import "../styles/global.css";
 
 interface Props {
@@ -42,9 +41,6 @@ const nav = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light dark" />
-    {/* The only font the site loads, and the first heading is set in it. Preloading it
-        costs one line and removes the swap flash on the largest element on the page. */}
-    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

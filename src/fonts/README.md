@@ -7,16 +7,12 @@ One file, one face: **Newsreader** by Production Type, SIL Open Font License 1.1
   `/fonts/OFL.txt` alongside the site and linked from the om-page.
 - No Reserved Font Name is declared, so the subset keeps the family name.
 
-## Why this face
+## Why this face remains
 
-It has to carry three things: headings, the clock times, and the verbatim quotations from
-the source. The times are the reason the choice is not free - they have to line up in a
-column, which needs figures of equal width. Newsreader's default figures are already
-tabular and it also carries a `tnum` feature.
-
-Fraunces was the first choice on looks and was dropped for exactly this reason: it has no
-tabular figures and its proportional ones are far apart (`1` is 70% of the width of `0`),
-so a column of times would stagger.
+The interface uses the system sans for headings, navigation, times and body text.
+Newsreader is deliberately narrower in scope: it carries only wording quoted verbatim
+from the volunteer-maintained source. The serif therefore marks a change of voice rather
+than supplying a generic editorial identity.
 
 ## How the file was made
 
@@ -54,4 +50,4 @@ nothing has to hardcode `/quizkveld/`.
 `src/styles/fonts.css` declares a `Newsreader Fallback` face over local Georgia with
 `size-adjust: 88.5%`. That number is Newsreader's x-height (0.426 em) divided by Georgia's
 (0.4814 em); the ascent and descent overrides are Newsreader's own metrics divided by the
-same factor. It exists so a heading does not resize when the real face finishes loading.
+same factor. It keeps source excerpts stable while the face loads.

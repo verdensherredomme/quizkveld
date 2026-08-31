@@ -1,22 +1,14 @@
-/*
- * Components.
- *
- * The one motif is a rule. It appears as the line between entries, as the vertical spine
- * a time hangs on, as the double rule that opens the irregular section, and as the line
- * under a day heading. Nothing here uses a shadow, and only badges are still pill-shaped.
- *
- * The spine is not decoration: its style is how certain the listing is.
- *
- *   solid   - the quiz happens on this date
- *   dashed  - right weekday, unknowable week, or the source hedged
- *   absent  - no date can be derived at all; the source's own words take over
- */
+/* Components share one compact, single-column reading rhythm. */
 
 /* ---------- Filters ---------- */
 
 .filters {
-  border-block: 1px solid var(--rule);
-  padding-block: var(--space-4);
+  max-width: var(--measure-list);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--oslo-blue);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--space-4);
   margin-bottom: var(--space-6);
 }
 
@@ -28,29 +20,28 @@
 
 .filters__group {
   min-width: 11rem;
-  flex: 1 1 11rem;
+  flex: 1 1 12rem;
 }
 
 .filters__label {
   display: block;
-  font-family: var(--font-sans);
+  font-family: var(--font-interface);
   font-size: var(--step-label);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
 .filters select,
 .filters input[type="search"] {
   width: 100%;
+  min-height: 44px;
   padding: var(--space-2) var(--space-3);
   font: inherit;
   color: inherit;
-  background: var(--bg-raised);
+  background: var(--bg);
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
 }
 
 .filters__note {
@@ -64,32 +55,33 @@
   margin: var(--space-3) 0 0;
   font-size: var(--step-small);
   font-weight: 600;
+  color: var(--text);
 }
 
 .filters__reset {
   margin-top: var(--space-3);
   padding: var(--space-2) var(--space-3);
-  font-family: var(--font-sans);
+  min-height: 44px;
+  font-family: var(--font-interface);
   font-size: var(--step-label);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: transparent;
-  color: var(--text-muted);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
+  background: var(--link-soft);
+  color: var(--link);
+  border: 1px solid var(--link);
+  border-radius: var(--radius);
   cursor: pointer;
 }
 
 .filters__reset:hover {
   color: var(--text);
-  border-color: var(--text);
+  background: var(--surface-muted);
 }
 
 /* ---------- Day sections ---------- */
 
 .day {
   margin-bottom: var(--space-7);
+  max-width: var(--measure-list);
 }
 
 /*
@@ -112,17 +104,15 @@ h2 + .day {
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-1) var(--space-4);
-  border-bottom: 2px solid var(--text);
+  border-bottom: 3px solid var(--text);
   padding-bottom: var(--space-2);
   margin-bottom: var(--space-5);
 }
 
 .day__count {
-  font-family: var(--font-sans);
-  font-size: var(--step-label);
+  font-family: var(--font-interface);
+  font-size: var(--step-small);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--text-muted);
 }
 
@@ -137,11 +127,9 @@ h2 + .day {
 }
 
 .group__heading {
-  font-family: var(--font-sans);
-  font-size: var(--step-label);
+  font-family: var(--font-interface);
+  font-size: var(--step-small);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
   color: var(--text-muted);
   margin-bottom: var(--space-2);
 }
@@ -152,33 +140,26 @@ h2 + .day {
 
 /* A county heading opens a block, so it gets a rule; a place heading sits inside one. */
 .fylke-block > .group__heading {
-  border-bottom: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--border-strong);
   padding-bottom: var(--space-2);
   margin-bottom: var(--space-4);
 }
 
 /* ---------- Entries ---------- */
 
-/*
- * Columns rather than cards. Row gap is zero on purpose: the hairline between entries is
- * the separator, and a gap would break the column into floating boxes again.
- */
 .quiz-list {
   display: grid;
-  gap: 0 var(--space-6);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
-  border-bottom: 1px solid var(--rule);
+  grid-template-columns: minmax(0, 1fr);
+  max-width: var(--measure-list);
+  border-top: 1px solid var(--border);
 }
 
 .quiz-card {
-  --spine-style: solid;
-  --spine-color: var(--rule-strong);
-
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-1) var(--space-4);
-  padding-block: var(--space-4);
-  border-top: 1px solid var(--rule);
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border);
   hanging-punctuation: first;
 }
 
@@ -189,47 +170,38 @@ h2 + .day {
 .quiz-card__time {
   grid-column: 1;
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-interface);
   font-size: var(--step-time);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.015em;
+  font-weight: 750;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums lining-nums;
 }
 
-/* Placeholder for a quiz with no time. The real wording sits in the body, as text. */
 .quiz-card__time--unknown {
-  color: var(--border-strong);
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--text-muted);
 }
 
 .quiz-card__body {
-  grid-column: 1;
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   min-width: 0;
 }
 
-/*
- * From here the time hangs in its own column and the spine appears. The breakpoint is low
- * because even a 360px phone has room for a 5.25rem column, and the timetable reading -
- * times lining up down the page - is the whole point.
- */
-@media (min-width: 22em) {
+@media (min-width: 48em) {
   .quiz-card {
-    grid-template-columns: 5.25rem minmax(0, 1fr);
-    gap: 0 var(--space-4);
+    grid-template-columns: 5.25rem minmax(0, 1fr) 12rem;
+    gap: var(--space-3) var(--space-5);
   }
 
   .quiz-card__time {
     text-align: right;
-    padding-top: 0.08em;
-  }
-
-  .quiz-card__body {
-    grid-column: 2;
-    border-left: 1px var(--spine-style) var(--spine-color);
-    padding-left: var(--space-4);
   }
 }
 
@@ -241,7 +213,8 @@ h2 + .day {
 }
 
 .quiz-card__venue a {
-  text-decoration-color: var(--border-strong);
+  color: var(--text);
+  text-decoration-color: var(--link);
 }
 
 .quiz-card__place {
@@ -260,69 +233,58 @@ h2 + .day {
   color: var(--text-muted);
 }
 
-.quiz-card__caveat {
+.quiz-card__source {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.quiz-card__certainty {
   margin: 0;
-  font-size: var(--step-small);
+  font-size: var(--step-label);
+  font-weight: 750;
   color: var(--text-muted);
 }
 
-/* ---------- Uncertainty, expressed in the material ---------- */
-
-/*
- * `likely`: the weekday is right but the week is not knowable, or the source hedged. The
- * spine goes dashed and the time loses its full contrast. The badge stays: a dashed line
- * is not something a screen reader can read out.
- */
-.quiz-card--likely {
-  --spine-style: dashed;
+.quiz-card--likely .quiz-card__source,
+.quiz-card--undated .quiz-card__source {
+  border-left: 3px solid var(--uncertain);
+  padding: var(--space-2) 0 var(--space-2) var(--space-3);
+  background: var(--uncertain-soft);
 }
 
-.quiz-card--likely .quiz-card__time {
-  color: var(--text-muted);
+.quiz-card--likely .quiz-card__certainty,
+.quiz-card--undated .quiz-card__certainty {
+  color: var(--uncertain);
 }
 
-/*
- * `undated`: nothing to hang on a timeline, so there is no spine at all. What replaces it
- * is the source's own sentence, set larger than anything else in the entry. This is the
- * one place where the site is at its most honest, so it is also where it spends the most
- * typography.
- */
-.quiz-card--undated {
-  --spine-style: none;
+@media (min-width: 48em) {
+  .quiz-card__source {
+    grid-column: 3;
+    grid-row: 1;
+  }
 }
 
 .quiz-card__raw {
-  margin: 0;
+  margin: var(--space-2) 0 0;
 }
 
 .quiz-card__raw p {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-source);
   font-size: var(--step-quote);
   font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.005em;
+  line-height: 1.35;
   text-wrap: pretty;
-}
-
-.quiz-card__raw p::before {
-  content: open-quote;
-}
-
-.quiz-card__raw p::after {
-  content: close-quote;
 }
 
 .quiz-card__raw cite {
   display: block;
-  font-family: var(--font-sans);
-  font-size: var(--step-label);
+  margin-top: var(--space-1);
+  font-family: var(--font-interface);
+  font-size: 0.72rem;
   font-style: normal;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-top: var(--space-2);
 }
 
 /* ---------- Badges ---------- */
@@ -335,34 +297,28 @@ h2 + .day {
 
 .badge {
   display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.2em 0.6em;
-  border-radius: 999px;
-  border: 1px solid var(--border-strong);
+  font-family: var(--font-interface);
+  font-size: 0.74rem;
+  font-weight: 650;
+  padding: 0.2em 0.5em;
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
   color: var(--text-muted);
   white-space: nowrap;
 }
 
-.badge--uncertain {
-  border-style: dashed;
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 /* ---------- Irregular and stale sections ---------- */
 
-/*
- * A thick rule over a thin one - the old newspaper way of saying "different kind of thing
- * below". Same motif, doubled, rather than a new one.
- */
 .irregular {
+  max-width: var(--measure-list);
   margin-top: var(--space-7);
   padding-top: var(--space-5);
-  border-top: 4px double var(--border-strong);
+  border-top: 2px solid var(--border-strong);
+}
+
+.irregular[data-irregular],
+.irregular[data-stale] {
+  border-top: 4px solid var(--uncertain);
 }
 
 .irregular__note {
@@ -381,12 +337,12 @@ h2 + .day {
   display: grid;
   gap: 0 var(--space-6);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--border);
 }
 
 .place-grid li {
   padding: var(--space-2) 0;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--border);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -401,13 +357,12 @@ h2 + .day {
 
 /* ---------- Empty state ---------- */
 
-/*
- * Deliberately quiet, and deliberately not dashed: a dashed rule means "uncertain" on this
- * site, and an empty day is not uncertain - it is simply empty.
- */
 .empty {
-  border-block: 1px solid var(--rule);
-  padding: var(--space-4) 0;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--space-4);
   color: var(--text-muted);
   max-width: var(--measure-prose);
 }
@@ -425,8 +380,6 @@ h2 + .day {
 
 .prose h2 {
   margin-top: var(--space-6);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--rule);
 }
 
 .prose ul {
@@ -456,7 +409,7 @@ h2 + .day {
 /* ---------- Noscript notice ---------- */
 
 .noscript {
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--uncertain);
   padding: var(--space-2) 0 var(--space-2) var(--space-3);
   margin-bottom: var(--space-4);
 }
