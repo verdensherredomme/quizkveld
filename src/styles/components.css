@@ -1,0 +1,420 @@
+/* Components share one compact, single-column reading rhythm. */
+
+/* ---------- Filters ---------- */
+
+.filters {
+  max-width: var(--measure-list);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--oslo-blue);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+}
+
+.filters__group {
+  min-width: 11rem;
+  flex: 1 1 12rem;
+}
+
+.filters__label {
+  display: block;
+  font-family: var(--font-interface);
+  font-size: var(--step-label);
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.filters select,
+.filters input[type="search"] {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+}
+
+.filters__note {
+  margin: var(--space-3) 0 0;
+  font-size: var(--step-small);
+  color: var(--text-muted);
+  max-width: var(--measure-prose);
+}
+
+.filters__status {
+  margin: var(--space-3) 0 0;
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.filters__reset {
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  min-height: 44px;
+  font-family: var(--font-interface);
+  font-size: var(--step-label);
+  font-weight: 600;
+  background: var(--link-soft);
+  color: var(--link);
+  border: 1px solid var(--link);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.filters__reset:hover {
+  color: var(--text);
+  background: var(--surface-muted);
+}
+
+/* ---------- Day sections ---------- */
+
+.day {
+  margin-bottom: var(--space-7);
+  max-width: var(--measure-list);
+}
+
+/*
+ * A day heading is a rung below the section heading it sits under ("De neste sju dagene"),
+ * so it is set one step smaller. Without that the two are the same size and the page reads
+ * as a flat list of equals.
+ */
+h2 + .day {
+  margin-top: var(--space-5);
+}
+
+.day__heading h2 {
+  margin: 0;
+  font-size: var(--step-h2-sub);
+}
+
+.day__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  border-bottom: 3px solid var(--text);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.day__count {
+  font-family: var(--font-interface);
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ---------- Grouping headings ---------- */
+
+.fylke-block {
+  margin-bottom: var(--space-6);
+}
+
+.group {
+  margin-bottom: var(--space-5);
+}
+
+.group__heading {
+  font-family: var(--font-interface);
+  font-size: var(--step-small);
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.group__heading a {
+  color: inherit;
+}
+
+/* A county heading opens a block, so it gets a rule; a place heading sits inside one. */
+.fylke-block > .group__heading {
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- Entries ---------- */
+
+.quiz-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: var(--measure-list);
+  border-top: 1px solid var(--border);
+}
+
+.quiz-card {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border);
+  hanging-punctuation: first;
+}
+
+.quiz-card[hidden] {
+  display: none;
+}
+
+.quiz-card__time {
+  grid-column: 1;
+  margin: 0;
+  font-family: var(--font-interface);
+  font-size: var(--step-time);
+  font-weight: 750;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.quiz-card__time--unknown {
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+
+.quiz-card__body {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+@media (min-width: 48em) {
+  .quiz-card {
+    grid-template-columns: 5.25rem minmax(0, 1fr) 12rem;
+    gap: var(--space-3) var(--space-5);
+  }
+
+  .quiz-card__time {
+    text-align: right;
+  }
+}
+
+.quiz-card__venue {
+  font-size: var(--step-lead);
+  font-weight: 600;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.quiz-card__venue a {
+  color: var(--text);
+  text-decoration-color: var(--link);
+}
+
+.quiz-card__place {
+  font-size: var(--step-small);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.quiz-card__place a {
+  color: inherit;
+}
+
+.quiz-card__meta {
+  margin: 0;
+  font-size: var(--step-small);
+  color: var(--text-muted);
+}
+
+.quiz-card__source {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.quiz-card__certainty {
+  margin: 0;
+  font-size: var(--step-label);
+  font-weight: 750;
+  color: var(--text-muted);
+}
+
+.quiz-card--likely .quiz-card__source,
+.quiz-card--undated .quiz-card__source,
+.quiz-card--caveated .quiz-card__source {
+  border-left: 3px solid var(--uncertain);
+  padding: var(--space-2) 0 var(--space-2) var(--space-3);
+  background: var(--uncertain-soft);
+}
+
+.quiz-card--likely .quiz-card__certainty,
+.quiz-card--undated .quiz-card__certainty {
+  color: var(--uncertain);
+}
+
+@media (min-width: 48em) {
+  .quiz-card__source {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+.quiz-card__raw {
+  margin: var(--space-2) 0 0;
+}
+
+.quiz-card__raw p {
+  margin: 0;
+  font-family: var(--font-source);
+  font-size: var(--step-quote);
+  font-weight: 500;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.quiz-card__raw cite {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-interface);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ---------- Badges ---------- */
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-interface);
+  font-size: 0.74rem;
+  font-weight: 650;
+  padding: 0.2em 0.5em;
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ---------- Irregular and stale sections ---------- */
+
+.irregular {
+  max-width: var(--measure-list);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--border-strong);
+}
+
+.irregular[data-irregular],
+.irregular[data-stale] {
+  border-top: 4px solid var(--uncertain);
+}
+
+.irregular__note {
+  color: var(--text-muted);
+  max-width: var(--measure-prose);
+}
+
+.report {
+  margin: 0 0 var(--space-5);
+  font-size: var(--step-small);
+}
+
+/* ---------- Place index ---------- */
+
+.place-grid {
+  display: grid;
+  gap: 0 var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  border-bottom: 1px solid var(--border);
+}
+
+.place-grid li {
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.place-grid__count {
+  color: var(--text-muted);
+  font-size: var(--step-small);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Empty state ---------- */
+
+.empty {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--space-4);
+  color: var(--text-muted);
+  max-width: var(--measure-prose);
+}
+
+.empty p {
+  margin: 0;
+  font-size: var(--step-body);
+}
+
+/* ---------- Prose (om-siden) ---------- */
+
+.prose {
+  max-width: var(--measure-prose);
+}
+
+.prose h2 {
+  margin-top: var(--space-6);
+}
+
+.prose ul {
+  list-style: disc;
+  padding-left: 1.3em;
+  margin-bottom: var(--space-4);
+}
+
+.prose li {
+  margin-bottom: var(--space-2);
+}
+
+.prose dl {
+  margin: 0 0 var(--space-4);
+}
+
+.prose dt {
+  font-weight: 600;
+  margin-top: var(--space-3);
+}
+
+.prose dd {
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+}
+
+/* ---------- Noscript notice ---------- */
+
+.noscript {
+  border-left: 3px solid var(--uncertain);
+  padding: var(--space-2) 0 var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.noscript p {
+  margin: 0;
+}

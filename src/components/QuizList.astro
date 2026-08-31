@@ -46,9 +46,9 @@ function stedSlug(sted: string): string {
  * irregular section - a venue page listing "Hver fjerde søndag" as if it were a normal
  * schedule would be worse than useless.
  */
-function occurrenceFor(item: QuizAtVenue): Occurrence {
+function occurrenceFor(item: QuizAtVenue): Occurrence | undefined {
   if (isUndated(item.quiz)) return "undated";
-  return date ? occurrenceOn(item.quiz, date) : "certain";
+  return date ? occurrenceOn(item.quiz, date) : undefined;
 }
 
 const byFylke = grouping === "fylke" ? groupBy(items, (i) => fylkeOf(i.venue)) : null;
@@ -67,22 +67,26 @@ const bySted = grouping === "sted" ? groupBy(items, (i) => i.venue.kommune) : nu
           <a href={href("fylke", slugs.byFylke.get(fylke) ?? "")}>{fylke}</a>
         </h3>
         {[...groupBy(inFylke, (i) => i.venue.kommune)].map(([sted, inSted]) => (
-            <div class="group">
+          <div class="group">
+            {
+              sted !== fylke && (
               <h4 class="group__heading">
                 <a href={href("sted", stedSlug(sted))}>{sted}</a>
               </h4>
-              <ul class="quiz-list">
-                {inSted.map((item) => (
-                  <QuizCard
-                    item={item}
-                    stedSlug={stedSlug(item.venue.kommune)}
-                    showVenue={showVenue}
-                    showPlace={showPlaceOnCards}
-                    occurrence={occurrenceFor(item)}
-                  />
-                ))}
-              </ul>
-            </div>
+              )
+            }
+            <ul class="quiz-list">
+              {inSted.map((item) => (
+                <QuizCard
+                  item={item}
+                  stedSlug={stedSlug(item.venue.kommune)}
+                  showVenue={showVenue}
+                  showPlace={showPlaceOnCards}
+                  occurrence={occurrenceFor(item)}
+                />
+              ))}
+            </ul>
+          </div>
         ))}
       </section>
     ))
@@ -98,7 +102,7 @@ const bySted = grouping === "sted" ? groupBy(items, (i) => i.venue.kommune) : nu
               item={item}
               stedSlug={stedSlug(item.venue.kommune)}
               showVenue={showVenue}
-                    showPlace={showPlaceOnCards}
+              showPlace={showPlaceOnCards}
               occurrence={occurrenceFor(item)}
             />
           ))}
@@ -112,7 +116,7 @@ const bySted = grouping === "sted" ? groupBy(items, (i) => i.venue.kommune) : nu
           item={item}
           stedSlug={stedSlug(item.venue.kommune)}
           showVenue={showVenue}
-                    showPlace={showPlaceOnCards}
+          showPlace={showPlaceOnCards}
           occurrence={occurrenceFor(item)}
         />
       ))}
