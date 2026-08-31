@@ -17,13 +17,19 @@ interface Props {
   /** Hidden when the page is already scoped to one place. */
   showPlace?: boolean;
   showWeekday?: boolean;
+  /** Selected when the URL does not explicitly choose another place. */
+  defaultPlace?: string;
 }
 
-const { items, showPlace = true, showWeekday = true } = Astro.props;
+const { items, showPlace = true, showWeekday = true, defaultPlace = "" } = Astro.props;
 
 const places = placeSummary(items);
 const categoryCounts = countByCategory(items);
 const weekdayCounts = countByWeekday(items);
+
+if (defaultPlace && !places.some((place) => place.sted === defaultPlace)) {
+  throw new Error(`Standardstedet "${defaultPlace}" finnes ikke i datasettet`);
+}
 
 const categories = CATEGORY_NORMS.filter((category) => (categoryCounts.get(category) ?? 0) > 0);
 const weekdays = WEEKDAYS.filter((weekday) => (weekdayCounts.get(weekday) ?? 0) > 0);
@@ -49,7 +55,12 @@ const overlaps = categoryTotal > items.length;
           <label class="filters__label" for="filter-sted">
             Sted
           </label>
-          <select id="filter-sted" name="sted" data-filter="sted">
+          <select
+            id="filter-sted"
+            name="sted"
+            data-filter="sted"
+            data-filter-default={defaultPlace}
+          >
             <option value="">Hele landet</option>
             {places.map((place) => (
               <option value={place.sted}>
@@ -105,7 +116,9 @@ const overlaps = categoryTotal > items.length;
 
   <p class="filters__status" data-filter-status hidden></p>
 
-  <button type="button" class="filters__reset" data-filter-reset hidden>Nullstill filtre</button>
+  <button type="button" class="filters__reset" data-filter-reset hidden>
+    Tilbakestill filtre
+  </button>
 </form>
 
 <script>
