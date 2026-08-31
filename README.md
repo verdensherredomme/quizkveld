@@ -250,8 +250,11 @@ det er fila som ikke er det vi tror.
 ### Filtrering uten rammeverk
 
 Serveren rendrer hvert kort; `src/scripts/filters.ts` skrur bare `hidden` av og på og
-speiler valget i query-strengen (`?sted=Asker&ukedag=fredag&kategori=musikk`). Uten
-JavaScript får man hele lista, som fortsatt er brukbar.
+speiler valget i query-strengen (`?sted=Asker&ukedag=fredag&kategori=musikk`). «I kveld»,
+«I morgen» og «Denne uka» viser Oslo først, men stedvelgeren inneholder hele landet. Et
+eksplisitt tomt valg (`?sted=`) betyr «Hele landet», slik at valget overlever deling og
+omlasting selv om Oslo er standard. Uten JavaScript får man hele lista, som fortsatt er
+brukbar.
 
 Grensen er satt med vilje: **filterskriptet skal aldri bli en tilstandsmaskin.** Kartet i
 fase 2b (MapLibre, ~200 KB) blir en isolert øy på egen side som laster sitt eget JS.

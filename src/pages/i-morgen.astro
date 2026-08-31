@@ -7,6 +7,7 @@ import { loadSiteData } from "../lib/data.js";
 import { addDays, osloDate } from "../lib/date.js";
 import { isUndated, occursOn } from "../lib/occurrence.js";
 import { longDate, quizCount } from "../lib/format.js";
+import { DEFAULT_PLACE } from "../lib/site.js";
 import { href } from "../lib/url.js";
 
 const { items, slugs, meta } = await loadSiteData();
@@ -15,22 +16,26 @@ const today = osloDate();
 const tomorrow = addDays(today, 1);
 
 const listed = items.filter((item) => occursOn(item.quiz, tomorrow));
+const listedInDefaultPlace = listed.filter((item) => item.venue.kommune === DEFAULT_PLACE);
 const irregular = items.filter((item) => isUndated(item.quiz));
 ---
 
 <Base
-  title="Pubquizer i Norge i morgen – quizkveld"
-  description="Se hvilke pubquizer som går i morgen, sortert på sted og sjanger."
+  title="Pubquiz i Oslo i morgen – quizkveld"
+  description="Finn pubquiz i Oslo i morgen, eller velg Hele landet for å se pubquizer i resten av Norge."
   generatedAt={meta.generatedAt}
   sourceUpdatedAt={meta.sourceUpdatedAt}
   current="i-morgen"
 >
   <div class="intro">
-    <h1>I morgen</h1>
-    <p>{quizCount(listed.length)} står oppført {longDate(tomorrow)}.</p>
+    <h1>I Oslo i morgen</h1>
+    <p>
+      {quizCount(listedInDefaultPlace.length)} står oppført i Oslo {longDate(tomorrow)}.
+      Oslo vises først; velg «Hele landet» for resten av Norge.
+    </p>
   </div>
 
-  <Filters items={items} showWeekday={false} />
+  <Filters items={items} showWeekday={false} defaultPlace={DEFAULT_PLACE} />
 
   <DaySection
     date={tomorrow}

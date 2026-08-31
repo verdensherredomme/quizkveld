@@ -6,7 +6,8 @@
  * filtering costs one pass over a few hundred DOM nodes.
  *
  * The chosen filters are mirrored into the query string so a filtered view can be
- * bookmarked or shared, and read back on load so those links work.
+ * bookmarked or shared, and read back on load so those links work. An explicitly empty
+ * value such as `?sted=` overrides a configured default and therefore means "Hele landet".
  */
 
 type FilterName = "sted" | "ukedag" | "kategori";
@@ -24,6 +25,10 @@ if (form) {
   for (const name of FILTER_NAMES) {
     const select = form.querySelector<HTMLSelectElement>(`[data-filter="${name}"]`);
     if (select) selects.set(name, select);
+  }
+
+  function defaultValue(name: FilterName): string {
+    return selects.get(name)?.dataset.filterDefault ?? "";
   }
 
   function currentFilters(): Record<FilterName, string> {
@@ -81,10 +86,12 @@ if (form) {
     const params = new URLSearchParams(window.location.search);
     for (const name of FILTER_NAMES) {
       const value = filters[name];
-      if (value) {
-        params.set(name, value);
-      } else {
+      if (value === defaultValue(name)) {
         params.delete(name);
+      } else {
+        // Keep an empty value when it differs from the default. For an Oslo-first page,
+        // `?sted=` is the stable, shareable representation of "Hele landet".
+        params.set(name, value);
       }
     }
     const query = params.toString();
@@ -103,6 +110,7 @@ if (form) {
     }
 
     const active = FILTER_NAMES.filter((name) => filters[name] !== "");
+    const changed = FILTER_NAMES.some((name) => filters[name] !== defaultValue(name));
 
     pruneEmptySections(active.length > 0);
 
@@ -121,16 +129,18 @@ if (form) {
       }
     }
 
-    if (reset) reset.hidden = active.length === 0;
+    if (reset) reset.hidden = !changed;
     if (updateUrl) syncUrl(filters);
   }
 
   // Restore state from the URL so shared links land on the same view.
   const params = new URLSearchParams(window.location.search);
   for (const name of FILTER_NAMES) {
-    const value = params.get(name);
     const select = selects.get(name);
-    if (!value || !select) continue;
+    if (!select) continue;
+
+    const value = params.has(name) ? params.get(name) : defaultValue(name);
+    if (value === null) continue;
     const exists = Array.from(select.options).some((option) => option.value === value);
     if (exists) select.value = value;
   }
@@ -140,7 +150,7 @@ if (form) {
   }
 
   reset?.addEventListener("click", () => {
-    for (const select of selects.values()) select.value = "";
+    for (const [name, select] of selects) select.value = defaultValue(name);
     apply();
   });
 

@@ -7,6 +7,7 @@ import { loadSiteData } from "../lib/data.js";
 import { osloDate } from "../lib/date.js";
 import { isUndated, occursOn } from "../lib/occurrence.js";
 import { longDate, quizCount } from "../lib/format.js";
+import { DEFAULT_PLACE } from "../lib/site.js";
 import { href } from "../lib/url.js";
 
 const { items, slugs, meta } = await loadSiteData();
@@ -16,26 +17,27 @@ const { items, slugs, meta } = await loadSiteData();
 const today = osloDate();
 
 const tonight = items.filter((item) => occursOn(item.quiz, today));
+const tonightInDefaultPlace = tonight.filter((item) => item.venue.kommune === DEFAULT_PLACE);
 const irregular = items.filter((item) => isUndated(item.quiz));
 ---
 
 <Base
-  title="Quizkveld – pubquizer i Norge i kveld"
-  description="Oversikt over pubquizer i hele Norge. Se hva som skjer i kveld, i morgen eller denne uka, sortert på sted og sjanger."
+  title="Pubquiz i Oslo i kveld – quizkveld"
+  description="Finn pubquiz i Oslo i kveld, eller velg Hele landet for å se pubquizer i resten av Norge."
   generatedAt={meta.generatedAt}
   sourceUpdatedAt={meta.sourceUpdatedAt}
   current="i-kveld"
 >
   <div class="intro">
-    <h1>Hva skjer i kveld?</h1>
+    <h1>Hva skjer i Oslo i kveld?</h1>
     <p>
-      {quizCount(tonight.length)} står oppført {longDate(today)}. Velg sted for å se bare
-      det som er i nærheten av deg, eller bla gjennom
+      {quizCount(tonightInDefaultPlace.length)} står oppført i Oslo {longDate(today)}. Oslo
+      vises først; velg «Hele landet» for resten av Norge, eller bla gjennom
       <a href={href("steder")}>alle steder</a>.
     </p>
   </div>
 
-  <Filters items={items} showWeekday={false} />
+  <Filters items={items} showWeekday={false} defaultPlace={DEFAULT_PLACE} />
 
   <DaySection
     date={today}
