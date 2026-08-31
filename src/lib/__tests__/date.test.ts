@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { addDays, osloDate, osloWeekday, partsOf, weekdayOf, weekWindow } from "../date.js";
+import { addDays, isoWeekOf, osloDate, osloWeekday, partsOf, weekdayOf, weekWindow } from "../date.js";
 
 /**
  * The site is built in CI, which runs in UTC. Every test here exists because a naive
@@ -108,5 +108,37 @@ describe("weekWindow", () => {
 describe("partsOf", () => {
   it("splits a civil date without timezone involvement", () => {
     expect(partsOf("2026-02-09")).toEqual({ year: 2026, month: 2, day: 9 });
+  });
+});
+
+describe("isoWeekOf", () => {
+  // Week parity decides whether a pub is listed at all, so an off-by-one here shows up as a
+  // quiz on the wrong night. The dates below are the ones a naive implementation gets wrong.
+  it("counts ordinary weeks", () => {
+    expect(isoWeekOf("2026-07-28")).toBe(31);
+    expect(isoWeekOf("2026-08-04")).toBe(32);
+  });
+
+  it("puts early January in the previous year's last week where ISO does", () => {
+    // 1 January 2021 is a Friday, so ISO puts it in week 53 of 2020 - not week 1.
+    expect(isoWeekOf("2021-01-01")).toBe(53);
+    expect(isoWeekOf("2027-01-01")).toBe(53);
+  });
+
+  it("puts late December in the next year's first week where ISO does", () => {
+    // 30 December 2024 is a Monday whose Thursday falls in 2025, so it is week 1.
+    expect(isoWeekOf("2024-12-30")).toBe(1);
+  });
+
+  it("treats Sunday as the last day of the week, not the first", () => {
+    // The classic off-by-one: getUTCDay() calls Sunday 0, which would push every Sunday
+    // into the following week and flip the parity of every Sunday quiz.
+    expect(isoWeekOf("2026-08-02")).toBe(31); // Sunday
+    expect(isoWeekOf("2026-08-03")).toBe(32); // the Monday after
+  });
+
+  it("keeps a whole week on one number", () => {
+    const week = ["2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09"];
+    expect(new Set(week.map(isoWeekOf))).toEqual(new Set([32]));
   });
 });
