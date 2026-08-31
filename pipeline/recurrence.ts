@@ -44,8 +44,45 @@ const ORDINALS: Array<{ position: number; re: RegExp }> = [
 const LAST_OF_MONTH_RE =
   /\bsiste\b|\bsist\s+i\b|\bsent\s+i\s+(?:mnd|maneden|måneden)\b/;
 const MONTH_RE = /\b(?:mnd|md|maned|måned|maneden|måneden|manedlig|månedlig)\b/;
-const BIWEEKLY_RE =
-  /\bannenhver\b|\bhver\s+andre\b|\boddetallsuker?\b|\bpartallsuker?\b|\bhveranden\b/;
+
+/**
+ * Volunteers spell the same word several ways, and the two ways that bite are dropping a
+ * doubled consonant ("Oddetalsuker") and splitting a compound ("annen hver"). Both slipped
+ * past a literal pattern list and were classified `weekly`, which is the one error this
+ * site must not make: it says there is a quiz tonight when there is not.
+ *
+ * Rather than bolt on one alternative per misspelling, keyword tests run against a
+ * compacted form - separators removed, runs of a repeated letter collapsed. The keywords
+ * below are written in ordinary Norwegian and pushed through the *same* function, so a
+ * pattern can never drift out of sync with the normalization applied to the input.
+ *
+ * Measured against all 352 rows: this catches exactly the two known misspellings and
+ * changes no other row's classification.
+ */
+function compact(text: string): string {
+  return lower(text)
+    .replace(/[\s\-.,()]+/g, "")
+    .replace(/(.)\1+/g, "$1");
+}
+
+function compactedMatcher(keywords: string[]): (text: string) => boolean {
+  const needles = [...new Set(keywords.map(compact))];
+  return (text: string) => {
+    const haystack = compact(text);
+    return needles.some((needle) => haystack.includes(needle));
+  };
+}
+
+const isBiweeklyText = compactedMatcher([
+  "annenhver",
+  "annen hver",
+  "hver andre",
+  "hveranden",
+  // Singular forms are enough for these two: matching is by substring, so "oddetallsuke"
+  // also covers "oddetallsuker".
+  "oddetallsuke",
+  "partallsuke",
+]);
 
 /**
  * Which ISO week half of the biweekly rows fall in.
@@ -54,15 +91,31 @@ const BIWEEKLY_RE =
  * answer "is it on tonight?". Week parity settles that, and unlike a start date it never
  * expires - ISO week numbers are a property of the calendar, not of one season.
  *
- * Note the \b before "like": it keeps "ulike uker" (odd) from also matching the even
- * pattern, since the two words differ by a single leading letter.
+ * Order is load-bearing. Compacted, "ulike uker" (odd) becomes "ulikeuker", which contains
+ * "likeuker" (even) as a substring, so the even test fires on it too. Odd is checked first
+ * so the more specific word wins. The two differ by one leading letter and mean the
+ * opposite thing, so there is an explicit test for it.
  */
-const ODD_WEEK_RE = /\boddetallsuker?\b|\bulike?\s+uker?\b|\bodde\s+uker?\b/;
-const EVEN_WEEK_RE = /\bpartallsuker?\b|\blike?\s+uker?\b|\bjevne\s+uker?\b/;
+const isOddWeekText = compactedMatcher([
+  "oddetallsuker",
+  "oddetallsuke",
+  "ulike uker",
+  "ulik uke",
+  "odde uker",
+  "odde uke",
+]);
+const isEvenWeekText = compactedMatcher([
+  "partallsuker",
+  "partallsuke",
+  "like uker",
+  "like uke",
+  "jevne uker",
+  "jevne uke",
+]);
 
 function findWeekParity(text: string): "odd" | "even" | undefined {
-  if (ODD_WEEK_RE.test(text)) return "odd";
-  if (EVEN_WEEK_RE.test(text)) return "even";
+  if (isOddWeekText(text)) return "odd";
+  if (isEvenWeekText(text)) return "even";
   return undefined;
 }
 const AMBIGUOUS_RE =
@@ -152,7 +205,7 @@ export function parseRecurrence(raw: string): Recurrence {
   }
 
   // "annenhver" beats a monthly reading: "Annenhver tirsdag" is every other week.
-  if (BIWEEKLY_RE.test(text)) {
+  if (isBiweeklyText(text)) {
     // Guard the case where "andre" is really an ordinal position, e.g.
     // "andre tirsdag i maneden" - that is monthly, not biweekly.
     const ordinalMonthly = isMonthly && findOrdinals(text).length > 0;

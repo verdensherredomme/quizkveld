@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T10:39:24.181Z",
+  "generatedAt": "2026-08-31T13:55:04.277Z",
   "sourceUpdatedAt": "2026-08-05",
   "venues": [
     {
@@ -8402,9 +8402,10 @@
       "weekday": "tirsdag",
       "time": "19:00",
       "recurrence": {
-        "kind": "weekly",
-        "rrule": "FREQ=WEEKLY;BYDAY=TU",
-        "raw": "Tirsdag (Oddetalsuker)"
+        "kind": "biweekly",
+        "rrule": "FREQ=WEEKLY;BYDAY=TU;INTERVAL=2",
+        "raw": "Tirsdag (Oddetalsuker)",
+        "weekParity": "odd"
       },
       "category": "Allmenn",
       "categoryNorm": [
@@ -9077,8 +9078,8 @@
       "weekday": "fredag",
       "time": "20:00",
       "recurrence": {
-        "kind": "weekly",
-        "rrule": "FREQ=WEEKLY;BYDAY=FR",
+        "kind": "biweekly",
+        "rrule": "FREQ=WEEKLY;BYDAY=FR;INTERVAL=2",
         "raw": "Fredag (annen hver)"
       },
       "category": "Allmenn",

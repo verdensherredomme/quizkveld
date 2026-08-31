@@ -218,18 +218,6 @@ describe("weekly rows that claim certainty on nothing but a weekday", () => {
   const REVIEWED: Record<string, string> = {
     // The quiz runs weekly and the start date is long past. Nothing to hedge.
     "Mandag (start 29.7)": "startdato passert, ukentlig er riktig",
-
-    // These two are biweekly quizzes that phase 1's recurrence parser did not recognise:
-    // it looks for `oddetallsuker` and the source wrote `Oddetalsuker` with one l, and it
-    // looks for `annenhver` and the source wrote `annen hver` with a space. Both are stored
-    // as FREQ=WEEKLY, so we show them every week when they run every other week.
-    //
-    // Deliberately not patched here. Adding them to `CAVEAT` would be a detour around a
-    // parser bug, and would leave the wrong data in place while looking fixed. They are
-    // owned upstream; once the parser recognises them they become `biweekly` and pick up
-    // the "annenhver uke - sjekk selv" path that already exists.
-    "Tirsdag (Oddetalsuker)": "parserfeil i pipelinen, eies oppstrøms",
-    "Fredag (annen hver)": "parserfeil i pipelinen, eies oppstrøms",
   };
 
   const weekly = data.quizzes.filter(

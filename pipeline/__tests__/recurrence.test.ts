@@ -283,3 +283,54 @@ describe("week parity on biweekly", () => {
     expect(parseRecurrence("Torsdag (annenhver, like uker)").weekParity).toBe("even");
   });
 });
+
+/**
+ * Spelling variants of words we already know.
+ *
+ * Both of these shipped to production classified as `weekly`, meaning the site told people
+ * there was a quiz on a night there was not. That is the one error this parser exists to
+ * prevent, so the fix normalizes before matching rather than adding one alternative per
+ * misspelling - the same class had already appeared several times.
+ */
+describe("spelling variants of biweekly", () => {
+  const VARIANTS = [
+    // Live rows that were wrong: Radisson RED (Okern) and Pillarguri Cafe.
+    "Tirsdag (Oddetalsuker)",
+    "Fredag (annen hver)",
+    // Same class, not currently in the data, but free to cover once compaction is in.
+    "Fredag (annen-hver)",
+    "Tirsdag (partalsuker)",
+    "Mandag (Annenhver)",
+  ];
+
+  for (const raw of VARIANTS) {
+    it(`reads ${JSON.stringify(raw)} as biweekly`, () => {
+      expect(parseRecurrence(raw).kind).toBe("biweekly");
+    });
+  }
+
+  it("keeps the parity that the misspelled row states", () => {
+    expect(parseRecurrence("Tirsdag (Oddetalsuker)").weekParity).toBe("odd");
+    expect(parseRecurrence("Tirsdag (partalsuker)").weekParity).toBe("even");
+  });
+
+  /**
+   * The dangerous near-miss. Compaction removes spaces, so "hver andre" and a monthly
+   * "den andre i hver maaned" both collapse towards the same letters. "Mandag (den andre i
+   * hver maaned)" is the second Monday *of the month*, not every other Monday - reading it
+   * as biweekly would put it on the wrong night roughly half the time.
+   *
+   * What separates them is the ordinal-plus-month guard, not the keyword list.
+   */
+  it("does not turn an ordinal monthly row into biweekly", () => {
+    expect(parseRecurrence("Mandag (den andre i hver måned)").kind).toBe("monthly-nth");
+    expect(parseRecurrence("Tirsdag (2. tirsdag hver måned)").kind).toBe("monthly-nth");
+    expect(parseRecurrence("Mandag (den første i hver måned)").kind).toBe("monthly-nth");
+  });
+
+  // Compaction must not reach past the keyword tests into weekday detection.
+  it("still finds the weekday in a compacted row", () => {
+    expect(parseRecurrence("Tirsdag (Oddetalsuker)").rrule).toContain("TU");
+    expect(parseRecurrence("Fredag (annen hver)").rrule).toContain("FR");
+  });
+});
