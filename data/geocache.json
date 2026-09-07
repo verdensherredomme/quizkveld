@@ -335,6 +335,13 @@
     "geoConfidence": "low",
     "resolvedAt": "2026-07-30T06:32:24.376Z"
   },
+  "fredrikstad-saints-bar": {
+    "lat": 59.2124604,
+    "lon": 10.9287043,
+    "geoSource": "osm",
+    "geoConfidence": "high",
+    "resolvedAt": "2026-09-07T09:05:52.258Z"
+  },
   "fredrikstad-taeps": {
     "lat": 59.186201229507,
     "lon": 10.868024082678,
