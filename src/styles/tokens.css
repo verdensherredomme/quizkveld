@@ -15,11 +15,11 @@
   --space-6: 2rem;
   --space-7: 3rem;
 
-  --radius: 6px;
-  --radius-sm: 4px;
+  --radius: 2px;
+  --radius-sm: 2px;
 
   --measure: 72rem;
-  --measure-list: 58rem;
+  --measure-list: 100%;
   --measure-prose: 42rem;
 
   --step-label: 0.8rem;
@@ -29,14 +29,15 @@
   --step-h3: clamp(1.1rem, 1.03rem + 0.3vw, 1.28rem);
   --step-h2: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem);
   --step-h2-sub: clamp(1.2rem, 1.08rem + 0.5vw, 1.48rem);
-  --step-h1: clamp(2.1rem, 1.45rem + 2.8vw, 3.75rem);
-  --step-time: clamp(1.1rem, 1rem + 0.35vw, 1.3rem);
+  --step-h1: clamp(2.5rem, 1.45rem + 3.5vw, 4.5rem);
+  --step-time: clamp(1.2rem, 1rem + 0.6vw, 1.6rem);
   --step-quote: 1rem;
 
-  --snow: #f3f6f8;
+  --snow: #f3f5f2;
   --paper: #ffffff;
-  --ink: #15212b;
-  --oslo-blue: #1769a0;
+  --ink: #172c3b;
+  --oslo-blue: #244bb5;
+  --lime: #dcf68a;
   --pencil: #a93627;
   --grid: #b8c6cf;
 
@@ -53,6 +54,8 @@
   --uncertain-soft: color-mix(in srgb, var(--pencil) 9%, var(--paper));
   --focus: var(--oslo-blue);
   --on-strong: var(--paper);
+  --highlight: var(--lime);
+  --hero-ink: var(--ink);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,5 +73,7 @@
     --uncertain-soft: color-mix(in srgb, var(--pencil) 18%, var(--ink));
     --focus: var(--snow);
     --on-strong: var(--paper);
+    --highlight: #35482d;
+    --hero-ink: var(--snow);
   }
 }

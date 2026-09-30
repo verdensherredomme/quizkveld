@@ -52,7 +52,9 @@ const nav = [
 
     <header class="site-header">
       <div class="wrap site-header__inner">
-        <p class="site-title"><a href={href()}>quizkveld</a></p>
+        <p class="site-title">
+          <a href={href()}><span class="site-mark" aria-hidden="true">q.</span>quizkveld<span class="site-title__dot" aria-hidden="true">↗</span></a>
+        </p>
         <nav class="site-nav" aria-label="Hovedmeny">
           {
             nav.map((item) => (
@@ -73,6 +75,11 @@ const nav = [
 
     <footer class="site-footer">
       <div class="wrap">
+        <div class="site-footer__heading">
+          <p class="site-footer__title">Ingen kan alt.<br />Alle kan noe.</p>
+          <a href={href("steder")}>Finn ditt neste quizsted <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="site-footer__details">
         <p>
           Dataene kommer fra <a href={SOURCE_URL} rel="noopener external">Norges Quizforbund</a>,
           som holder oversikten over pubquizer i Norge oppdatert på dugnad. quizkveld gjør
@@ -114,6 +121,7 @@ const nav = [
             GitHub
           </a>. Les mer på <a href={href("om")}>om-siden</a>.
         </p>
+        </div>
       </div>
     </footer>
   </body>

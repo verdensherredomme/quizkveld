@@ -8,9 +8,8 @@
 }
 
 .site-header {
-  border-top: 4px solid var(--oslo-blue);
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--bg);
 }
 
 .site-header__inner {
@@ -32,8 +31,28 @@
 }
 
 .site-title a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   color: var(--text);
   text-decoration: none;
+}
+
+.site-mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--lime);
+  background: var(--ink);
+  font-size: 2rem;
+  padding-bottom: 0.2rem;
+}
+
+.site-title__dot {
+  color: var(--link);
+  font-size: 1rem;
+  align-self: flex-start;
 }
 
 .site-nav {
@@ -66,9 +85,9 @@
 }
 
 .site-nav a[aria-current="page"] {
-  color: var(--text);
-  background: var(--link-soft);
-  box-shadow: inset 0 -3px 0 var(--oslo-blue);
+  color: var(--ink);
+  background: var(--lime);
+  box-shadow: inset 0 -2px 0 var(--ink);
 }
 
 @media (max-width: 40em) {
@@ -80,7 +99,226 @@
 
 main {
   flex: 1;
-  padding-block: var(--space-6) var(--space-7);
+  padding-block: var(--space-7);
+}
+
+/* ---------- Tonight: a poster and a quiz slip ---------- */
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 19rem;
+  gap: var(--space-7);
+  align-items: center;
+  padding-block: var(--space-4) 4rem;
+}
+
+.hero h1 {
+  font-size: clamp(3.5rem, 7.5vw, 6.4rem);
+  font-weight: 850;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+  margin-bottom: var(--space-5);
+  color: var(--hero-ink);
+}
+
+.hero h1 span {
+  background: var(--highlight);
+  padding-inline: 0.08em;
+  box-decoration-break: clone;
+}
+
+.hero__intro {
+  max-width: 32rem;
+  font-size: var(--step-lead);
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid var(--text);
+}
+
+.button-link:hover {
+  background: var(--link);
+  border-color: var(--link);
+  color: var(--bg);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--space-4);
+  font-size: var(--step-small);
+  font-weight: 650;
+}
+
+.tonight-ticket {
+  background: var(--ink);
+  color: var(--snow);
+  padding: var(--space-5);
+  transform: rotate(3deg);
+  border-bottom: 8px solid var(--lime);
+}
+
+.tonight-ticket__top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-bottom: 1px solid #73838e;
+  padding-bottom: var(--space-3);
+  color: var(--lime);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: var(--step-label);
+  font-weight: 750;
+}
+
+.tonight-ticket__date {
+  font-size: var(--step-small);
+  margin: var(--space-3) 0 0;
+}
+
+.tonight-ticket__number {
+  font-size: 7.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.07em;
+  line-height: 1.1;
+  margin: var(--space-2) 0 0;
+}
+
+.tonight-ticket__caption {
+  margin-bottom: var(--space-5);
+  color: var(--lime);
+  font-size: var(--step-small);
+}
+
+.tonight-ticket__note {
+  border-top: 1px dashed #73838e;
+  padding-top: var(--space-4);
+  margin: 0;
+  font-size: var(--step-small);
+}
+
+.finder {
+  scroll-margin-top: var(--space-5);
+}
+
+.finder__heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-3) var(--space-5);
+  border-top: 2px solid var(--text);
+  padding-block: var(--space-5);
+}
+
+.finder__heading .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.finder__heading h2,
+.finder__heading > p {
+  margin: 0;
+}
+
+.finder__heading > p {
+  font-size: var(--step-small);
+  color: var(--text-muted);
+}
+
+.next-night {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+  border-block: 1px solid var(--border);
+  padding-block: var(--space-4);
+}
+
+.next-night p {
+  margin: 0 auto 0 0;
+  font-weight: 650;
+}
+
+.next-night a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--space-3);
+  font-size: var(--step-small);
+}
+
+@media (max-width: 48em) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    padding-block: 0 var(--space-6);
+  }
+
+  .tonight-ticket {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-1) var(--space-4);
+    transform: none;
+    padding: var(--space-4);
+    border-bottom-width: 4px;
+  }
+
+  .tonight-ticket__top {
+    grid-column: 1;
+    align-self: start;
+  }
+
+  .tonight-ticket__date {
+    grid-column: 1;
+    margin: 0;
+  }
+
+  .tonight-ticket__number {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    font-size: 4.5rem;
+    align-self: center;
+    margin: 0;
+  }
+
+  .tonight-ticket__caption {
+    grid-column: 1;
+    margin: 0;
+  }
+
+  .tonight-ticket__note {
+    display: none;
+  }
 }
 
 /* ---------- Page intro ---------- */
@@ -119,9 +357,9 @@ main {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-  padding-block: var(--space-6);
+  border-top: 4px solid var(--text);
+  background: var(--surface-muted);
+  padding-block: var(--space-7);
   font-size: var(--step-small);
   color: var(--text-muted);
 }
@@ -137,4 +375,40 @@ main {
 
 .site-footer a {
   color: inherit;
+}
+
+.site-footer__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.site-footer .site-footer__title {
+  font-size: var(--step-h2);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  margin: 0;
+}
+
+.site-footer__heading > a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.site-footer__details {
+  columns: 2 22rem;
+  column-gap: var(--space-7);
+}
+
+.site-footer__details p {
+  break-inside: avoid;
 }
