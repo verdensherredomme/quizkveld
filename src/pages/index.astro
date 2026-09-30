@@ -30,23 +30,23 @@ const irregular = items.filter((item) => isUndated(item.quiz));
 >
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__copy">
-      <p class="eyebrow">Pubquiz i Norge · Oslo først</p>
-      <h1 id="hero-title">Kvelden er<br />et <span>lagspill.</span></h1>
+      <p class="eyebrow">En uavhengig oversikt / Pubquiz i Norge</p>
+      <h1 id="hero-title">Finn en quiz.<br />Ta med laget.</h1>
       <p class="hero__intro">
-        Litt hodebry. Mye godt selskap. Finn en pubquiz, samle laget og gjør en vanlig kveld
-        til noe å snakke om.
+        Du trenger ikke kunne alt. Bare vite hvor du skal.
+        Her finner du pubquizer i Oslo og resten av landet.
       </p>
       <div class="hero__actions">
-        <a class="button-link" href="#finn-quiz">Finn quiz i kveld <span aria-hidden="true">↓</span></a>
+        <a class="button-link" href="#finn-quiz">Se kveldens quizer <span aria-hidden="true">↓</span></a>
         <a class="text-link" href={href("denne-uka")}>Planlegg uka <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-    <aside class="tonight-ticket" aria-label="Oppføringer i Oslo i kveld">
-      <div class="tonight-ticket__top"><span>Oslo / I kveld</span><span aria-hidden="true">QK</span></div>
-      <p class="tonight-ticket__date">{longDate(today)}</p>
-      <p class="tonight-ticket__number">{tonightInDefaultPlace.length}</p>
-      <p class="tonight-ticket__caption">oppførte {tonightInDefaultPlace.length === 1 ? "quiz" : "quizer"} i Oslo</p>
-      <p class="tonight-ticket__note">Ikke en bordbestilling.<br />Bare starten på en god kveld.</p>
+    <aside class="tonight-note" aria-label="Oppføringer i Oslo i kveld">
+      <p class="tonight-note__label">Oslo / I kveld</p>
+      <p class="tonight-note__date">{longDate(today)}</p>
+      <p class="tonight-note__number">{String(tonightInDefaultPlace.length).padStart(2, "0")}</p>
+      <p class="tonight-note__caption">oppførte {tonightInDefaultPlace.length === 1 ? "quiz" : "quizer"} i Oslo</p>
+      <p class="tonight-note__source">Fra Norges Quizforbunds liste.<br />Sjekk med stedet før du drar.</p>
     </aside>
   </section>
 
