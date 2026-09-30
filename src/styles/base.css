@@ -1,0 +1,121 @@
+/*
+ * Reset, base typography and the shared page furniture.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-interface);
+  font-size: var(--step-body);
+  line-height: 1.55;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-interface);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--space-3);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--step-h1);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--step-h2);
+}
+
+h3 {
+  font-size: var(--step-h3);
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: from-font;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+blockquote {
+  margin: 0;
+  quotes: "«" "»" "‘" "’";
+}
+
+/*
+ * Nothing on this site animates by default. The rule is here so that any transition added
+ * later inherits the right behaviour rather than having to remember it.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Small caps labels, used for anything that is a label and not content ---------- */
+
+.label {
+  font-family: var(--font-interface);
+  font-size: var(--step-label);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  position: static;
+  display: inline-block;
+  margin: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--oslo-blue);
+  color: var(--on-strong);
+  border-radius: var(--radius-sm);
+}

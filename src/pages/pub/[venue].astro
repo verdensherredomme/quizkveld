@@ -3,7 +3,7 @@ import type { GetStaticPaths } from "astro";
 import Base from "../../layouts/Base.astro";
 import QuizList from "../../components/QuizList.astro";
 import StaleSection from "../../components/StaleSection.astro";
-import { loadSiteData } from "../../lib/data.js";
+import { getSiteData } from "../../lib/data.js";
 import { osloDate, weekWindow } from "../../lib/date.js";
 import { occursOn } from "../../lib/occurrence.js";
 import { dayHeading, quizCount } from "../../lib/format.js";
@@ -11,8 +11,8 @@ import { href } from "../../lib/url.js";
 import { fylkeOf } from "../../lib/place.js";
 import { SOURCE_NAME, reportUrl } from "../../lib/source.js";
 
-export const getStaticPaths = (async () => {
-  const { items, staleItems, venues } = await loadSiteData();
+export const getStaticPaths = (() => {
+  const { items, staleItems, venues } = getSiteData();
 
   return venues.map((venue) => ({
     params: { venue: venue.id },
@@ -25,7 +25,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { venue, items, staleItems } = Astro.props;
-const { slugs, meta } = await loadSiteData();
+const { slugs, meta } = getSiteData();
 
 const stedSlug = slugs.bySted.get(venue.kommune) ?? "";
 const fylke = fylkeOf(venue);

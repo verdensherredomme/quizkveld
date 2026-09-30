@@ -53,3 +53,16 @@ jobs:
       # feiler hvis en intern lenke mangler base-stien /quizkveld/.
       - name: Bygg nettstedet
         run: pnpm build
+
+      # Lastes opp så en PR kan ses uten å publisere den. GitHub Pages har bare ett
+      # deploy-mål, så en ekte forhåndsvisningsdeploy ville overskrevet den live sida.
+      #
+      # Sida bygges med base-stien /quizkveld/, så artefaktet må serveres fra den stien:
+      # pakk ut i en mappe som heter `quizkveld` og server mappa over den. Enklere vei for
+      # de fleste er `pnpm dev`, som gjør det samme lokalt.
+      - name: Last opp bygget som artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nettsted-${{ github.event.pull_request.number || github.run_id }}
+          path: dist
+          retention-days: 14

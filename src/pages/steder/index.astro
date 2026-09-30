@@ -1,11 +1,11 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { loadSiteData } from "../../lib/data.js";
+import { getSiteData } from "../../lib/data.js";
 import { groupBy, placeSummary } from "../../lib/model.js";
 import { quizCount, venueCount } from "../../lib/format.js";
 import { href } from "../../lib/url.js";
 
-const { items, slugs, meta } = await loadSiteData();
+const { items, slugs, meta } = getSiteData();
 
 const places = placeSummary(items);
 const byFylke = groupBy(places, (place) => place.fylke);

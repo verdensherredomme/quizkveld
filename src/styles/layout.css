@@ -1,0 +1,140 @@
+/* Page furniture: header, navigation, page intro and footer. */
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 clamp(var(--space-4), 3vw, var(--space-6));
+}
+
+.site-header {
+  border-top: 4px solid var(--oslo-blue);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-4);
+}
+
+.site-title {
+  font-family: var(--font-interface);
+  font-size: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.site-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-1);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.site-nav a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-interface);
+  font-size: var(--step-small);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  background: var(--surface-muted);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  background: var(--link-soft);
+  box-shadow: inset 0 -3px 0 var(--oslo-blue);
+}
+
+@media (max-width: 40em) {
+  .site-nav a {
+    padding-inline: var(--space-2);
+    font-size: var(--step-label);
+  }
+}
+
+main {
+  flex: 1;
+  padding-block: var(--space-6) var(--space-7);
+}
+
+/* ---------- Page intro ---------- */
+
+.intro {
+  margin-bottom: var(--space-6);
+  max-width: var(--measure-list);
+}
+
+.intro p {
+  font-size: var(--step-lead);
+  color: var(--text-muted);
+  max-width: var(--measure-prose);
+  margin-bottom: 0;
+}
+
+/* The county page puts its place index straight into the intro block. */
+.intro .place-grid {
+  margin-top: var(--space-5);
+}
+
+.intro h1 {
+  margin-bottom: var(--space-4);
+}
+
+.breadcrumbs {
+  font-size: var(--step-small);
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.breadcrumbs a {
+  color: inherit;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding-block: var(--space-6);
+  font-size: var(--step-small);
+  color: var(--text-muted);
+}
+
+.site-footer p {
+  margin-bottom: var(--space-3);
+  max-width: var(--measure-prose);
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.site-footer a {
+  color: inherit;
+}
