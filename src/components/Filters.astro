@@ -105,16 +105,24 @@ const overlaps = categoryTotal > items.length;
     </div>
   </div>
 
-  {
-    overlaps && (
+  <details class="filters__help">
+    <summary>Om tallene og datoene i lista</summary>
+    <p class="filters__note">
+      Tallene i menyene gjelder hele oversikten, ikke bare kvelden du ser på.
+      «Datofestet» betyr at kildens plan passer til datoen, ikke at arrangementet er bekreftet.
+      «Sjekk selv» og «Uten sikker dato» betyr at du bør undersøke datoen hos arrangøren.
+      Sjekk alltid med stedet før du drar.
+    </p>
+    {
+      overlaps && (
       <p class="filters__note">
-        Tallene for sjanger summerer til mer enn antall quizer. Det er med vilje: en quiz
-        kan være både allmenn og musikk, og da telles den i begge.
+        En quiz kan ha flere sjangre og telles da i hver av dem.
       </p>
-    )
-  }
+      )
+    }
+  </details>
 
-  <p class="filters__status" data-filter-status hidden></p>
+  <p class="filters__status" data-filter-status role="status" aria-live="polite" hidden></p>
 
   <button type="button" class="filters__reset" data-filter-reset hidden>
     Tilbakestill filtre

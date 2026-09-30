@@ -77,7 +77,7 @@ const sourceClass = occurrence
     {
       showVenue && (
         <p class="quiz-card__venue">
-          <a href={href("pub", venue.id)}>{venue.name}</a>
+          <a href={href("pub", venue.id)}>{venue.name}<span class="quiz-card__arrow" aria-hidden="true">↗</span></a>
         </p>
       )
     }

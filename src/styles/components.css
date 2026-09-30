@@ -5,10 +5,10 @@
 .filters {
   max-width: var(--measure-list);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--oslo-blue);
+  border-top: 3px solid var(--text);
   border-radius: var(--radius);
   background: var(--surface);
-  padding: var(--space-4);
+  padding: var(--space-5);
   margin-bottom: var(--space-6);
 }
 
@@ -27,20 +27,21 @@
   display: block;
   font-family: var(--font-interface);
   font-size: var(--step-label);
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: var(--space-1);
+  font-weight: 750;
+  color: var(--text);
+  margin-bottom: var(--space-2);
 }
 
 .filters select,
 .filters input[type="search"] {
   width: 100%;
-  min-height: 44px;
+  min-height: 48px;
   padding: var(--space-2) var(--space-3);
   font: inherit;
   color: inherit;
-  background: var(--bg);
-  border: 1px solid var(--border-strong);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-bottom-color: var(--border-strong);
   border-radius: var(--radius);
 }
 
@@ -51,8 +52,25 @@
   max-width: var(--measure-prose);
 }
 
+.filters__help {
+  margin-top: var(--space-3);
+  font-size: var(--step-small);
+  color: var(--text-muted);
+}
+
+.filters__help summary {
+  cursor: pointer;
+  padding-block: var(--space-2);
+  min-height: 44px;
+  align-content: center;
+}
+
+.filters__help summary:hover {
+  color: var(--link);
+}
+
 .filters__status {
-  margin: var(--space-3) 0 0;
+  margin: var(--space-2) 0 0;
   font-size: var(--step-small);
   font-weight: 600;
   color: var(--text);
@@ -65,7 +83,7 @@
   font-family: var(--font-interface);
   font-size: var(--step-label);
   font-weight: 600;
-  background: var(--link-soft);
+  background: var(--surface);
   color: var(--link);
   border: 1px solid var(--link);
   border-radius: var(--radius);
@@ -95,7 +113,7 @@ h2 + .day {
 
 .day__heading h2 {
   margin: 0;
-  font-size: var(--step-h2-sub);
+  font-size: var(--step-h2);
 }
 
 .day__heading {
@@ -104,9 +122,9 @@ h2 + .day {
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-1) var(--space-4);
-  border-bottom: 3px solid var(--text);
-  padding-bottom: var(--space-2);
-  margin-bottom: var(--space-5);
+  border-bottom: 2px solid var(--text);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .day__count {
@@ -130,7 +148,7 @@ h2 + .day {
   font-family: var(--font-interface);
   font-size: var(--step-small);
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--link);
   margin-bottom: var(--space-2);
 }
 
@@ -140,9 +158,8 @@ h2 + .day {
 
 /* A county heading opens a block, so it gets a rule; a place heading sits inside one. */
 .fylke-block > .group__heading {
-  border-bottom: 1px solid var(--border-strong);
-  padding-bottom: var(--space-2);
-  margin-bottom: var(--space-4);
+  padding-block: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 /* ---------- Entries ---------- */
@@ -152,19 +169,25 @@ h2 + .day {
   grid-template-columns: minmax(0, 1fr);
   max-width: var(--measure-list);
   border-top: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .quiz-card {
   display: grid;
   grid-template-columns: 4.75rem minmax(0, 1fr);
   gap: var(--space-3) var(--space-4);
-  padding: var(--space-4) 0;
+  padding: var(--space-5) var(--space-4);
   border-bottom: 1px solid var(--border);
   hanging-punctuation: first;
 }
 
 .quiz-card[hidden] {
   display: none;
+}
+
+.quiz-card:hover,
+.quiz-card:focus-within {
+  background: var(--surface-muted);
 }
 
 .quiz-card__time {
@@ -176,6 +199,7 @@ h2 + .day {
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums lining-nums;
+  color: var(--link);
 }
 
 .quiz-card__time--unknown {
@@ -190,31 +214,47 @@ h2 + .day {
   grid-column: 2;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
   min-width: 0;
 }
 
 @media (min-width: 48em) {
   .quiz-card {
-    grid-template-columns: 5.25rem minmax(0, 1fr) 12rem;
+    grid-template-columns: 5.25rem minmax(0, 1fr) 13rem;
     gap: var(--space-3) var(--space-5);
   }
 
   .quiz-card__time {
-    text-align: right;
+    text-align: left;
   }
 }
 
 .quiz-card__venue {
-  font-size: var(--step-lead);
-  font-weight: 600;
+  font-size: var(--step-h3);
+  font-weight: 750;
   margin: 0;
   text-wrap: balance;
 }
 
 .quiz-card__venue a {
   color: var(--text);
+  text-decoration: none;
+  display: inline-block;
+  padding-block: var(--space-2);
+  margin-block: calc(-1 * var(--space-2));
+}
+
+.quiz-card__venue a:hover,
+.quiz-card__venue a:focus-visible {
+  text-decoration: underline;
   text-decoration-color: var(--link);
+}
+
+.quiz-card__arrow {
+  display: inline-block;
+  margin-left: var(--space-2);
+  color: var(--link);
+  font-size: 0.85em;
 }
 
 .quiz-card__place {
@@ -243,6 +283,11 @@ h2 + .day {
   font-size: var(--step-label);
   font-weight: 750;
   color: var(--text-muted);
+}
+
+.quiz-card--certain .quiz-card__certainty {
+  border-left: 3px solid var(--border);
+  padding-left: var(--space-3);
 }
 
 .quiz-card--likely .quiz-card__source,
@@ -301,7 +346,8 @@ h2 + .day {
   font-family: var(--font-interface);
   font-size: 0.74rem;
   font-weight: 650;
-  padding: 0.2em 0.5em;
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface-muted);
   color: var(--text-muted);
@@ -342,12 +388,19 @@ h2 + .day {
 }
 
 .place-grid li {
-  padding: var(--space-2) 0;
+  padding: var(--space-3) 0;
   border-top: 1px solid var(--border);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-3);
+}
+
+.place-grid li a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 650;
 }
 
 .place-grid__count {
@@ -366,6 +419,23 @@ h2 + .day {
   padding: var(--space-4);
   color: var(--text-muted);
   max-width: var(--measure-prose);
+}
+
+@media (max-width: 30em) {
+  .filters {
+    padding: var(--space-4);
+  }
+
+  .filters__group {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+
+  .quiz-card {
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-3);
+  }
 }
 
 .empty p {
