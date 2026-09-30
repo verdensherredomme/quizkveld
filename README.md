@@ -30,7 +30,7 @@ går én vei: `src/` importerer `pipeline/schema.ts`, `pipeline/slug.ts` og
 
 | Fil | Rolle |
 | --- | --- |
-| `src/content.config.ts` | Content Layer: leser `data/quizzes.json` og validerer med `QuizDataSchema` |
+| `src/lib/data.ts` | Importerer generert JSON ved bygging, validerer én gang med `QuizDataSchema` og bygger sidemodellen |
 | `src/lib/date.ts` | Sivil dato og ukedag i **Europe/Oslo** |
 | `src/lib/occurrence.ts` | Om en quiz treffer en gitt dato, og hvor sikkert |
 | `src/lib/place.ts` | Slugger for sted og fylke, med deterministisk kollisjonsløsning |
@@ -336,7 +336,7 @@ Flagg: `--force`, `--min-rows=N`, `--max-id-churn=0.1`, `--skip-scrape`,
 | `data/geocache.json` | Append-only geocache nøklet på sted-id |
 | `data/kommuner.json` | Offisielt kommuneregister fra Kartverket. Committet, ikke hentet ved hver kjøring |
 | `data/kommune-alias.json` | Kildens stedsnavn → offisielt kommunenummer |
-| `pipeline/schema.ts` | Zod-skjemaene. Gjenbrukes av nettstedet via Content Layer |
+| `pipeline/schema.ts` | Zod-skjemaene. `QuizDataSchema` validerer dokumentet direkte i nettstedets bygg |
 | `raw/osm/` | Lokal cache av Overpass-svar. Ikke committet - `data/geocache.json` er fasiten |
 
 ### Stabile id-er
