@@ -1,7 +1,7 @@
 ---
 import { SOURCE_URL, reportUrl } from "../lib/source.js";
 import { dataCredits } from "../lib/attribution.js";
-import { loadSiteData } from "../lib/data.js";
+import { getSiteData } from "../lib/data.js";
 import { longDate, timestampLabel } from "../lib/format.js";
 import { href } from "../lib/url.js";
 import "../styles/global.css";
@@ -20,8 +20,8 @@ const { title, description, generatedAt, sourceUpdatedAt, current } = Astro.prop
 const reportHref = reportUrl("Retting i pubquiz-oversikten");
 
 // Read here rather than take a prop: a licence credit that a page can forget to pass is a
-// licence credit that will be forgotten. `loadSiteData` is cached, so this is free.
-const { venues } = await loadSiteData();
+// licence credit that will be forgotten. The data module is cached, so this is free.
+const { venues } = getSiteData();
 const credits = dataCredits(venues);
 
 const nav = [

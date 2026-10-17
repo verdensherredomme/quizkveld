@@ -1,0 +1,32 @@
+/*
+ * The one self-hosted face is reserved for text quoted from the source.
+ *
+ * Newsreader (Production Type), SIL Open Font License 1.1. The licence text ships with the
+ * site at /fonts/OFL.txt.
+ *
+ * One static instance - optical size 30, weight 500 - subset to Latin-1 plus Norwegian
+ * punctuation. See src/fonts/README.md for the exact command.
+ */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-500-latin.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+2010-2015, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2039-203A,
+    U+2212;
+}
+
+/*
+ * Metric-matched fallback keeps source excerpts stable while the face loads.
+ */
+@font-face {
+  font-family: "Newsreader Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 88.5%;
+  ascent-override: 83%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}

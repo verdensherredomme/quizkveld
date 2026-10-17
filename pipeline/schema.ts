@@ -3,8 +3,8 @@ import { z } from "zod";
 /**
  * Shared data model for quizkveld.
  *
- * These schemas are the contract between the data pipeline and the (future) Astro site,
- * which will reuse them through the Content Layer. Keep them dependency-free.
+ * These schemas are the contract between the data pipeline and the Astro site, which
+ * validates the generated document directly with `QuizDataSchema`. Keep them dependency-free.
  */
 
 export const GEO_SOURCES = ["address", "osm", "kartverket", "centroid", "manual"] as const;

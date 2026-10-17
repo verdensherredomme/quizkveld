@@ -3,13 +3,13 @@ import Base from "../layouts/Base.astro";
 import DaySection from "../components/DaySection.astro";
 import Filters from "../components/Filters.astro";
 import IrregularSection from "../components/IrregularSection.astro";
-import { loadSiteData } from "../lib/data.js";
+import { getSiteData } from "../lib/data.js";
 import { osloDate, weekWindow } from "../lib/date.js";
 import { splitByDates } from "../lib/occurrence.js";
 import { quizCount } from "../lib/format.js";
 import { DEFAULT_PLACE } from "../lib/site.js";
 
-const { items, slugs, meta } = await loadSiteData();
+const { items, slugs, meta } = getSiteData();
 
 const today = osloDate();
 // A rolling seven days rather than Monday-to-Sunday: someone looking on a Saturday wants

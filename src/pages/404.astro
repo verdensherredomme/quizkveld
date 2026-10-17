@@ -1,9 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
-import { loadSiteData } from "../lib/data.js";
+import { getSiteData } from "../lib/data.js";
 import { href } from "../lib/url.js";
 
-const { meta } = await loadSiteData();
+const { meta } = getSiteData();
 ---
 
 <Base

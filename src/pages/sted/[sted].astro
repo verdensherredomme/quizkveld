@@ -6,15 +6,15 @@ import Filters from "../../components/Filters.astro";
 import IrregularSection from "../../components/IrregularSection.astro";
 import QuizList from "../../components/QuizList.astro";
 import StaleSection from "../../components/StaleSection.astro";
-import { loadSiteData } from "../../lib/data.js";
+import { getSiteData } from "../../lib/data.js";
 import { osloDate, weekWindow } from "../../lib/date.js";
 import { isUndated, splitByDates } from "../../lib/occurrence.js";
 import { quizCount, venueCount } from "../../lib/format.js";
 import { href } from "../../lib/url.js";
 import { fylkeOf } from "../../lib/place.js";
 
-export const getStaticPaths = (async () => {
-  const { items, staleItems, slugs } = await loadSiteData();
+export const getStaticPaths = (() => {
+  const { items, staleItems, slugs } = getSiteData();
 
   return [...slugs.bySted].map(([sted, slug]) => ({
     params: { sted: slug },
@@ -27,7 +27,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { sted, items, staleItems } = Astro.props;
-const { slugs, meta } = await loadSiteData();
+const { slugs, meta } = getSiteData();
 
 const source = (items[0] ?? staleItems[0])?.venue;
 const fylke = source ? fylkeOf(source) : "";

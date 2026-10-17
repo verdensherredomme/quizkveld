@@ -1,15 +1,13 @@
-import { getCollection } from "astro:content";
-
-import type { Quiz, Venue } from "../../pipeline/schema.js";
+import quizDataDocument from "../../data/quizzes.json";
+import { QuizDataSchema, type Quiz, type Venue } from "../../pipeline/schema.js";
 import { joinQuizzes, partitionByFreshness, sortQuizzes, type QuizAtVenue } from "./model.js";
 import { buildPlaceSlugs, type PlaceSlugs } from "./place.js";
 
 /**
  * The single place the site reads data from.
  *
- * Entries come out of the Content Layer already validated against the pipeline's Zod
- * schemas (see src/content.config.ts), so the casts here restore the TypeScript types that
- * validation guarantees rather than asserting anything new.
+ * The generated document is imported only by Astro's build/server modules and validated
+ * against the same schema that produced it. ES module caching keeps this work to one parse.
  */
 
 export interface SiteData {
@@ -26,19 +24,9 @@ export interface SiteData {
   meta: { generatedAt: string; sourceUpdatedAt: string | null };
 }
 
-let cached: SiteData | null = null;
-
-export async function loadSiteData(): Promise<SiteData> {
-  if (cached) return cached;
-
-  const [venueEntries, quizEntries, metaEntries] = await Promise.all([
-    getCollection("venues"),
-    getCollection("quizzes"),
-    getCollection("meta"),
-  ]);
-
-  const venues = venueEntries.map((entry) => entry.data as unknown as Venue);
-  const quizzes = quizEntries.map((entry) => entry.data as unknown as Quiz);
+function buildSiteData(): SiteData {
+  const { venues, quizzes, generatedAt, sourceUpdatedAt } =
+    QuizDataSchema.parse(quizDataDocument);
 
   const { items, orphans } = joinQuizzes(quizzes, venues);
 
@@ -58,22 +46,18 @@ export async function loadSiteData(): Promise<SiteData> {
   // this site could do - but their pages stay up so shared links do not rot.
   const { fresh, stale } = partitionByFreshness(items);
 
-  const meta = metaEntries[0]?.data as unknown as
-    | { generatedAt: string; sourceUpdatedAt: string | null }
-    | undefined;
-  // Unlike a bad row, missing metadata means the file itself is not what we think it is.
-  if (!meta) {
-    throw new Error("data/quizzes.json mangler metadata (generatedAt / sourceUpdatedAt)");
-  }
-
-  cached = {
+  return {
     items: sortQuizzes(fresh),
     staleItems: sortQuizzes(stale),
     venues,
     quizzes,
     slugs: buildPlaceSlugs(venues),
-    meta,
+    meta: { generatedAt, sourceUpdatedAt },
   };
+}
 
-  return cached;
+const siteData = buildSiteData();
+
+export function getSiteData(): SiteData {
+  return siteData;
 }
